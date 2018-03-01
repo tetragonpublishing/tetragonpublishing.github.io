@@ -1,0 +1,1290 @@
+// ZURB Foundation settings
+
+// Uncomment and adjust things in this file to create your own settings.
+// NB
+// I've disabled the mobile version in:
+// /Library/Ruby/Gems/1.8/gems/ZURB-foundation-2.1.5.2/stylesheets/_ZURB-foundation.sass
+// by commenting out the @import zurb/mobile tag 
+
+// font-face from Google Web fonts 
+// NB this uses the local override if possible, which might be different and make the dropcaps look bad
+// ## overridden in favour of WebFont Loader JS: http://blog.fontdeck.com/post/1471135028/using-fontdeck-with-the-google-webfont-loader 
+//@import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin);
+
+@import "compass/utilities"; 
+@import "compass/css3/columns"; 
+@import "compass/css3/box-shadow"; 
+// $services-sprite: sprite-map("icon/services/*.png");
+ 
+// SPRITING
+///////////
+
+$common-footer-bg-repeat: repeat-x; // first, say which sprites ought to take up the full width of the sprite
+$common-header-bg-repeat: repeat-x; // first, say which sprites ought to take up the full width of the sprite
+// the body needs to be tiled both ways, which can't be done with sprites, so do manually
+
+@import "common/*.png"; // taken from the root "sprite dir" (defined in config.rb)
+@import "services/*.png";
+@import "clients/*.png";
+@import "nav/*.png"; 
+@import "i/*.png"; 
+
+@include all-common-sprites; // now include the sprites (middle word has to be the dirname) 
+@include all-services-sprites;
+@include all-clients-sprites;
+@include all-nav-sprites;
+// @include all-i-sprites;
+ 
+// general project settings
+@import "settings";
+
+// Importing Foundation
+@import "zurb-foundation";
+//@import 'foundation';
+
+
+// Project Styles
+//-----------------------------------------  
+
+// Colour scheme
+//-----------------------------------------
+$red: #A01714; 
+$light-red: #FF977C;
+$black: #302224;
+$gray: #A19D96;
+$green: #60632E;
+$blue: #3bbfce;
+	
+// Layout
+//-----------------------------------------
+$header-height: 164px;
+$footer-height: 82px;
+$nav-height: 72px;
+
+// For Modals
+//-----------------------------------------
+$spread-height: 550px;
+$spread-width: 712px;  // b format = 198x128 = approx 712px wide for a spread, half that for a single page
+
+// Typography
+//-----------------------------------------
+$light-tracking: 0.08em;
+$normal-tracking: 0.18em;
+$gappy-tracking: 0.2em;
+$default-body-size: 20px;
+$default-leading: 1.5;
+ 
+@mixin sans-header-family {
+	font-family: 'Lato', 'Syntax Regular', 'Futura', 'Ariel', 'sans-serif', 'sans';
+}  
+@mixin code-family {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+@mixin body-header-family {
+	font-family: 'EB Garamond', Georgia;
+}
+@mixin smallcaps {
+  font-variant: small-caps; 
+  text-transform: lowercase; 
+  letter-spacing: 0.1em;
+}
+// FontDeck
+	/*
+@font-face {
+    font-family: 'Syntax Regular';
+    src: url('http://f.fontdeck.com/f/1/T3o1TlN5YW8AAsaJhrvoK06lylJ4EoCVDsZfvFCon/joyA.eot');
+    src: url('http://f.fontdeck.com/f/1/T3o1TlN5YW8AAsaJhrvoK06lylJ4EoCVDsZfvFCon/joyA.eot?') format('embedded-opentype'),
+    url('http://f.fontdeck.com/f/1/T3o1TlN5YW8AAsaJhrvoK06lylJ4EoCVDsZfvFCon/joyA.woff') format('woff'),
+    url('http://f.fontdeck.com/f/1/T3o1TlN5YW8AAsaJhrvoK06lylJ4EoCVDsZfvFCon/joyA.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}*/
+// !FontDeck
+
+@mixin column-span($span) {
+	-ms-column-span: $span;
+	-webkit-column-span: $span;
+	-moz-column-span: $span;
+	-o-column-span: $span;
+	column-span: $span;
+}
+@mixin crossOpacity($opacity) {
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity*100))";
+  filter: alpha(opacity=($opacity*100));
+  opacity: $opacity;
+}
+@mixin hyphens($value: "manual") {
+  @each $prefix in -webkit-, -moz-, -o-, "" {
+    #{$prefix}hyphens: $value;
+  }
+}
+
+// ##TODO: add italics
+
+// ----------- STRUCTURE ---------------
+html, body {
+  height: 100%;
+  @include body-header-family;
+  -webkit-font-smoothing: auto;
+}
+::selection, ::moz-selection {
+    background: lighten($red,60);
+}
+
+header {
+	height: $header-height;
+  a {
+  	background: sprite($common-sprites, "logo") no-repeat;
+//  	background: url(/img/logo.jpg) center center no-repeat;
+  	width:105px; height:96px;
+  	position:relative; 
+  	top:35px;
+  	margin: 0 auto;
+  	display:block;
+	}
+}
+footer {
+	height: $footer-height;
+	background: sprite($common-sprites, "footer-bg") repeat-x;
+  width:100%;
+  min-width: $grid-min-width;
+  float:left; // for IE to make it fill the parent
+}
+.container {
+  padding-left: 0;   // overridden from Foundation for iPad
+  padding-right: 0;  // overridden from Foundation for iPad 
+  padding-bottom: $footer-height + 40px; // for sharrre
+}
+.wrapper {
+ min-height: 100%;
+ height: auto !important;
+ height: 100%;
+ margin: 0 auto (-$footer-height);  // brackets are important here for negative vals!
+ background: image-url("header-bg.png") repeat-x;
+ min-width: $grid-min-width;
+}
+
+
+// --------------- NAV ----------------
+// style the nav using fontdeck font
+nav#main-nav {
+	height: $nav-height;
+	line-height: $nav-height;
+  text-align:justify;
+  span {
+    width:100%;
+    display:inline-block;
+  }
+	a {
+		@include sans-header-family; 
+		font-size-adjust:0.5;
+		font-size: 26px; 
+		font-weight:normal;
+		font-style:normal;
+		text-transform: uppercase;
+		display:inline-block;  // without this, we can't style the first-letter
+		color: $black;
+		&.services {
+		  margin-left:4px;
+	  }
+		&.sel {
+		  color: $red;
+		  cursor: default;
+		  &:hover {
+		    cursor: default;
+		    color: $red;
+		  }
+    }
+    &:visited {
+      text-decoration: none;
+    }
+    &:focus {
+      text-decoration: none;
+      outline: none;
+    }
+    &.clients {
+      // margin-left:-10px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+}
+// force justify spacing a la http://blog.vjeux.com/2011/css/css-one-line-justify.html
+	div {
+		text-align:justify;
+	}
+	div:after {
+	  content: "";
+	  display: inline-block;
+	  width: 100%;
+	}
+// style first letter as red
+	a:first-letter{
+		color:$red;
+	}
+	div > a:hover{
+		color:$black;
+	}
+	div.ten.columns.centered {
+   height: ($nav-height - 2px); 
+   border-bottom: 2px dotted $black;
+	}
+}
+// --------------- !NAV ----------------
+
+// ----------------- TEXT STYLES -------
+p {
+  font-size: $body-font-size;
+  line-height: $default-leading;
+  text-indent: 1.5em;
+  margin: 0;
+	&:first-child {
+	  text-indent: 0;
+	}
+}
+// red square at the end
+.bodytext p {
+  text-align: justify;
+  @include hyphens(auto); // CSS3
+  &:last-child {
+    margin-bottom: 1em;
+  }
+}
+
+body { 
+  color: $black; 
+  background: image-url("body-bg.png") center center repeat; 
+}
+h1 {
+  color:$red; 
+  @include smallcaps;
+  font-weight:normal;
+  a {
+    color: $red;
+	  @include smallcaps;
+	  font-weight:normal;
+  }
+}
+
+footer {
+	text-transform: lowercase;
+	color: $gray;
+	h6 {
+	 font-size: 28px;
+	 border-left: 16px solid $red;
+	 padding-left: 14px;
+	 color: $gray; // override h6 default
+	 padding-top:6px;
+	 padding-bottom:4px;
+	}
+	p.address {
+	 font-variant: small-caps;
+	 letter-spacing: $normal-tracking;
+	 padding-left: 14+16px;
+	 font-size: 16px;
+   margin-bottom:0;
+   position:absolute;
+   bottom: -28px;
+   left: 0;
+	}
+}
+a {
+	color: $black; 
+}
+a:hover { 
+	color: $gray; 
+}
+p a {
+	color: $green; 
+	// border-bottom: 1px dashed $green; 
+}
+p a:hover {
+	// color: lighten($green, 10%);
+	color: darken($red, 5);
+	text-decoration: none; 
+}
+hgroup {
+	border-bottom: 2px dotted $black;
+	padding-bottom: 10px;
+  &.row {
+    margin-bottom: 25px;
+  }
+	h1, &.a-ui h1 {
+	 @include sans-header-family;
+	 font-size: 22px;
+	 // letter-spacing: $light-tracking;
+	 color: $red;
+	 font-size-adjust:0.5;
+   font-style:normal;
+   text-transform: uppercase;
+   letter-spacing: 0.1em;
+   line-height:1.6em;
+   margin-top: 14px;
+   margin-bottom: 0;
+  }
+  h2, &.a-ui h3 {
+    @include body-header-family;
+    font-size: 20px;
+    color: $green;
+    font-style: italic;
+    padding-left: 76px;
+    font-weight: normal;
+    margin-top:5px;
+  }
+}
+
+// Character styles
+span.dropcap {
+  float:left;
+  color: $red;
+  font-size: 5.8 * $default-body-size;
+  line-height:0.65; // cap X height (here, 80px for a 115px font);
+  margin-top: 5px;  // tweak manually
+  margin-right: 2px;
+  overflow: visible;
+  //  margin-bottom: [neg­at­ive value in case the top mar­gin pushes the text below the drop cap onto the next line]];
+}
+
+// List styles
+ul.bullet {
+	margin: 20px 0 20px 0;
+	li {
+     font-size: $body-font-size;
+     line-height: $default-leading;
+     text-indent: 1.5em;
+		 background:image-url('bullet.png') no-repeat 0 10px; 
+		 margin-left:65px;
+		 padding-left: 22px;
+		 text-indent: 0;
+  }
+}
+ul + p { text-indent: 0; }
+
+///////////////////////// INDIVIDUAL PAGES /////////////////////////////
+// SERVICES PAGE
+.services-list {
+	padding-top: 20px;
+	margin-bottom: 150px; 
+	.start-ebook-slides {
+	  color: $black;
+	  cursor: pointer;
+	  float:right;
+  	}
+  h2 {
+		text-align: center;
+		font-size: 32px;
+		line-height:50px;
+		color: $green;
+		font-weight: normal;
+  }
+  .dropdown.row .columns {
+  	margin-top:20px;
+  }
+  .block-grid.two-up {
+    margin-left:0;  // override Zurb default of -4%
+	  li {
+	    width:100px;
+	    height:100px;
+	    margin-left:20px;
+	    float:left;
+	  }
+  }
+  .pic-grid {
+	  width: 240px; 
+	  float:right; 
+	  margin-right: -4px; // tweak to fix imperfect layout
+	  li {
+	    cursor: pointer;
+	    @include crossOpacity(0.6);
+	  }
+	}
+	figure.square-banner {
+	 float: right;
+	 width: 300px;
+	 margin-left:30px;
+	 img {
+	   @include crossOpacity(0.7);
+	   border: 1px solid $gray;
+	 }
+	 figcaption {
+     float:right;
+     font-style: italic;
+     font-size: 1.66em;
+     line-height:20px;
+     height:20px;
+     color: $red;
+     border-right: 20px solid $red;
+     padding-right: 20px;
+     margin-top: 20px;
+     margin-bottom: 10px
+	 		 }
+	}
+	figure.left-banner {
+	  img {
+	   float:left;
+  	}
+	  figcaption {
+	   float:left;
+	   font-style: italic;
+	   font-size: 1.66em;
+	   line-height:25px;
+	   color: $red;
+	   border-right: 20px solid $red;
+	   padding-right: 20px;
+	   margin-top: 30px;
+	  }
+	}
+	figure.hosting-banner {
+    img {
+      float:right;
+      @include crossOpacity(0.7);
+  	}
+	  figcaption {
+	   float:right;
+	   font-style: italic;
+	   font-size: 1.66em;
+	   line-height:20px;
+	   height:20px;
+	   color: $red;
+	   border-right: 20px solid $red;
+	   padding-right: 20px;
+	   margin-top: 20px;
+	  }
+	}
+}
+  
+// ORBIT AND MODAL FOR SERVICES
+
+#pic-grid-slides, #ebook-slides {
+  height: $spread-height;
+  width: $spread-width;
+	background: image-url('loading.gif') no-repeat center center;
+	img, div {
+    display: none;
+    background: image-url("body-light-bg.png") repeat;
+  }
+  .orbit-slide {
+    height: $spread-height;
+    width: $spread-width;
+  }
+}
+#ebook-slides {
+	.orbit-slide {
+	   height: 431px;
+  }
+}
+.orbit-wrapper .orbit-caption {
+	background: none;  // default for browsers that don't understand rgba
+	background: rgba(0, 0, 0, 0.05);
+	font-family: inherit;
+	p {
+    font-style: italic;
+    text-indent:0;
+    font-size: 1.3em;
+    color: $gray;
+    a {
+     color: $red;
+     border-bottom: 0;
+    }
+		&.caption-title {
+			text-transform: lowercase;
+			font-variant: small-caps;
+			letter-spacing: 0.12em;
+			font-style: normal;
+			font-size: 1.6em;
+			@include sans-header-family;
+	  } 
+  }
+}
+#pic-grid-modal, #ebook-modal {
+	width:$spread-width;
+	left:50%;
+	margin-left:-(($spread-width+80)/2); // there's 40 padding on either side
+	top:10%;
+	div.orbit-wrapper div.slider-nav span.right {
+	 margin-right: -80px;
+  }
+	div.orbit-wrapper div.slider-nav span.left {
+	 margin-left: -80px;
+  }
+}
+#ebook-modal .orbit-caption {
+	background: none;
+}
+#pic-grid-modal {
+	 height: $spread-height + 80px;
+}
+#ebook-modal {
+	height: 511px;
+}
+.reveal-modal {
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  background: image-url("body-light-bg.png") repeat;
+}
+
+////////////////////////////////////////////////////////////////////////
+// CLIENTS 
+
+div.clients {
+	margin-bottom:30px;
+  .clients-list {
+    border: 0;
+    background: none;
+    border: 0;
+    border-right: 2px dotted $black;
+    padding-right:25px;
+    dd {
+      font-size: $body-font-size;
+      border: 0;
+      padding:5px 0 5px 0;
+      @include smallcaps;
+      background: none;
+      text-align: right;
+      color: $gray;
+      line-height: 1.05; 
+      &.sel {
+        color: $red;
+      }
+    }
+  }
+  section {
+    margin-left: -15px; // adjust to balance the page a bit
+    clear: both;
+    .client-logo {
+		  width: 156px;
+		  height: 156px;
+		  float:right;
+		  margin-left:25px;
+		  margin-bottom:10px;
+		  border:1px solid $gray;
+		  padding:2px;
+		  span {
+		   height: 140px;
+		   width:140px;
+		   display: block;
+		   margin:8px;
+		   @include crossOpacity(0.9);
+		  }
+		}
+		figure {
+		  img {
+		    border: 1px solid $gray;
+		    background: white;
+		  }
+		  figcaption {
+		    @include sans-header-family;
+		    text-align: right;
+		    text-transform: uppercase;
+		    letter-spacing: $normal-tracking;
+		    font-size: 0.8em;
+		    margin-top: 0.4em;
+		    span.red-bullet {
+          margin-right: 0.2em;
+          line-height: 17px; 
+          display:block;
+          content: "•";
+          float:left;
+          color: $red;
+          overflow: hidden;
+          font-size:1.6em;
+          height:30px;
+		    }
+		    a {
+		    font-size: small;
+		      float:right;
+		      min-height:30px;
+		      &:hover {
+            color: $red;
+          }
+		    }
+      }
+		}
+  }
+  dl.client-nav {  
+	  margin-left: -20px;
+	  dd {
+	    width: 22px;
+	    height: 22px;
+	    text-indent: -99999px; 
+	    margin-bottom: 5px;
+	    cursor: pointer;
+    }
+  }
+}
+
+////////////////////////////////////////////////////
+// CONTACT
+
+article.contact {
+  div.phone {
+    @include sans-header-family;
+    font-size: 12px;
+    letter-spacing: $light-tracking;
+    color: $black;
+    margin-bottom:25px;
+    span.red {
+      color: $red;
+      font-size: 20px;
+      @include smallcaps;
+    }
+    a {
+      letter-spacing: 0;
+      color: $black;
+    }
+    text-align: right;
+  }
+	#map_canvas {
+		width:100%; 
+		height:367px;
+		margin-bottom: 30px;
+		@include crossOpacity(0.7);
+	}
+	// form
+	form.nice {
+	  float:left;
+		text-align: right;
+		margin-top: -12px;  // to offset the first element having a top margin
+		width: 360px;
+		label {
+			float: left;
+			clear:left;
+			width: 100px;
+			@include smallcaps;
+			font-size:20px;
+			background: none;
+			text-align: right;
+			color: $red;
+			line-height:42px; // inputs have a total of 12 px in total added to top and bottom by way of padding, border etc, so it's 30 + 12
+			margin:0;
+			margin-top: 12px;
+			span.req { 
+			 float:right; 
+			 margin-right: -280px; // move right of the input box, which is 220 (below) 
+			 margin-top:3px;
+			}
+	  }
+	  input, textarea {
+	    float: left;
+	    width: 220px;
+	    line-height:30px;
+	    height:30px;
+	    margin-left: 30px;
+	    margin-top: 12px;
+	    font-size:20px;
+	    padding-left:5px;
+	    @include sans-header-family;
+	  }
+	  textarea {
+	    height: 90px; 
+	  }
+	  input[type=submit] {
+	    cursor: pointer;
+	    height:52px;
+	    width:52px;
+	    background: image-url("submit-button.png");
+	    border:0;
+	    float: right;
+	    clear:both;
+	    margin-bottom:25px; 
+	    text-indent: -9999px;
+	  }
+	}
+	#contact_loader {
+	  width: 40px;
+		height: 40px;
+		background: image-url('loading.gif') 0 0 no-repeat;
+		float: right;
+		margin-top: 20px;
+		display:none;
+	}
+}
+// ie7 hack
+.lt-ie8 {
+	form.nice {
+	  label span.req {
+      position:absolute;
+      left:0;
+      margin-left: 380px;
+      line-height:30px;
+    }
+    input[type=submit], #contact_loader {
+		  float:left;
+		  position:absolute;
+		  right:0;
+    }    
+  }
+}
+
+////////////////////////////////////////////////////
+// ABOUT
+
+article.about {
+  .intro p {
+    font-size: 24px;
+    height:332 + 25px;
+    span.dropcap {
+		  float:left;
+		  color: $red;
+		  font-size: 134px;
+		  line-height:0.71; // cap X height (here, 80px for a 115px font; 90px for a 136px font);
+		  margin-top: 5px;  // tweak manually
+		  margin-right: 7px;
+		  margin-left: -14px; // move it left a bit so everything fits in
+		  //  margin-bottom: [neg­at­ive value in case the top mar­gin pushes the text below the drop cap onto the next line]];
+    }
+    &:first-line {
+      @include smallcaps;
+      letter-spacing: 0.08em;
+      color: $red;
+      font-weight:bold
+    }
+}
+	.slideshow-home {
+	 width:500px;
+	 height:332px;
+	 float:right;
+	 margin:0px 0px 25px 26px;
+  }
+	#home-slides {
+	  width:500px;
+	  height: 332px;
+	  background: image-url('loading.gif') no-repeat center center;
+	  
+	  img, div {
+	    display: none;
+	    background: white;
+	  }
+	  .orbit-slide {
+	    width: 500px;
+	    height: 332px;
+	  }
+	}
+}
+div.columnar {
+	@include column-count(2);
+	@include column-gap(60px);
+	@include column-rule(2px dotted lighten($gray,10));
+	margin-bottom: 40px;
+}
+div.column-span-all {
+	@include column-span(all);
+	margin: 25px 0; 
+}
+
+html.fouc body, html.wf-loading body {
+	visibility:hidden;
+}
+html.fouc, html.wf-loading
+{
+	background: image-url('tetragon_loading.gif') no-repeat center 33%;
+}
+
+
+///////// APOSTROPHE
+div.tetragon-main.row .a-tetragon-blog {
+	div.a-content, .a-area.a-normal {
+    // width: auto; // only needed for sandbox 
+  }
+  .a-slot.aRichText.a-normal .a-slot-content ul {
+    @extend ul.bullet;
+    list-style-type: none;
+  }
+  .a-slideshow-image img {
+    width: 100%;
+  }
+  .a-blog-item-content {
+    
+  }
+  .a-slideshow-description {
+    margin-bottom: 0; 
+    p {
+      color: darken($gray, 5);
+      @include smallcaps;
+      margin-bottom: 0;
+//      width: 480px;
+//      float:right;
+//      margin-left:16px;
+    }
+  }
+  .a-slideshow {
+    margin-bottom: 26px;
+    .a-slideshow-image {
+      padding-top: 26px;
+      img {
+       float:right;
+      }
+    }
+  }
+  p a {
+    &:hover {
+      color: darken($red, 5);
+      text-decoration: none;
+    }
+  }
+  .aut {
+    text-align:right;
+    letter-spacing: $gappy-tracking;
+    color: $red;
+    text-indent: 0;
+    text-transform: lowercase;
+    @include smallcaps;
+    font-weight: bolder;
+    a {
+      color: $red;
+    }
+  }
+  div.a-blog-item-content {
+    width: auto;
+    float: none;
+  }
+  .a-slot.aRichText .a-slot-content p {
+    margin-bottom: 0;
+  }
+  div.a-blog-item-tags {
+    text-align: left;
+    margin-top:25px;
+    a {
+      @include smallcaps;
+      color: $red;
+      &:hover {
+        text-decoration: none;
+        color: darken($red, 30);
+      }
+    }
+  }
+  h1.a-blog-item-title, h3.a-blog-item-title {
+    a {
+			color :$red;
+			@include sans-header-family;
+			font-size: 22px;
+			letter-spacing: 0.1em;
+			color: $red;
+			font-size-adjust:0.5;
+			font-style:normal;
+			text-transform: uppercase;
+			font-variant: small-caps;
+			line-height:1.4em;
+			margin-top: 10px;
+			margin-bottom: 0;
+			font-weight: normal;
+			&:hover {
+				color: darken($red, 5);
+				text-decoration: none;
+			} 
+    }
+  }
+  article.blog h3.a-blog-item-title a {
+    font-size: 20px;
+  }
+  h2.a-blog-item-meta {
+    color: $green;
+    font-size: 16px;
+    line-height: 24px;
+    @include smallcaps;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    span {
+      font-style: normal;    
+    	float: left;
+      margin-right: 12px;
+      margin-bottom: 0;
+	    &:not(:last-child) {
+	      &:after {
+	        content: "·";
+	        margin-left: 6px;
+	      }
+	    }
+    }
+  }
+  .a-attribution a, .a-admin-content a, .a-global-toolbar .a-logged-in-user span, #a-personal-settings-heading span {
+    color: $gray;
+  }
+  hgroup.row {
+    .post-author {
+      @include smallcaps;
+    }
+  }
+  .a-ui.a-subnav-wrapper {
+    background: none;
+    border: 0;
+    margin: 0;
+    width: auto;
+    @include box-shadow(none);
+    ul.a-ui.a-controls.stacked {
+      margin-top:20px;
+      margin-bottom:20px;
+      float:left;
+    }
+    .a-subnav-section.search {
+      margin-top: 20px;
+      .a-ui.a-search.a-search-sidebar.blog {
+        width: 120px;
+      }
+    }
+    .a-filter-options .a-filter-option, ul.a-tag-sidebar-list, ul.a-tag-sidebar-list.all-tags  {
+      margin-left: 1em;
+    }
+    h4.a-tag-sidebar-title.all-tags span.a-tag-sidebar-tag-count {
+      font-size: 0.72em;
+    }
+    .a-link {
+      color: $red;
+      @include smallcaps;
+      @include body-header-family;
+      font-size: 16px;
+    }
+    h4 {
+        @include sans-header-family;
+		   font-size: 20px;
+		   letter-spacing: $light-tracking;
+		   color: $black;
+		   font-size-adjust:0.5;
+		   font-style:normal;
+		   text-transform: lowercase;
+		   font-variant: small-caps;
+		   line-height:18px;
+		   margin-top: 18px;
+		   margin-bottom: 4px;
+    }
+  }
+  div.a-blog-read-more a {
+    float: right;
+    @include sans-header-family;
+    font-size: 20px;
+    letter-spacing: $light-tracking;
+    color: $red;
+    font-size-adjust:0.5;
+    font-style:normal;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    background: image-url('bullet.png') 0 11px no-repeat;
+    padding-left: 20px;
+    &:hover {
+      text-decoration: none;
+      color: darken($red, 5);
+    }
+  }
+  .a-blog-item-content, .a-excerpt-extras {
+  // excerpts
+    font-size: 2rem;
+    line-height: 1.5;
+    text-align: justify;
+    @include hyphens(auto); // CSS3
+    &.columnar { 
+      width: 100%;
+    }
+  }
+  div.a-excerpt-extras {
+    .a-blog-item-tags.tags {
+      width:70%; 
+      clear: none;
+      margin: 0;
+      // padding-right: 5%;
+      // border-right: 1px solid $gray;
+    }
+  }
+  .a-blog-item-tags.tags {
+    @include sans-header-family;
+    @include smallcaps;
+  }
+  .a-excerpt {
+    padding-bottom: 25px;
+    margin-bottom: 10px;
+    &:not(:last-child) {
+      border-bottom: 2px dotted $gray;
+    }
+  }
+  // heading for excerpts pages
+  hgroup.a-ui.a-blog-heading {
+    h3.a-blog-filters {
+      border: 0;
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+    margin-bottom: 25px;
+  }
+  .a-ui.a-controls.a-blog-browser-controls {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    li a.a-btn {
+      @include sans-header-family;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      padding-bottom: 0;
+		  &.icon.a-arrow-left span.icon {
+		    background-position: -20px -219px;
+		  }
+		  &.icon.a-arrow-right {
+		    margin-left: 10px;
+		    span.icon {
+			    background-position: -20px -199px;
+		    }
+      }
+    }
+  }
+}
+// COMMENTS: DISQUS
+#disqus_thread {
+	.dsq-reply {
+	  margin-top: 0;
+  }
+  .dsq-trackback-url input {
+    width: 300px;
+  }
+	h3, .dsq-trackback-url, #dsq-account-dropdown {
+	   @include sans-header-family;
+	   color: $black;
+	   font-size: 0.9em;
+     text-transform: uppercase;
+     letter-spacing: 0.1em;
+     font-style: normal;
+  }
+  ul#dsq-footer {
+    a.dsq-subscribe-email em, a.dsq-subscribe-rss em {
+	    @include smallcaps;
+	    color: $red;
+	    text-decoration: none;
+    }
+    margin: 1.3em 0;
+  }
+  .dsq-comment-meta {
+    height: 1em;
+  }
+  #dsq-subscribe {
+    float: right;
+  }
+  .dsq-comment-footer {
+      @include smallcaps;
+      color: $black;
+      text-decoration: none;
+  }
+}
+a.dsq-brlink {
+  float: right;
+  margin-bottom: 25px;
+}
+
+.a-filter-option .icon-right > .icon, .a-remove-filter-button > .icon {
+  background-position: -20px -1779px;
+}
+.a-ui .a-blog-filters .a-remove-filter-button > .icon {
+	background: url(/apostrophePlugin/images/a-icon-sprite.png) right -1777px no-repeat;
+}
+
+///// misc apostrophe stuff we need to set back:
+.a-area-body, .a-default .a-area-body {
+	width:100%;
+	float:none;
+}
+.a-slot.aRawHTML textarea {
+	clear:none;
+	min-height: 10px;
+	margin: 0;
+	@extend textarea;
+}
+textarea.aRawHTMLSlotTextarea {
+	// for editing
+	width: 100%;
+}
+.a-blog-item-content {
+	width:100%;
+	float:none;
+}
+
+.a-area, .a-slots, .a-slot, .a-slot-content, .a-slot-content-container, .a-slot-form {
+	position: inherit;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+}
+
+/// GENERIC PARA / SPAN STYLES
+p.spaced {
+  margin-top: ($default-body-size*$default-leading);
+  text-indent:0;
+}
+p.new-section {
+  margin-top: ($default-body-size*$default-leading) - 1px;
+  padding-top: ($default-body-size*$default-leading) - 1px;
+  border-top: 2px dotted $gray;
+  text-indent:0;
+}
+.ital {
+  font-style: italic;
+}
+.small-caps {
+	@include smallcaps;
+}
+.smaller {
+	font-size: smaller;
+	line-height: ($default-body-size*$default-leading);
+}
+// end of article blocks, enhanced with JS
+span.article-end {
+  white-space: nowrap;
+  padding-right: 0.5em; 
+}
+span.article-end-block {
+  display: inline-block; 
+  text-indent: 0;
+  background: $red;
+  width: 0.4em; 
+  height: 0.4em;
+  margin-left: 5px;
+}
+// IE fix
+.lt-ie9 span.article-end-block {
+  margin-bottom: 5px;
+}
+ 
+ 
+ 
+// Social media
+
+#social-media {
+	float: right;
+	margin-top: -60px;
+	@include sans-header-family;
+  .box{
+    line-height:30px;
+	  float:right;
+	  margin-top:5px;
+		a {
+		  color: $gray;
+		  text-shadow: 0 1px 1px rgba(167,167,167,.4);
+		  @include smallcaps;
+		  &:hover {
+		    text-decoration: none;
+      }
+		}
+	}
+  .count {
+	  font-weight:bold;
+	  font-size:20px;
+	  float:left;
+	  border-right:2px solid $red;
+	  line-height:30px;
+	  padding-right:10px;
+	  display: none; //new
+	}
+	.buttons {
+	  width:100%;
+	  opacity: 0.8;
+	  position:absolute;
+	  margin-top: -10px;
+	  margin-left: 120px; // new
+	}
+	.button {
+	  float:left;
+	  max-width:50px;
+	  margin:0 10px 0 0;
+	  background: none;
+	  padding: 0;
+	  &:hover {
+	   background: none;
+	  }
+	}
+	.facebook {
+	}	
+}
+.soc-med .share {
+  float:left;
+  margin-left:14px;
+  font-size:20px;
+  border-left:2px solid $red;
+  line-height:30px;
+  padding-left:10px;
+}
+.a-media-library.clearfix {
+  clear: both;
+}
+
+/*******JS PRETTIFIER ******/
+/* Pretty printing styles. Used with prettify.js. */
+
+/* SPAN elements with the classes below are added by prettyprint. */
+.pln { color: #000 }  /* plain text */
+
+@media screen {
+  .str { color: $red; font-weight: bold; }  /* string content */
+  .kwd { color: $red; font-weight: bold }  /* a keyword */
+  .com { color: $green; font-style: italic; }  /* a comment */
+  .typ { color: $black; font-weight: bold; }  /* a type name */
+  .lit { color: $red; font-weight: bold; }  /* a literal value */
+  /* punctuation, lisp open bracket, lisp close bracket */
+  .pun, .opn, .clo { color: $black; font-weight: bold }
+  .tag { color: $red }  /* a markup tag name */
+  .atn { color: $gray }  /* a markup attribute name */
+  .atv { color: #080 }  /* a markup attribute value */
+  .dec, .var { color: $gray }  /* a declaration; a variable name */
+  .fun { color: $red }  /* a function name */
+}
+
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str { color: #060 }
+  .kwd { color: #006; font-weight: bold }
+  .com { color: #600; font-style: italic }
+  .typ { color: #404; font-weight: bold }
+  .lit { color: #044 }
+  .pun, .opn, .clo { color: #440 }
+  .tag { color: #006; font-weight: bold }
+  .atn { color: #404 }
+  .atv { color: #060 }
+}
+
+pre.prettyprint { padding: 2px; }
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 { background: image-url("body-light-bg.png") repeat-x;}
+
+
+pre.prettyprint, code.prettyprint {
+	@include code-family;
+	font-size: small;
+}
+pre.prettyprint {
+  display: block;
+	width: 100%;
+  margin: 1em auto;
+  padding: 1em;
+  white-space: hidden;
+  overflow: auto;
+  border-top: 2px dotted $gray;
+  border-bottom: 2px dotted $gray;
+  &.linenums {
+    padding: 0;
+    margin: 20px auto;
+    ol.linenums {
+	    border-left: 30px solid lighten($gray,30);
+	    padding-left: 5px;
+	  	margin: 20px 0;
+	    color: $black;
+	    li {
+	     margin-bottom: 0;
+      }
+    }
+  }
+  code {
+    width:95%;
+  }
+}
+
+/**************END-JS-PRETTIFIER*************/

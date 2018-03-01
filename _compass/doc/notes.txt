@@ -1,0 +1,94 @@
+drop-caps
+=========
+Had a nightmare trying to figure out why slightly different versions of Chrome (on PC and Mac) were showing dropcaps differently
+- because it was using a slightly different, OTF version of the font local to the Mac. AAARRGH 
+- I added a webkit fix, based on http://www.webmonkey.com/2010/02/browser-specific_css_hacks/
+
+// hack for Webkit dropcaps, which are 10px below the others for some reason:
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+   margin: -2px 3px -15px 0;
+}
+
+
+Webkit seems to vertically centre (based on the line-height) on the cap X
+Gecko does that for the lower-case X
+
+For Georgia, they seem OK though
+
+THIS IS THE PROBLEM: http://dev.l-c-n.com/CSS3-selectors/browser-support.php#n4
+AND THIS: http://nickcowie.com/2009/drop-caps-first-letter-and-firefox/
+
+RESOURCES:
+==========
+JS Heads-up grid: http://bohemianalps.com/tools/grid/
+the state of internet typography: http://www.onextrapixel.com/2011/10/24/from-print-to-web-creating-print-quality-typography-in-the-browser/
+
+both Bringhurst-type stuff for the web
+http://lamb.cc/typograph/
+http://webtypography.net/intro/
+
+COMPASS
+=======
+
+
+sprites
+=======
+
+- Using Compass and ID to generate them
+- Using ID, create a doc with the elements you want in, then rasterise text, group any elements together as necessary,
+ select all, object export settings, export as 72 DPI PNG, export to ePub, unzip ePub, take files, put them in 
+
+ /sprites
+ 
+then
+  @import "compass/utilities"; 
+  @import "icon/*.png"; 
+  @include all-icon-sprites; 
+
+see http://compass-style.org/help/tutorials/spriting/
+http://www.viget.com/inspire/stop-making-sprites-compass-sass-and-png-sprite-generation/
+
+We're using the new v.0.12 (RC1) of Compass, which allows for:
+  generated_images_dir = "htdocs/img/spr";
+  sprite_load_path = "sprites/"
+so we can separate separate images and the compiled ones, which will go into the "spr" folder.
+
+ADVERTISING
+===========
+
+Places to advertise:
+http://webfonts.info/wiki/index.php?title=Main_Page
+The Zurb Foundation site
+http://www.webfontawards.com/
+
+IDEAS
+=====
+
+User-friendly auto-complete selectboxes etc: http://harvesthq.github.com/chosen/
+
+NOTES
+=====
+MS Grid layout would be amazing:
+http://www.netmagazine.com/features/future-css-layouts
+
+New CSS3 tips:
+http://www.slideshare.net/stopsatgreen/the-css-of-tomorrow-front-row-2011
+also see media tips: 
+  @media paged {
+    height: 100%;
+    overflow: paged-x;
+  }
+  <link rel="next" href="p2.htm">
+  @navigation {
+    nav-right: link-rel(next);
+  }
+
+also book-like spread display (called CSS shaders)
+  img {
+    filter: custom(url(foo.fs), 20 20, phase 90);
+  }
+  
+  and VARIABLES!!! @var $test = #f00;
+
+A good list of features to try / avoid:
+http://html5please.com/

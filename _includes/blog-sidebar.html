@@ -1,0 +1,27 @@
+<div class="a-content two columns">
+   <div class="a-ui a-subnav-wrapper blog clearfix">
+      <div class="a-subnav-inner">
+         <div class="a-subnav-section tags">
+            <h4 class="a-tag-sidebar-title popular">Popular Tags</h4>
+            <ul class="a-ui a-tag-sidebar-list popular">
+{% for category in site.categories %}
+               <li>
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    {% if category_name != 'blog' and category[1].size > 1 %}
+		<a href="/blog/tag/{{ category_name | slugify }}" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">{{ category[1].size }}</span>{{ category_name }}</a>
+	{% endif %}
+               </li>
+{% endfor %}
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<script type="text/javascript" src="/assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript">
+   prettyPrint();
+</script>
+<div class="a-content two columns">
+</div>
+</div>
