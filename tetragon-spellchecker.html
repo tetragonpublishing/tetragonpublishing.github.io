@@ -1,0 +1,209 @@
+﻿
+layout: default
+permalink: /tetragon-spellchecker
+---
+<style>
+
+.listitem {cursor: pointer};
+
+#comp1 {float:left; width:300px;}
+
+#comp2 {float:right; width:300px;}
+
+#contact_loader {background: url(/assets/img/loading.gif) 0 0 no-repeat; width:40px; height:40px; margin-top:20px; display:none;}
+
+.listhead {font-family:'Syntax Regular','Futura','Ariel','sans-serif','sans'; text-transform:uppercase}
+
+ul#context li.context-eg {background: url('../img/bullet.png?1332271637') no-repeat 0 5px; padding-left:20px}
+ul#context li.context-eg {background: url('/assets/img/bullet.png?1332271637') no-repeat 0 5px; padding-left:20px}
+
+#context-window { display: block; padding: 15px; padding-left: 5px; background: #EEE; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; }
+
+</style>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+    // init
+  $('textarea').removeAttr('disabled');
+  $('#sp_res').hide();
+  $('#sp_submit').show();
+  
+  // form validation
+  $("#sp_submit").click(function() {
+        $('#sp_submit').hide();
+        $('#contact_loader').show();
+        $('#sp-text').css({backgroundColor: '#ddd'});
+        $('#sp-text').val("﻿"+$('#sp-text').val()+"﻿"); //add hairline space before and after so we recognise boundaries for start and end of doc
+        $('#sp-text').val($('#sp-text').val().replace(/(­|­|­)/g, '')); // strip non-breaking and other spaces (hard to see but they're there!
+        $('#sp-text').val($('#sp-text').val().replace(/(’|‘)/g, '\'')); // strip single curly quotes
+        $('#sp-text').val($('#sp-text').val().replace(/(”|“)/g, '"')); // strip double curly quotes
+        $.post("/sp", $('#sp-form').serialize(), function(data) {
+        $('#sp-text').attr('disabled','disabled');
+          $('#sp_res').show();
+          $('#sp_res').html("");
+          var list = $('#sp_res');
+if ("spelling" in data) {
+          $(data.spelling).each(function(index){
+              list.append('<li class="listitem">' + this + '</li>');
+          });
+}
+else if ("spelling1" in data && "spelling2" in data) {
+var h1 = "Err1";
+var h2 = "Err2";
+switch ($('#sp-lang').val()) { 
+        case "ize-vs-ise":
+            h1 = "Only in British -ize";
+            h2 = "Only in British -ise";
+            break;
+        case "US-vs-ise":
+            h1 = "Only in American";
+            h2 = "Only in British -ise";            
+            break;
+        case "US-vs-ize":
+            h1 = "Only in American";
+            h2 = "Only in British -ize";                        
+            break;
+}
+
+
+
+var list1 = list.append('<ul id="comp1" class="five columns"/>');
+          $('#comp1').append('<li class="listhead">'+h1+'</li>');
+          $(data.spelling2).each(function(index){
+              $('#comp1').append('<li class="listitem">' + this + '</li>');
+          });
+var list2 = list.append('<ul id="comp2" class="five columns"/>');
+          $('#comp2').append('<li class="listhead">'+h2+'</li>');
+          $(data.spelling1).each(function(index){
+              $('#comp2').append('<li class="listitem">' + this + '</li>');
+          });
+}
+else {
+     list.append('<li class="listitem"><em>No results</em></li>');
+}
+        $('#sp-text').removeAttr("disabled");
+        $('#sp-text').css({backgroundColor: 'white'});
+          $('#contact_loader').hide();
+          $('#sp_submit').show();
+
+        }, 'json');
+        return false;
+  });  
+  $('#context-window').live("click", function() {
+    return false;
+  });
+  $('.listitem').live("click", function() {
+  	var t = $(this).text().replace(/^([0-9]+ )(.+)/gi, "$2");
+ var boundary = '[ \n\r\t\.,\'\"\“\”\’\‘\+!?-–—\(\)﻿]'; // last char is hairline
+  	var arr = ($('#sp-text').val().match(new RegExp('(.{0,50})'+boundary+t+boundary+'(.{0,50})', 'g')));
+  	$('#context-window').remove();  	
+  	$(this).append('<div id="context-window"><ul id="context"></ul></div>');
+    jQuery.each(arr, function() {	$('#context').append("<li class='context-eg'>…"+this+"…</li>");     });
+	});
+});	
+//-->
+</script>  
+
+
+
+	 	  	</div>
+		</div>
+
+	
+						  	 			  			  	
+	 
+				<div class="a-slot a-normal  aRawHTML clearfix" data-pageid="49" data-name="body" data-permid="5" id="a-slot-49-body-5">
+ 		
+				    				
+				
+	    	  	<div class="a-slot-content clearfix" id="a-slot-content-49-body-5">
+	      	      	   
+
+
+
+
+
+      <article class="contact"> 
+	<hgroup class="row nine columns offset-by-one">
+		<h1>Tetragon Spellchecker</h1>
+		<h2>Use this before sending documents to us to ensure consistency of
+		  spelling through your document and finding misspellings of difficult
+		  names.</h2>
+	</hgroup>
+	<div class="contact row">
+	  <div class="nine columns offset-by-one">
+	    <p><span class="dropcap">P</span>aste the relevant text into the box below. Then select whether you want to spellcheck against a British (-ise or -ize) or American dictionary. You can optionally compare the output from two different dictionaries to determine which style the document has generally adopted (outright spelling mistakes are ignored and only the differences are displayed).</p>
+<p>Wait a moment and a list of spelling mistakes will appear below. Click on a word to see the context in which it appears.</p>
+	  </div>
+	</div>
+</article>
+  
+
+
+
+	 	  	</div>
+		</div>
+
+	
+		  </div>  	</div> 	
+	
+
+
+
+
+
+	
+	
+	
+	  <div id="a-area-49-sidebar"  class="a-area a-normal a-area-sidebar     clearfix">
+    
+	  	  
+	  
+	
+		
+		  	  <div id="a-slots-49-sidebar" class="a-slots clearfix">
+	
+		
+						  	 			  			  	
+	 
+				<div class="a-slot a-normal  aRawHTML clearfix" data-pageid="49" data-name="sidebar" data-permid="2" id="a-slot-49-sidebar-2">
+ 		
+				    				
+				
+	    	  	<div class="a-slot-content clearfix" id="a-slot-content-49-sidebar-2">
+	      	      	   
+
+
+
+
+
+      <div class="row">
+	  <div class="nine columns offset-by-one">
+
+<form class="nice" id="sp-form" novalidate style="padding-bottom:50px">
+  <textarea style="width: 100%; height:400px" id="sp-text" name="sp-text" class="validate[required]" required>Paste document here</textarea>
+<select id="sp-lang" name="sp-lang" style="float:right">
+  <option selected="selected" value="en_GB-ize">British with Oxford -ize only</option>
+  <option value="en_GB-ise">British with -ise only</option>
+  <option value="en_US">American</option>
+  <option value="ize-vs-ise">British -ize and -ise comparison</option>
+  <option value="US-vs-ise">American and British -ise difference</option>
+  <option value="US-vs-ize">American and British -ize difference</option>
+</select>
+
+  <input type="submit" id="sp_submit" value="send" />  
+  <div id="contact_loader"></div>
+</form>
+<ul id="sp_res"></ul>
+    </div>
+</div>  	
+
+
+ 	  	
+</div>
+		</div>
+
+	
+	
+          

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="https://tetragonpublishing.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tetragonpublishing.com/" rel="alternate" type="text/html" /><updated>2018-03-06T15:46:27+00:00</updated><id>https://tetragonpublishing.com/</id><title type="html">Tetragon Publishing - Typesetting and Pre-press for Publishers</title><subtitle>Tetragon is a high-tech London-based typesetting and eBook design house, and offers a full set of pre-press services under one roof.</subtitle><entry><title type="html">Popup Footnotes in iOS</title><link href="https://tetragonpublishing.com/blog/2017/02/02/popup-footnotes-in-ios" rel="alternate" type="text/html" title="Popup Footnotes in iOS" /><published>2017-02-02T10:00:11+00:00</published><updated>2017-02-02T10:00:11+00:00</updated><id>https://tetragonpublishing.com/blog/2017/02/02/popup-footnotes-in-ios</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2017/02/02/popup-footnotes-in-ios">&lt;p&gt;
+	If you're hoping to create eBooks in the ePub 3 format with popup notes, you might have been plagued by some issues getting iOS to work happily. There are instructions in a few places detailing how to do this, but there isn't much help with the various glitches you find using&lt;!--more--&gt; iOS as opposed to iBooks. The main problem I've found is that iOS can freeze when you click on a link to a footnote that's stored in a separate file (e.g. &quot;notes.xhtml&quot;). This doesn't happen with iBooks on a Mac. There are two possible solutions that I've found, at least at the moment:&amp;nbsp;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;
+		You can have your entire eBook in one single XHTML file. iOS iBooks works fine with this for some reason, since the references are in the same file. However, this can mean slow loading and poor formatting on Adobe Digital Editions (ADE), which doesn't honour &quot;page-break-before: always&quot; CSS, so everything is likely to stream together in one ungainly mess on some e-readers.&lt;/li&gt;
+	&lt;li&gt;
+		Through a tedious process of trial and error on one book, I've found that if there are more than 300 note references in a separate notes file, iOS simply freezes when you click on a note cue. Therefore, you'll need to split your notes into separate XHTML files, with each file containing fewer than 300 references. For books that have separate sections (e.g. &quot;Notes to Chapter 1&quot;, &quot;Notes to Chapter 2&quot;), this should be fairly straightforward if there are less than 300 notes in all chapters, which is (at least in the books I work on) fairly standard.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;
+	I hope that's useful for some of you out there struggling with the boring stuff!&lt;/p&gt;</content><author><name></name></author><summary type="html">If you're hoping to create eBooks in the ePub 3 format with popup notes, you might have been plagued by some issues getting iOS to work happily. There are instructions in a few places detailing how to do this, but there isn't much help with the various glitches you find using</summary></entry><entry><title type="html">Page Numbers in InDesign Appear as ‘Variable’ in PDF</title><link href="https://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf" rel="alternate" type="text/html" title="Page Numbers in InDesign Appear as 'Variable' in PDF" /><published>2013-10-14T17:30:11+01:00</published><updated>2013-10-14T17:30:11+01:00</updated><id>https://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf">&lt;p&gt;
+	I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as &quot;variable&quot;, rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem&lt;!--more--&gt; was with InDesign's implemenation of a GREP style for page numbers (see below). The quick solution: don't use them. If you need to style the folio differently from the rest of the text in the same paragraph, just apply a character style to the master frame, or if the master frame items have all been overridden (as was the case for this file), just do a find / replace for the page number character, represented in the GREP search by &quot;~N&quot;.&lt;/p&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;52&quot; data-name=&quot;blog-body&quot; data-permid=&quot;1&quot; id=&quot;a-slot-52-blog-body-1&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-52-blog-body-1&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slideshow-52-blog-body-1&quot; class=&quot;a-slideshow clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slideshow-item&quot; id=&quot;a-slideshow-item-52-blog-body-1-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slideshow-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;GREP problem for text variables&quot; width=&quot;480&quot; height=&quot;449&quot; src='/assets/uploads/media_items/grep-problem-for-text-variables.480.449.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;</content><author><name></name></author><summary type="html">I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as &quot;variable&quot;, rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem</summary></entry><entry><title type="html">Change of Address</title><link href="https://tetragonpublishing.com/blog/2013/07/18/change-of-address" rel="alternate" type="text/html" title="Change of Address" /><published>2013-07-18T13:13:11+01:00</published><updated>2013-07-18T13:13:11+01:00</updated><id>https://tetragonpublishing.com/blog/2013/07/18/change-of-address</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2013/07/18/change-of-address">&lt;p&gt;
+	I'm delighted to announce that Tetragon has recently been accepted as a member of the &lt;a href=&quot;http://camdencollective.co.uk/&quot;&gt;Camden Collective&lt;/a&gt;, a hub for the arts in Camden. Our new address will be 37 Camden High Street, London NW1 7JE. It's a short walk from home, there's a ping-pong table and it's pretty much&lt;!--more--&gt; opposite &lt;a href=&quot;https://twitter.com/LeyasCoffee&quot;&gt;Leya's&lt;/a&gt; &amp;ndash; what more could you ask for? If you'd like to drop by and say hello, &lt;a href=&quot;/contact&quot;&gt;get in touch&lt;/a&gt;. I'm hoping to expand the list of illustrators, copy-editors and proofreaders we work with in the near future.&lt;/p&gt;</content><author><name></name></author><summary type="html">I'm delighted to announce that Tetragon has recently been accepted as a member of the Camden Collective, a hub for the arts in Camden. Our new address will be 37 Camden High Street, London NW1 7JE. It's a short walk from home, there's a ping-pong table and it's pretty much</summary></entry><entry><title type="html">When the Iron Lady Ruled Britain</title><link href="https://tetragonpublishing.com/blog/2012/06/25/when-the-iron-lady-ruled-britain" rel="alternate" type="text/html" title="When the Iron Lady Ruled Britain" /><published>2012-06-25T12:55:51+01:00</published><updated>2012-06-25T12:55:51+01:00</updated><id>https://tetragonpublishing.com/blog/2012/06/25/when-the-iron-lady-ruled-britain</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/06/25/when-the-iron-lady-ruled-britain">&lt;p&gt;
+	There's an &lt;a href=&quot;http://www.guardian.co.uk/uk/2012/jun/24/britain-class-inequality-robert-chesshyre&quot;&gt;excellent article in The Observer&lt;/a&gt;&amp;nbsp;by &lt;a href=&quot;http://twitter.com/#!/rchesshyre&quot;&gt;Robert Chesshyre&lt;/a&gt; on the legacy of Margaret Thatcher on today's Britain, and how little has changed in so many ways. It's already generated a healthy load of comments, which is what you'd expect from such a sensitive topic. The book, which we reissued&lt;!--more--&gt; recently in collaboration with &lt;a href=&quot;http://www.almabooks.com&quot;&gt;Alma Books&lt;/a&gt;, is a fascinating insight into the 1980s.&lt;/p&gt;
+&lt;p&gt;
+	As a child of the 80s, for me it was enormously interesting to note the ways in which our society remains deeply divided, and some of the roots of this problem. Interesting, too, to look at the problem from the angle of privilege, class and education rather than simply economics, and to think more deeply about the phenomenon of &quot;Englishness&quot;, from the type of people we choose as leaders (we very rarely go for people who seem &quot;ordinary&quot;, unlike the Americans) to a lack of social mobility and an inbuilt sense of our place in society, a feeling of the unreconcilable divide between &quot;them&quot; and &quot;us&quot; - geographically, politically and economically. I suspect that many people take the view that Englishness (I won't speak about the rest of Britain as I don't feel qualified to) has sort of withered away into an amorphous concept; that Britain has become a melting pot like America, but without any of the national cohesion that binds the US together in many ways (try asking a schoolchild to name our counties, or point out the location of a few cities on the map, or telling you about the Magna Carta, and you'll see what I mean). But reading this book made me reconsider this view, and provides an insight &quot;from the outside&quot;, as it were.&lt;/p&gt;
+&lt;p&gt;
+	The book has recently received some very positive reviews, aside from the stellar praise it received upon its first release (Christopher Hitchens, Hanif Kureishi, Beryl Bainbridge and many more):&lt;/p&gt;
+&lt;p&gt;
+	The Telegraph has just listed the book in its &lt;a href=&quot;http://www.telegraph.co.uk/culture/books/fictionreviews/9349478/The-best-recent-reissues-June-24.html#&quot;&gt;Best Recent Reissues&lt;/a&gt;: &quot;a sobering front-line dispatch from those parts of the country damaged in the course of pursuing a prosperity that looks increasingly will-o&amp;rsquo;-the-wisp-like.&quot;&lt;/p&gt;
+&lt;p&gt;
+	&lt;a href=&quot;http://www.theoldie.co.uk/&quot;&gt;The Oldie&lt;/a&gt;&amp;nbsp;has written that &quot;reissued and re-titled, and carrying a new introduction, Chesshyre's book is (alas) as topical as ever&quot;.&lt;/p&gt;
+&lt;p&gt;
+	Peter Wilby, in &lt;a href=&quot;http://www.newstatesman.com/politics/politics/2012/06/levesons-problem-modal-verbs-and-bills-bills-bills&quot;&gt;The New Statesman of 13 June&lt;/a&gt;, said: &quot;State-of-the-nation books rarely read well 25 years on and I admit to scepticism when my old friend Robert Chesshyre, a former&amp;nbsp;&lt;em&gt;Observer&lt;/em&gt;&amp;nbsp;reporter, said he was reissuing a book he wrote in 1987 after returning from four years in Washington. Then called&amp;nbsp;&lt;em&gt;The Return of a Native Reporter,&lt;/em&gt;&amp;nbsp;it was a devastating portrait of the social dislocations of Thatcher&amp;rsquo;s Britain. Now it appears, with a new foreword, under the title&amp;nbsp;&lt;em&gt;When the Iron Lady Ruled Britain&lt;/em&gt;&amp;nbsp;and, astonishingly, it reads as though it were written yesterday. The hot topics then, as now, were declining manufacturing industry, mounting debt, City fat cats, urban riots, the underclass, failing state comprehensives and small business&amp;rsquo;s struggles to get bank finance. And yet, for more than half the intervening quarter-century, we had Labour governments with handsome majorities. I can think of no greater indictment of Tony Blair and New Labour&quot;.&lt;/p&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRawHTML clearfix&quot; data-pageid=&quot;48&quot; data-name=&quot;blog-body&quot; data-permid=&quot;2&quot; id=&quot;a-slot-48-blog-body-2&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-48-blog-body-2&quot;&gt;
+	      	      	   
+
+
+
+
+
+      &lt;ul class=&quot;a-slideshow clearfix single-image transition-normal&quot; style=&quot;margin-left:0; margin-bottom:0;&quot;&gt;
+ &lt;li class=&quot;a-slideshow-item&quot;&gt;
+  &lt;ul style=&quot;margin-left:0&quot;&gt;
+   &lt;li class=&quot;a-slideshow-image&quot;&gt;
+    &lt;img src=&quot;/assets/uploads/media_items/iron-lady-launch.jpg&quot; alt=&quot;Launch party for When The Iron Lady Ruled Britain&quot; /&gt;
+   &lt;/li&gt;
+   &lt;li class=&quot;a-slideshow-description&quot;&gt;
+    &lt;p&gt;Launch party. Photography &amp;copy; &lt;a href=&quot;http://catrionagray.co.uk/&quot;&gt;Catriona Gray&lt;/a&gt;&lt;/p&gt;
+   &lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;  
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;48&quot; data-name=&quot;blog-body&quot; data-permid=&quot;3&quot; id=&quot;a-slot-48-blog-body-3&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-48-blog-body-3&quot;&gt;
+	      	      	   
+
+
+
+
+	
+	
+	
+&lt;p&gt;
+	There was a very successful launch party for the book recently at&amp;nbsp;&lt;a href=&quot;http://www.qype.co.uk/place/164241-The-Open-Book-Richmond-upon-Thames&quot;&gt;The Open Book&lt;/a&gt;&amp;nbsp;in Richmond, where Robert (pictured left, in the centre) gave a brief talk about his motivation in seeking to reissue the book. Judging by the recent sales of the book, there is still enormous interest and controversy surrounding The Iron Lady.&lt;/p&gt;
+&lt;p&gt;
+	The book is available in&amp;nbsp;&lt;a href=&quot;http://www.amazon.co.uk/When-Iron-Ruled-Britain-ebook/dp/B00829EKYI/ref=sr_1_2?ie=UTF8&amp;amp;qid=1340620270&amp;amp;sr=8-2&quot;&gt;Kindle format&lt;/a&gt;, through the usual outlets as an ePub, or as a&amp;nbsp;&lt;a href=&quot;http://www.almabooks.com/when-the-iron-lady-ruled-britain-p-414-book.html&quot;&gt;trade paperback&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">There's an excellent article in The Observer&amp;nbsp;by Robert Chesshyre on the legacy of Margaret Thatcher on today's Britain, and how little has changed in so many ways. It's already generated a healthy load of comments, which is what you'd expect from such a sensitive topic. The book, which we reissued</summary></entry><entry><title type="html">Killing Runts in InDesign with Grep</title><link href="https://tetragonpublishing.com/blog/2012/05/25/killing-runts-in-indesign-with-grep" rel="alternate" type="text/html" title="Killing Runts in InDesign with Grep" /><published>2012-05-25T20:10:11+01:00</published><updated>2012-05-25T20:10:11+01:00</updated><id>https://tetragonpublishing.com/blog/2012/05/25/killing-runts-in-indesign-with-grep</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/05/25/killing-runts-in-indesign-with-grep">&lt;p&gt;There's always been a certain degree of confusion as to the definition of &quot;orphans&quot;, &quot;widows&quot; and &quot;runts&quot; in typography. Runts are occasionally referred to as orphans, which does not help matters. And they are sometimes (mistakenly) called widows, too. So let's just clear this up once and for all:&lt;/p&gt;
+		&lt;ul&gt;
+			&lt;li&gt;
+				&lt;strong&gt;Orphans&lt;/strong&gt;&amp;nbsp;are&lt;!--more--&gt;, to quote &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style&quot;&gt;Bringhurst&lt;/a&gt;, &quot;isolated lines created when paragraphs&amp;nbsp;&lt;em&gt;begin&lt;/em&gt; on the &lt;em&gt;last&lt;/em&gt; line of a page&amp;hellip; They have no past, but they have a future, and they need not trouble the typographer&quot;. As a rule, I try to avoid them without going too far out of my way.
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;strong&gt;Widows&lt;/strong&gt;&amp;nbsp;are &quot;the stub-ends left when paragraphs&amp;nbsp;&lt;em&gt;end&amp;nbsp;&lt;/em&gt;on the&amp;nbsp;&lt;em&gt;first&lt;/em&gt; line of a page&amp;hellip; They have a past but not a future, and they look foreshortened and forlorn. It is the custom&amp;hellip; to give them one additional line for company&quot;.&lt;/li&gt;
+			&lt;li&gt;
+				&lt;strong&gt;Runts&lt;/strong&gt; are words which share this demeanour: they are short words at the end of a multiline paragraph, or the short, last part of a longer hyphenated word which ends a paragraph. The definition of &quot;short&quot; is really a visual one, but certainly if it ends before the first line indent of the following paragraph, it's not going to look terribly nice.
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;p&gt;InDesign has a few features to help deal with runts.&amp;nbsp;The first of these is in the hyphenation control. You can disable the hyphenation of the last word in a paragraph in that paragraph's style options (and set various other limits, too). So far, so good.&lt;/p&gt;
+	&lt;p&gt;To deal with runts that are whole words, we need to bring out the big guns: GREP styles. It's worth getting to grips with GREPs if you manipulate text a lot, as they can save a lot of time in typesetting. Here's how I do things:&lt;/p&gt;
+	&lt;ul&gt;
+		&lt;li&gt;Create a new character style called &quot;no-break&quot;, based on &quot;none&quot;. Under &quot;Basic Character Formats&quot;, just tick &quot;No Break&quot;.&amp;nbsp;&lt;/li&gt;
+	&lt;/ul&gt;	
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;47&quot; data-name=&quot;blog-body&quot; data-permid=&quot;2&quot; id=&quot;a-slot-47-blog-body-2&quot;&gt;
+	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-47-blog-body-2&quot;&gt;
+		&lt;ul id=&quot;a-slideshow-47-blog-body-2&quot; class=&quot;a-slideshow clearfix single-image transition-normal&quot;&gt;
+			&lt;li class=&quot;a-slideshow-item&quot; id=&quot;a-slideshow-item-47-blog-body-2-0&quot;&gt;
+				&lt;ul&gt;
+					&lt;li class=&quot;a-slideshow-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;GREP - no break char&quot; width=&quot;480&quot; height=&quot;297&quot; src='/assets/uploads/media_items/grep-no-break-char.480.297.s.png' /&gt;&lt;/li&gt;
+					&lt;li class=&quot;a-slideshow-meta a-slideshow-description&quot;&gt;
+						&lt;p&gt;Simple &quot;no break&quot; character style&lt;/p&gt;
+					&lt;/li&gt;
+    			&lt;/ul&gt;
+			&lt;/li&gt;
+  		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;47&quot; data-name=&quot;blog-body&quot; data-permid=&quot;4&quot; id=&quot;a-slot-47-blog-body-4&quot;&gt;
+	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-47-blog-body-4&quot;&gt;
+		&lt;ul&gt;
+			&lt;li&gt;In the paragraph style in which you want to kill off runts, go to &quot;GREP Style&quot; [why not plural?!]&lt;/li&gt;
+			&lt;li&gt;Create a new GREP style. We want to use the following GREP (note the space character at the very start):&lt;/li&gt;
+			&lt;li&gt;&lt;code&gt;&amp;nbsp;[^ ]{1,5}[[:space:]]*$&lt;/code&gt;&lt;/li&gt;
+		&lt;/ul&gt;	
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;47&quot; data-name=&quot;blog-body&quot; data-permid=&quot;3&quot; id=&quot;a-slot-47-blog-body-3&quot;&gt;
+	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-47-blog-body-3&quot;&gt;
+		&lt;ul id=&quot;a-slideshow-47-blog-body-3&quot; class=&quot;a-slideshow clearfix single-image transition-normal&quot;&gt;
+			&lt;li class=&quot;a-slideshow-item&quot; id=&quot;a-slideshow-item-47-blog-body-3-0&quot;&gt;
+				&lt;ul&gt;
+					&lt;li class=&quot;a-slideshow-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;GREP - no break style&quot; width=&quot;480&quot; height=&quot;400&quot; src='/assets/uploads/media_items/grep-no-break-style.480.400.s.png' /&gt;&lt;/li&gt;
+					&lt;li class=&quot;a-slideshow-meta a-slideshow-description&quot;&gt;
+						&lt;p&gt;Applying the style with a GREP&lt;/p&gt;
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;47&quot; data-name=&quot;blog-body&quot; data-permid=&quot;5&quot; id=&quot;a-slot-47-blog-body-5&quot;&gt;
+	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-47-blog-body-5&quot;&gt;
+		&lt;ul&gt;
+			&lt;li&gt;In plain(er) English, this means &quot;find a space, followed by 1-5 non-spaces, and ending either with a carriage return or some empty space and then a carriage return (because quite often you end up working with texts that have pointless but harmless&amp;nbsp;spaces at the end of paragraphs).&lt;/li&gt;
+		&lt;/ul&gt;
+&lt;p&gt;That's all there is to it. If you want to change the length of what's considered a &quot;runt&quot; (to make it shorter, for example), just change the 5 to 3 or 4.&lt;/p&gt;
+&lt;p&gt;Unfortunately, InDesign has precious few to deal with orphans and widows, which I check for manually. This is a bit tedious and I've developed some scripts to locate them, but really it all depends on the dynamics of the text on the page, so it needs a bit of human love.&lt;/p&gt;</content><author><name></name></author><summary type="html">There's always been a certain degree of confusion as to the definition of &quot;orphans&quot;, &quot;widows&quot; and &quot;runts&quot; in typography. Runts are occasionally referred to as orphans, which does not help matters. And they are sometimes (mistakenly) called widows, too. So let's just clear this up once and for all: Orphans&amp;nbsp;are</summary></entry><entry><title type="html">Images and Captions in InDesign CS5.5</title><link href="https://tetragonpublishing.com/blog/2012/05/16/images-and-captions-in-indesign-cs5-5" rel="alternate" type="text/html" title="Images and Captions in InDesign CS5.5" /><published>2012-05-16T12:05:21+01:00</published><updated>2012-05-16T12:05:21+01:00</updated><id>https://tetragonpublishing.com/blog/2012/05/16/images-and-captions-in-indesign-cs5-5</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/05/16/images-and-captions-in-indesign-cs5-5">&lt;p&gt;
+	One problem we've come across repeatedly is how to get an inline image to sit between two paragraphs with an even space above and below it.&amp;nbsp;You can always try doing this by eye, but we feel that it's best to use a technique that allows you to get it exactly right&lt;!--more--&gt; every time.&lt;/p&gt;
+&lt;p&gt;
+	The main issue you have to contend with when trying to do this is a combination of the leading and the pinning of the anchored object.&lt;/p&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;2&quot; id=&quot;a-slot-36-blog-body-2&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-2&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slide__show-36-blog-body-2&quot; class=&quot;a-slide__show clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-2-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;Text and Image default&quot; width=&quot;480&quot; height=&quot;330&quot; src='/assets/uploads/media_items/text-and-image-default.480.330.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;
+
+
+  
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;3&quot; id=&quot;a-slot-36-blog-body-3&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-3&quot;&gt;
+	      	      	   
+
+
+
+
+	
+	
+	&lt;p&gt;
+	Taking a look at the default setting for the image with the text jump, you can see that it's not centred between the lines of text. We use the following method to deal with this:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;
+		Anchor the&amp;nbsp;image on a line of its own.&lt;/li&gt;
+	&lt;li&gt;
+		Create an object style for the image, and under the &amp;lsquo;Anchored Object Options&amp;rsquo; in the &amp;lsquo;Basic Attributes&amp;rsquo; section, select &amp;lsquo;Custom&amp;rsquo; positioning, with a top/centre reference point for the anchored object. For the anchored position, select centred, with the x-coordinate relative to the text frame and no offset;&amp;nbsp;set the y-coordinate relative to the baseline.&lt;/li&gt;
+	&lt;li&gt;
+		The distance from the top of the image to the text above will be whatever the leading is&amp;nbsp;of the line containing the anchored object. You can increase/decrease the leading by however much you want by altering the leading of the whole line. (For example, if you set the leading close to 0pt, the object will sit right against the baseline of the text above.)&lt;/li&gt;
+&lt;/ul&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;5&quot; id=&quot;a-slot-36-blog-body-5&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-5&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slide__show-36-blog-body-5&quot; class=&quot;a-slide__show clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-5-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;screen shot 2012 05 03 at 09 32 31 copy&quot; width=&quot;480&quot; height=&quot;408&quot; src='/assets/uploads/media_items/screen-shot-2012-05-03-at-09-32-31-copy.480.408.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;
+
+
+  
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;6&quot; id=&quot;a-slot-36-blog-body-6&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-6&quot;&gt;
+	      	      	   
+
+
+
+
+	
+	
+	&lt;ul&gt;&lt;li&gt;
+		In the &amp;lsquo;text wrap and other&amp;rsquo; section, set the type of text wrap to &amp;lsquo;jump&amp;rsquo;.&lt;/li&gt;
+	&lt;li&gt;
+		Now we need to be a little inventive. If we look at the original image again, the gap between the bottom of the image and the start of the text seems too small. This is because the space below is measured&amp;nbsp;from the bottom of the image to the &lt;em&gt;baseline&lt;/em&gt; of the text below, rather than the top of the line. This means that if we add the height of one capital X (which you may need to measure manually or guess - it's not the same as the leading), the gap below will match that above.&amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;4&quot; id=&quot;a-slot-36-blog-body-4&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-4&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slide__show-36-blog-body-4&quot; class=&quot;a-slide__show clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-4-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;fixed 1&quot; width=&quot;480&quot; height=&quot;408&quot; src='/assets/uploads/media_items/fixed-1.480.408.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;
+
+
+  
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;7&quot; id=&quot;a-slot-36-blog-body-7&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-7&quot;&gt;
+	      	      	   
+
+
+
+
+	
+	
+	&lt;p&gt;
+	So when we do this&amp;hellip;&lt;/p&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal autoplay aSlideshow clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;8&quot; id=&quot;a-slot-36-blog-body-8&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-8&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slide__show-36-blog-body-8&quot; class=&quot;a-slide__show clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-8-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;fixed 2&quot; width=&quot;480&quot; height=&quot;399&quot; src='/assets/uploads/media_items/fixed-2.480.399.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-8-1&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;&quot;&gt;&lt;img alt=&quot;Text and Image final&quot; width=&quot;480&quot; height=&quot;338&quot; src='/assets/uploads/media_items/text-and-image-final.480.338.s.png' /&gt;&lt;/li&gt;
+      &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;
+
+
+  
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal  aRichText clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;9&quot; id=&quot;a-slot-36-blog-body-9&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-9&quot;&gt;
+	      	      	   
+
+
+
+
+	
+	
+	&lt;p&gt;
+	We now have an image that is spaced evenly between the two lines of text.&lt;/p&gt;
+&lt;p&gt;
+	If you want this method to work with the baseline grid, you&amp;rsquo;ll need to make sure that the space above is a whole number of lines, plus half a line. The space below should be the same, plus the X-height.&lt;/p&gt;
+&lt;p&gt;
+	If you&amp;rsquo;re working with images with captions, the easiest way is to use the object style you&amp;rsquo;ve created for a box, inside which your grouped images and captions can sit. (All you need to do is paste the image and caption into the box and then shrink the surrounding box to fit its contents.)&lt;/p&gt;	
+
+
+
+
+	 	  	&lt;/div&gt;
+		&lt;/div&gt;
+
+	
+						  	 			  			  	
+	 
+				&lt;div class=&quot;a-slot a-normal normal aSlideshow clearfix&quot; data-pageid=&quot;36&quot; data-name=&quot;blog-body&quot; data-permid=&quot;11&quot; id=&quot;a-slot-36-blog-body-11&quot;&gt;
+ 		
+				    				
+				
+	    	  	&lt;div class=&quot;a-slot-content clearfix&quot; id=&quot;a-slot-content-36-blog-body-11&quot;&gt;
+	      	      	   
+
+
+
+
+
+
+	
+      
+	&lt;ul id=&quot;a-slide__show-36-blog-body-11&quot; class=&quot;a-slide__show clearfix single-image transition-normal&quot;&gt;
+		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-11-0&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;display:block&quot;&gt;&lt;img alt=&quot;Image and Caption 1&quot; width=&quot;480&quot; height=&quot;326&quot; src='/assets/uploads/media_items/image-and-caption-1.480.326.s.png' /&gt;&lt;/li&gt;
+        &lt;li class=&quot;a-slide__show-meta a-slide__show-description&quot;&gt;&lt;p&gt;
+	1. Group the image along with the caption&lt;/p&gt;&lt;/li&gt;
+    &lt;/ul&gt;		&lt;/li&gt;
+  		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-11-1&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;&quot;&gt;&lt;img alt=&quot;Image and Caption 2&quot; width=&quot;480&quot; height=&quot;329&quot; src='/assets/uploads/media_items/image-and-caption-2.480.329.s.png' /&gt;&lt;/li&gt;
+        &lt;li class=&quot;a-slide__show-meta a-slide__show-description&quot;&gt;&lt;p&gt;
+	2. Paste it into an anchored box&lt;/p&gt;&lt;/li&gt;
+    &lt;/ul&gt;		&lt;/li&gt;
+  		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-11-2&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;&quot;&gt;&lt;img alt=&quot;Image and Caption 3&quot; width=&quot;480&quot; height=&quot;332&quot; src='/assets/uploads/media_items/image-and-caption-3.480.332.s.png' /&gt;&lt;/li&gt;
+        &lt;li class=&quot;a-slide__show-meta a-slide__show-description&quot;&gt;&lt;p&gt;
+	3. Fit the frame of the box to its content (i.e. the image and caption)&lt;/p&gt;&lt;/li&gt;
+    &lt;/ul&gt;		&lt;/li&gt;
+  		  						
+	  	  &lt;li class=&quot;a-slide__show-item&quot; id=&quot;a-slide__show-item-36-blog-body-11-3&quot;&gt;
+			&lt;ul&gt;
+    &lt;li class=&quot;a-slide__show-image&quot; style=&quot;&quot;&gt;&lt;img alt=&quot;Image and Caption 4&quot; width=&quot;480&quot; height=&quot;273&quot; src='/assets/uploads/media_items/image-and-caption-4.480.273.s.png' /&gt;&lt;/li&gt;
+        &lt;li class=&quot;a-slide__show-meta a-slide__show-description&quot;&gt;&lt;p&gt;
+	4. Apply the object style&lt;/p&gt;&lt;/li&gt;
+    &lt;/ul&gt;		&lt;/li&gt;
+  		&lt;/ul&gt;
+
+&lt;ul id=&quot;a-slide__show-controls-36-blog-body-11&quot; class=&quot;a-slide__show-controls&quot;&gt;
+	&lt;li class=&quot;a-arrow-btn icon a-arrow-left&quot;&gt;&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;Previous&lt;/li&gt;
+		&lt;li class=&quot;a-arrow-btn icon a-arrow-right&quot;&gt;&lt;span class=&quot;icon&quot;&gt;&lt;/span&gt;Next&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">One problem we've come across repeatedly is how to get an inline image to sit between two paragraphs with an even space above and below it.&amp;nbsp;You can always try doing this by eye, but we feel that it's best to use a technique that allows you to get it exactly right</summary></entry><entry><title type="html">Open Atrium</title><link href="https://tetragonpublishing.com/blog/2012/05/02/open-atrium" rel="alternate" type="text/html" title="Open Atrium" /><published>2012-05-02T14:16:01+01:00</published><updated>2012-05-02T14:16:01+01:00</updated><id>https://tetragonpublishing.com/blog/2012/05/02/open-atrium</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/05/02/open-atrium">&lt;p&gt;
+	We&amp;rsquo;ve been tossing up between two options for open-source project management: &lt;a href=&quot;http://www.todoyu.com/&quot;&gt;ToDoYu&lt;/a&gt; and &lt;a href=&quot;http://openatrium.com&quot;&gt;Open Atrium&lt;/a&gt;. We wanted everyone to be notified of changes to a project as they happen, rather than insisting they check the project website constantly, and this didn&amp;rsquo;t seem to be easily possible with ToDoYu after some&lt;!--more--&gt; messing around. ToDoYu is also a bit more intimidating to look at, and still feels a bit rough around the edges (I have no idea what some of the features do as there&amp;rsquo;s barely any documentation).&lt;/p&gt;
+&lt;p&gt;
+	We decided eventually that Open Atrium better suited our needs as it&amp;rsquo;s fairly simple, integrates nicely with email and is fairly extensible. It has a few weaknesses out of the box that are pretty easy to correct. The biggest as far as we were concerned was the lack of integration between project due dates and the built-in calendar, which by default only shows certain events manually entered into the calendar.&lt;/p&gt;
+&lt;p&gt;
+	Here&amp;rsquo;s how to set up Open Atrium&amp;#39;s calendar including project due dates, using the latest build from scratch:&lt;/p&gt;
+&lt;div  style=&quot;-webkit-column-span:all; -moz-column-span:all; -o-column-span:all; column-span:all&quot;&gt;
+&lt;ul class=&quot;bullet&quot;&gt;
+	&lt;li&gt;
+		Go to /admin/build/modules&lt;/li&gt;
+	&lt;li&gt;
+		Scroll right to the bottom and activate &amp;ldquo;Views UI&amp;rdquo; (and &amp;ldquo;Views exporter&amp;rdquo; optionally), then save.&lt;/li&gt;
+	&lt;li&gt;
+		Now you can edit views: go to /admin/build/views&lt;/li&gt;
+	&lt;li&gt;
+		Scroll to &amp;ldquo;calendar_listing (atrium) and click &amp;ldquo;Edit&amp;rdquo;&lt;/li&gt;
+	&lt;li&gt;
+		Tweak the settings to include the data from cases with a due date:&lt;br /&gt;
+		a) Under &amp;ldquo;Filters&amp;rdquo;, select &amp;ldquo;Node: Type&amp;rdquo;, scroll down and also select &amp;ldquo;Case&amp;rdquo;. Update.&lt;br /&gt;
+		b) Under &amp;ldquo;Arguments&amp;rdquo;, select &amp;ldquo;Date: Date (node)&amp;rdquo;, scroll down to &amp;ldquo;DATE FIELDS&amp;rdquo; and also tick &amp;ldquo;Content: Due Date (field_due_date)&amp;rdquo;. Update&lt;br /&gt;
+		c) Under &amp;ldquo;Fields&amp;rdquo;, click the + icon, scroll down and tick &amp;ldquo;Content: Due Date (field_due_date)&amp;rdquo;. Add. Update.&lt;/li&gt;
+	&lt;li&gt;
+		You&amp;rsquo;ve probably just edited &amp;ldquo;Default&amp;rdquo; (on the left hand menu bar). Select &amp;ldquo;Calendar&amp;rdquo;, which doesn&amp;rsquo;t carry across the override for the filters, and re-apply step 5a.&lt;/li&gt;
+	&lt;li&gt;
+		Click &amp;ldquo;Save&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+	To customise the &amp;ldquo;upcoming events&amp;rdquo; lists to include due dates as well as events (I find this useful), do the following:&lt;/p&gt;
+&lt;ul class=&quot;bullet&quot;&gt;
+	&lt;li&gt;
+		Go to /admin/build/views&lt;/li&gt;
+	&lt;li&gt;
+		Scroll to &amp;ldquo;calendar_upcoming (atrium) and click &amp;ldquo;Edit&amp;rdquo;&amp;nbsp;&lt;/li&gt;
+	&lt;li&gt;
+		Tweak the settings:
+		&lt;br /&gt;
+			a) Under &amp;ldquo;Filters&amp;rdquo;, select the gear icon next to &amp;ldquo;Date&amp;rdquo;, scroll down and also tick &amp;ldquo;Content: Due Date (field_due_date)&amp;rdquo;. Update.
+		&lt;br /&gt;
+			b) Under &amp;ldquo;Filters&amp;rdquo;, select &amp;ldquo;Node: Type&amp;rdquo;, scroll down and also select &amp;ldquo;Case&amp;rdquo;. Update.
+		&lt;br /&gt;
+			c) Under &amp;ldquo;Fields&amp;rdquo;, click the + icon, scroll down and tick &amp;ldquo;Content: Due Date (field_due_date)&amp;rdquo;. Add. Under &amp;ldquo;FORMAT&amp;rdquo;, select &amp;ldquo;Day&amp;rdquo;.&amp;nbsp; Update.
+		&lt;br /&gt;
+			d) Under &amp;ldquo;Sort criteria&amp;rdquo;, click the + icon, scroll down and tick &amp;ldquo;Content: Due Date (field_due_date)&amp;rdquo;. Add.
+	&lt;/li&gt;
+	&lt;li&gt;
+			Repeat the steps above as needed for the &amp;ldquo;Page: Upcoming events&amp;rdquo; and &amp;ldquo;Block: Upcoming events&amp;rdquo; from the left-hand menu, as some defaults you&amp;rsquo;ve set aren&amp;rsquo;t carried through.
+	&lt;/li&gt;
+	&lt;li&gt;
+			As above, disable the original view in /admin/build/views.
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+	When you&amp;#39;ve done all that, go to /admin/build/views/tools and click &amp;ldquo;Clear Views&amp;rsquo; cache&amp;rdquo;. Voil&amp;agrave;! &lt;/p&gt;
+&lt;p&gt;A few other features we customise are:&lt;/p&gt;
+&lt;ul class=&quot;bullet&quot;&gt;
+ &lt;li&gt;&lt;strong&gt;Enable automatic subscription to notifications.&lt;/strong&gt; Go to admin/build/modules, enable &quot;Notifications Autosubscribe&quot;. Then go to /admin/messaging/notifications/content and tick &quot;Set all users to &quot;Autosubscribe&quot; by default.&lt;/li&gt;
+ &lt;li&gt;Remove software-specific case statuses for new projects at admin/settings/casetracker/states&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Overall, we've found that Open Atrium is a pretty amazing open-source tool for project management and we're hoping to use it for some of our project management work for several publishers in the near future.&lt;/p&gt;</content><author><name></name></author><summary type="html">We&amp;rsquo;ve been tossing up between two options for open-source project management: ToDoYu and Open Atrium. We wanted everyone to be notified of changes to a project as they happen, rather than insisting they check the project website constantly, and this didn&amp;rsquo;t seem to be easily possible with ToDoYu after some</summary></entry><entry><title type="html">At the London Book Fair</title><link href="https://tetragonpublishing.com/blog/2012/04/13/at-the-london-book-fair" rel="alternate" type="text/html" title="At the London Book Fair" /><published>2012-04-13T13:00:01+01:00</published><updated>2012-04-13T13:00:01+01:00</updated><id>https://tetragonpublishing.com/blog/2012/04/13/at-the-london-book-fair</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/04/13/at-the-london-book-fair">&lt;p&gt;
+	A brief note to let you know that Alex and Bryan of Tetragon will be attending the &lt;a href=&quot;http://www.londonbookfair.co.uk&quot;&gt;London Book Fair&lt;/a&gt;, from the 16-18 April, at stall G830. We're sharing a stall with some of our clients: &lt;a href=&quot;http://www.almabooks.com&quot;&gt;Alma Books&lt;/a&gt;, &lt;a href=&quot;http://www.tindalstreet.co.uk/&quot;&gt;Tindal Street Press&lt;/a&gt; and &lt;a href=&quot;http://www.pushkinpress.com/&quot;&gt;Pushkin Press&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+	Please drop by for a chat&lt;!--more--&gt; if you'd like to hear more from us or see some samples of our work, or &lt;a href=&quot;/contact&quot;&gt;get in touch&lt;/a&gt; to arrange a meeting.&lt;/p&gt;</content><author><name></name></author><summary type="html">A brief note to let you know that Alex and Bryan of Tetragon will be attending the London Book Fair, from the 16-18 April, at stall G830. We're sharing a stall with some of our clients: Alma Books, Tindal Street Press and Pushkin Press. Please drop by for a chat</summary></entry><entry><title type="html">Introducing…</title><link href="https://tetragonpublishing.com/blog/2012/03/23/introducing" rel="alternate" type="text/html" title="Introducing..." /><published>2012-03-23T16:10:11+00:00</published><updated>2012-03-23T16:10:11+00:00</updated><id>https://tetragonpublishing.com/blog/2012/03/23/introducing</id><content type="html" xml:base="https://tetragonpublishing.com/blog/2012/03/23/introducing">&lt;p&gt;
+	Welcome to the brand-new Tetragon website. We designed and developed it in-house, and it tries to make full use of the capabilities of HTML5 and CSS3, something we hope to do more work with in the near future.&lt;/p&gt;
+&lt;p&gt;
+	Tetragon was founded in 2010 because we felt that there was a need for technical innovation&lt;!--more--&gt; in publishing. We saw that a lot of publishers were outsourcing work to India, which was cheap but not always - shall we say - top quality. Without wishing to be unkind, &lt;a href=&quot;http://www.typesettingindia.com/why_us.html&quot;&gt;this kind of thing&lt;/a&gt;. And we thought we could do better, and do it cheaply by automating a whole lot of stuff: we now have scores of InDesign scripts at our disposal, and have recently developed software to streamline the process from Word Document right down to ePub.&lt;/p&gt;
+&lt;p&gt;
+	This isn't the same as chucking a book into a machine: we let the computers do the boring parts, but we go through every page of every book we set carefully and by hand. We don't like &lt;a href=&quot;http://en.wikipedia.org/wiki/Widows_and_orphans&quot;&gt;orphans, widows&lt;/a&gt;, &lt;a href=&quot;http://en.wiktionary.org/wiki/runt&quot;&gt;runts&lt;/a&gt; or &lt;a href=&quot;http://en.wikipedia.org/wiki/River_(typography)&quot;&gt;rivers&lt;/a&gt; (the web still isn't really up to handling these very well, so please ignore them here); we do like &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style&quot;&gt;Robert Bringhurst&lt;/a&gt; and &lt;a href=&quot;http://typophile.com/&quot;&gt;Typophile&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+	In this blog, we'll keep adding stuff of interest to people interested in literature and typography, and some technical tips on eBooks and new developments in our field. Because, let's face it, developing eBooks these days is a bit like developing for IE4 in 2003, and we're all finding our way in the dark... A few good blogs like &lt;a href=&quot;http://www.pigsgourdsandwikis.com/&quot;&gt;Liz Castro&lt;/a&gt;'s are about all we have...&lt;/p&gt;</content><author><name></name></author><summary type="html">Welcome to the brand-new Tetragon website. We designed and developed it in-house, and it tries to make full use of the capabilities of HTML5 and CSS3, something we hope to do more work with in the near future. Tetragon was founded in 2010 because we felt that there was a need for technical innovation</summary></entry></feed>

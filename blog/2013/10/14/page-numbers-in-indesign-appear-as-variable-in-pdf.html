@@ -1,0 +1,403 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+	<meta name="google-site-verification" content="jVw7apineE_O3TOSKoXFjU1ns864QEMQB0pIoPit5eo" />
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Page Numbers in InDesign Appear as 'Variable' in PDF" />
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta property="og:title" content="Tetragon Publishing" />
+  	<meta property="og:url" content="https://tetragonpublishing.com" />
+  	<meta property="og:image" content="https://tetragonpublishing.com/assets/img/t-square-notext.png" />
+  	<meta property="og:description" content="Tetragon: Typesetting, Copy-editing, eBooks and pre-press production for publishers" />
+<!-- factor in later for mobile version <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="publisher" href="https://plus.google.com/110144443459623803321">
+	<title>Tetragon | Typesetting and Production for UK Publishers</title>
+	
+	<script type="text/javascript"> 
+//<![CDATA[
+	    document.documentElement.className = 'fouc';  // custom FOUC
+	    // FontDeck and Google Font
+		WebFontConfig = {
+		  google: { families: [ 'EB Garamond', 'Lato:400' ]
+		       }
+		};
+		   (function(d) {
+		       var wf = d.createElement('script'), s = d.scripts[0];
+		       wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+		       wf.async = true;
+		       s.parentNode.insertBefore(wf, s);
+		    })(document);
+//]]>
+</script>
+  
+<!--[if lt IE 9]>
+    <link rel="stylesheet" href="/assets/css/ie.css">
+<![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/assets/css/apostrophe.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/app.css" />
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+	
+	<script type="text/javascript" data-asset-group="global" src="/assets/js/apostrophe.js"></script>	
+	<link rel="shortcut icon" href="/favicon.ico" />
+</head>
+
+<body class="a-blog">
+<div class="wrapper">
+	<div class="container">
+
+<header class="row">
+	<div class="twelve columns">
+		<a href="https://tetragonpublishing.com"></a>
+	</div>
+</header>
+<nav class="row" id="main-nav">
+	<div class="ten columns centered">
+		<a href="/" class="about">About</a>
+		<a href="/clients" class="clients">Clients</a>
+		<a href="/publishing-services" class="services">Services</a>
+		<a href="/blog" class="blog sel">Blog</a>
+		<a href="/contact" class="contact">Contact</a>
+		<span></span>
+	</div>
+</nav>
+
+
+	<div class="tetragon-main row">
+	<div class="a-tetragon-blog">
+		<div id="a-blog-main" class="a-blog-main eight columns offset-by-one">
+			<div class="a-blog-item post singleColumnTemplate clearfix">
+				<hgroup class="row">
+					<h1 class="a-blog-item-title"><a href="">Page Numbers in InDesign Appear as 'Variable' in PDF</a></h1>
+					<h2 class="a-blog-item-meta">
+						<span class="post-date">Oct 14 '13</span>
+						<span class="post-author">Posted By: A B</span>
+						<span><a class="disqus-comment-count" data-disqus-identifier="37" href="#disqus_thread">0</a></span>
+					</h2>
+				</hgroup>  
+		
+				<div class="row">
+					<div class="a-blog-item-content bodytext">
+						<div id="a-area-53-blog-body"  class="a-area a-normal a-area-blog-body clearfix">
+							<div id="a-slots-53-blog-body" class="a-slots clearfix">
+								<div class="a-slot a-normal  aRichText clearfix" data-pageid="53" data-name="blog-body" data-permid="1" id="a-slot-53-blog-body-1">
+									<div class="a-slot-content clearfix" id="a-slot-content-53-blog-body-1">
+	<p>
+	I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as "variable", rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem<!--more--> was with InDesign's implemenation of a GREP style for page numbers (see below). The quick solution: don't use them. If you need to style the folio differently from the rest of the text in the same paragraph, just apply a character style to the master frame, or if the master frame items have all been overridden (as was the case for this file), just do a find / replace for the page number character, represented in the GREP search by "~N".</p>	
+
+
+
+
+	 	  	</div>
+		</div>
+
+	
+						  	 			  			  	
+	 
+				<div class="a-slot a-normal normal aSlideshow clearfix" data-pageid="52" data-name="blog-body" data-permid="1" id="a-slot-52-blog-body-1">
+ 		
+				    				
+				
+	    	  	<div class="a-slot-content clearfix" id="a-slot-content-52-blog-body-1">
+	      	      	   
+
+
+
+
+
+
+	
+      
+	<ul id="a-slideshow-52-blog-body-1" class="a-slideshow clearfix single-image transition-normal">
+		  						
+	  	  <li class="a-slideshow-item" id="a-slideshow-item-52-blog-body-1-0">
+			<ul>
+    <li class="a-slideshow-image" style="display:block"><img alt="GREP problem for text variables" width="480" height="449" src='/assets/uploads/media_items/grep-problem-for-text-variables.480.449.s.png' /></li>
+      </ul>		</li>
+  		</ul>
+
+									</div>
+								</div>
+							</div>
+						</div> 	
+						
+						<div class="aut">&mdash; A B</div>
+						<div class="a-blog-item-tags tags">
+							<span class="a-blog-item-tags-label">Tags:</span>
+					    	
+						    	
+							
+						    	
+						    		<a href="/blog/tag/cs5-5">CS5.5</a>,
+								
+							
+						    	
+						    		<a href="/blog/tag/grep-styles">Grep Styles</a>,
+								
+							
+						    	
+						    		<a href="/blog/tag/typesetting">Typesetting</a>
+								
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="disqus_thread"></div>
+			<script type="text/javascript">
+				var disqus_identifier = "37";
+				(function() {
+					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					var protocol = "http";
+					dsq.src = protocol + "://tetragon.disqus.com/embed.js";
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					})();
+				var disqus_developer = true;
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=tetragon">comments powered by Disqus.</a></noscript>
+			
+			<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+		</div>
+
+<div class="a-content two columns">
+   <div class="a-ui a-subnav-wrapper blog clearfix">
+      <div class="a-subnav-inner">
+         <div class="a-subnav-section tags">
+            <h4 class="a-tag-sidebar-title popular">Popular Tags</h4>
+            <ul class="a-ui a-tag-sidebar-list popular">
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+		<a href="/blog/tag/typesetting" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">5</span>Typesetting</a>
+	
+               </li>
+
+               <li>
+    
+    
+		<a href="/blog/tag/typography" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">2</span>Typography</a>
+	
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+		<a href="/blog/tag/epub" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">3</span>ePub</a>
+	
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+		<a href="/blog/tag/cs5-5" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">2</span>CS5.5</a>
+	
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+		<a href="/blog/tag/indesign" class="a-link a-tag icon no-icon icon-right"><span class="icon"></span><span class="a-tag-count icon">2</span>InDesign</a>
+	
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+               <li>
+    
+    
+               </li>
+
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<script type="text/javascript" src="/assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript">
+   prettyPrint();
+</script>
+<div class="a-content two columns">
+</div>
+</div> 
+ 
+
+	</div><!-- !wrapper -->
+</div><!-- !container -->
+    <footer>
+   <div class="row">
+      <section class="ten columns offset-by-one" itemscope itemtype="http://schema.org/organization">
+         <h6 class="three columns" itemprop="name">Tetragon</h6>
+         <div class="soc-med">
+            <div class="seven columns" id="social-media" data-text="Tetragon" data-title="share" data-url="https://tetragonpublishing.com/"></div>
+         </div>
+         <p class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            Collective Auction Rooms ¶ <span itemprop="streetAddress">5—7 Buck Street</span> ¶ <span itemprop="addressLocality">London</span> ¶ <span itemprop="postalCode">NW1 8NJ</span>
+         </p>
+         <div class="hide">
+            <span class="url" itemprop="url">https://tetragonpublishing.com</span>
+            <span class="tel" itemprop="telephone">+44 (0)20 7 1001 575</span>
+            <a class="hide" href="https://plus.google.com/110144443459623803321?prsrc=3" rel="author" style="text-decoration:none;"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="" style="border:0;width:32px;height:32px;"/></a>
+            <div itemprop="location" class="hide">
+               <span itemscope itemtype="http://schema.org/Place">
+                  <div itemprop="geo">
+                     <span itemscope itemtype="http://schema.org/GeoCoordinates">
+                     <span property="latitude" content="51.54039047516868">51.54039047516868 N</span>
+                     <span property=”longitude" content="0.14271204359829426">0.14271204359829426 W</span>
+                     </span>
+                  </div>
+               </span>
+            </div>
+         </div>
+      </section>
+   </div>
+</footer>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', "UA-15368185-1"]);
+	_gaq.push(['_setDomainName', "tetragonpublishing.com"]);
+	_gaq.push(['_trackPageview']);
+   
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<script type="text/javascript" id="a-js-calls">
+   $(function() {
+   apostrophe.ready();
+   apostrophe.setMessages({"updating":"Updating...","updated":"Updated","save_changes_first":"Please save your changes first."});
+   apostrophe.smartCSS();
+   apostrophe.onBeforeUnload();
+   });
+</script>
+<!-- Included JS Files -->
+<!--  <script src="/assets/js/jquery.min.js"></script> -->
+<script src="/assets/js/modernizr.foundation.js"></script>
+<script src="/assets/js/jquery.reveal.js"></script>
+<script src="/assets/js/jquery.orbit-1.4.0.js"></script>
+<script src="/assets/js/forms.jquery.js"></script>
+<script src="/assets/js/jquery.customforms.js"></script>
+<script src="/assets/js/jquery.placeholder.min.js"></script>
+<script src="/assets/js/jquery.tooltips.min.js"></script>
+<script src="/assets/js/jquery.color.js"></script>
+<script src="/assets/js/jquery.sharrre.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/common.js"></script>
+<script id="dsq-count-scr" src="//tetragon.disqus.com/count.js" async></script>
+  </body>
+</html>
