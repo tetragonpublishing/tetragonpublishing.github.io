@@ -277,11 +277,11 @@ nav#main-nav {
 .nav-toggle {
   display: none;
   color: var(--color-dark);
-  font-size: 28px;
-  padding: 4px 12px;
-  border: 2px solid var(--color-dark);
+  font-size: 20px;
+  padding: 2px 8px;
+  border: 1.5px solid var(--color-dark);
   float: right;
-  margin-top: 18px;
+  margin-top: 20px;
   line-height: 1;
 }
 
@@ -1177,6 +1177,7 @@ html.fouc, html.wf-loading {
   nav#main-nav::after { display: none; }
 
   /* --- hgroup --- */
+  hgroup { border-top: none; padding-top: 0; }
   hgroup h1 { font-size: 18px; }
   hgroup h2 { padding-left: 0; font-size: 18px; }
 
