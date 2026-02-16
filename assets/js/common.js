@@ -115,7 +115,7 @@ $(".bodytext").each(function() {
 });
 
 // NAV FADING LINKS //
-$('#main-nav div a').dwFadingLinks({
+$('#main-nav a').dwFadingLinks({
   color: '#A01714', // tetragon red
   duration: 300
 });

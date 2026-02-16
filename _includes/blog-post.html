@@ -1,56 +1,40 @@
-<div class="tetragon-main row">
-	<div class="a-tetragon-blog">
-		<div id="a-blog-main" class="a-blog-main eight columns offset-by-one">
-			<div class="a-blog-item post singleColumnTemplate clearfix">
-				<hgroup class="row">
-					<h1 class="a-blog-item-title"><a href="{{ post.url }}">{{ page.title }}</a></h1>
-					<h2 class="a-blog-item-meta">
-						<span class="post-date">{{ page.date | date: '%b %-d' }} '{{ page.date | date: '%y' }}</span>
-						<span class="post-author">Posted By: A B</span>
-						<span><a class="disqus-comment-count" data-disqus-identifier="{{ page.disqus-identifier }}" href="{{ post.url }}#disqus_thread">0</a></span>
-					</h2>
-				</hgroup>  
-		
-				<div class="row">
-					<div class="a-blog-item-content bodytext">
-						<div id="a-area-53-blog-body"  class="a-area a-normal a-area-blog-body clearfix">
-							<div id="a-slots-53-blog-body" class="a-slots clearfix">
-								<div class="a-slot a-normal  aRichText clearfix" data-pageid="53" data-name="blog-body" data-permid="1" id="a-slot-53-blog-body-1">
-									<div class="a-slot-content clearfix" id="a-slot-content-53-blog-body-1">
+<main class="blog-layout">
+	<div class="blog-main">
+		<div class="blog-item post">
+			<hgroup>
+				<h1 class="blog-item-title"><a href="{{ post.url }}">{{ page.title }}</a></h1>
+				<h2 class="blog-item-meta">
+					<span class="post-date">{{ page.date | date: '%b %-d' }} '{{ page.date | date: '%y' }}</span>
+					<span class="post-author">Posted By: A B</span>
+					<span><a class="disqus-comment-count" data-disqus-identifier="{{ page.disqus-identifier }}" href="{{ post.url }}#disqus_thread">0</a></span>
+				</h2>
+			</hgroup>
+
+			<div class="blog-item-content bodytext">
 {{ page.content }}
-									</div>
-								</div>
-							</div>
-						</div> 	
-						
-						<div class="aut">&mdash; A B</div>
-						<div class="a-blog-item-tags tags">
-							<span class="a-blog-item-tags-label">Tags:</span>
-					    	{% for category in page.categories %}
-						    	{% unless forloop.first %}
-						    		<a href="/blog/tag/{{category|slugify}}">{{category}}</a>{% unless forloop.last %},{% endunless %}
-								{% endunless %}
-							{% endfor %}
-						</div>
-					</div>
-				</div>
 			</div>
 
-
-			<div id="disqus_thread"></div>
-			<script type="text/javascript">
-				var disqus_identifier = "{{ page.disqus-identifier }}";
-				(function() {
-					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-					var protocol = "http";
-					dsq.src = protocol + "://tetragon.disqus.com/embed.js";
-					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-					})();
-				var disqus_developer = true;
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=tetragon">comments powered by Disqus.</a></noscript>
-			
-			<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+			<div class="aut">&mdash; A B</div>
+			<div class="blog-item-tags tags">
+				<span class="blog-item-tags-label">Tags:</span>
+				{% for category in page.categories %}
+					{% unless forloop.first %}
+						<a href="/blog/tag/{{category|slugify}}">{{category}}</a>{% unless forloop.last %},{% endunless %}
+					{% endunless %}
+				{% endfor %}
+			</div>
 		</div>
+
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_identifier = "{{ page.disqus-identifier }}";
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = "https://tetragon.disqus.com/embed.js";
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=tetragon">comments powered by Disqus.</a></noscript>
+	</div>
 
 {% include blog-sidebar.html %}

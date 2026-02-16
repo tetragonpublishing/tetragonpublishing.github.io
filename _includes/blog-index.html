@@ -1,20 +1,19 @@
-<div class="tetragon-main row">
-	<div class="a-tetragon-blog">
-		<div id="a-blog-main" class="eight columns offset-by-one">
-			<hgroup class="a-ui a-blog-heading">
-	    		<h1>Blog</h1>
-				<div class="a-ui a-blog-browser">
-{% if page.url == '/blog' %} 
-					<h3 class="a-blog-filters browser">Thoughts and notes on publishing. Viewing all posts</h3>
-{% else if page.url contains '/blog/tag' %} 
-					<h3 class="a-blog-filters browser">Posts tagged '{{ page.title }}'</h3>
-{% endif %} 
-				</div>
-			</hgroup>
-	
-	  <article class="blog">
+<main class="blog-layout">
+	<div class="blog-main">
+		<hgroup class="blog-heading">
+			<h1>Blog</h1>
+			<div class="blog-browser">
+{% if page.url == '/blog' %}
+				<h3 class="blog-filters">Thoughts and notes on publishing. Viewing all posts</h3>
+{% else if page.url contains '/blog/tag' %}
+				<h3 class="blog-filters">Posts tagged '{{ page.title }}'</h3>
+{% endif %}
+			</div>
+		</hgroup>
+
+		<article class="blog">
 {{ content }}
-	  </article>	
+		</article>
 	</div>
-  
+
 {% include blog-sidebar.html %}

@@ -1,16 +1,12 @@
-<header class="row">
-	<div class="twelve columns">
-		<a href="https://tetragonpublishing.com"></a>
-	</div>
+<header>
+	<a href="https://tetragonpublishing.com" class="logo"></a>
 </header>
-<nav class="row" id="main-nav">
-	<div class="ten columns centered">
-		<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
-		<a href="/" class="about{% if page.url == '/' %} sel{% endif %}">About</a>
-		<a href="/clients" class="clients{% if page.url == '/clients' %} sel{% endif %}">Clients</a>
-		<a href="/publishing-services" class="services{% if page.url contains '/publishing-services' %} sel{% endif %}">Services</a>
-		<a href="/blog" class="blog{% if page.url contains '/blog' %} sel{% endif %}">Blog</a>
-		<a href="/contact" class="contact{% if page.url == '/contact' %} sel{% endif %}">Contact</a>
-		<span></span>
-	</div>
+<nav id="main-nav">
+	<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+	<a href="/" class="about{% if page.url == '/' %} sel{% endif %}">About</a>
+	<a href="/clients" class="clients{% if page.url == '/clients' %} sel{% endif %}">Clients</a>
+	<a href="/publishing-services" class="services{% if page.url contains '/publishing-services' %} sel{% endif %}">Services</a>
+	<a href="/blog" class="blog{% if page.url contains '/blog' %} sel{% endif %}">Blog</a>
+	<a href="/contact" class="contact{% if page.url == '/contact' %} sel{% endif %}">Contact</a>
+	<span></span>
 </nav>

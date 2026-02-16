@@ -165,43 +165,52 @@ body { display: flex; flex-direction: column; }
   padding: 0 var(--gutter);
 }
 
-/* --- Row (compatibility with existing HTML) --- */
-.row {
-  max-width: var(--max-width);
-  margin: 0 auto;
+/* --- Page Layouts (CSS Grid) --- */
+
+/* Contact page: form + map side by side */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
 }
-.row::after { content: ''; display: table; clear: both; }
 
-/* --- Foundation Grid Compatibility ---
-   Kept as float-based to work with existing HTML and JS.
-   Columns use the same percentages as the original Foundation 2.x grid. */
-.column, .columns { float: left; min-height: 1px; position: relative; }
-.column:first-child, .columns:first-child { margin-left: 0; }
-.columns { margin-left: 4.4%; }
-.row .one.columns    { width: 4.3%; }
-.row .two.columns    { width: 13%; }
-.row .three.columns  { width: 21.68%; }
-.row .four.columns   { width: 30.37%; }
-.row .five.columns   { width: 39.1%; }
-.row .six.columns    { width: 47.8%; }
-.row .seven.columns  { width: 56.5%; }
-.row .eight.columns  { width: 65.2%; }
-.row .nine.columns   { width: 73.9%; }
-.row .ten.columns    { width: 82.6%; }
-.row .eleven.columns { width: 91.3%; }
-.row .twelve.columns { width: 100%; margin-left: 0; }
-.row .offset-by-one   { margin-left: 13.1%; }
-.row .offset-by-one:first-child { margin-left: 8.7%; }
-.row .offset-by-two   { margin-left: 21.8%; }
-.row .offset-by-two:first-child { margin-left: 17.4%; }
-.row .offset-by-three  { margin-left: 30.5%; }
-.row .centered { float: none; margin: 0 auto; }
+/* Clients page: nav | content | dots */
+div.clients {
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  gap: 20px;
+  margin-top: 20px;
+}
 
-/* Block grid */
+/* Blog: main content + sidebar */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 30px;
+}
+
+/* Services: text + optional aside within each dropdown */
+.services-list .dropdown {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+.service-text { flex: 1; }
+.service-aside { flex: 0 0 240px; }
+
+/* Block grid (services thumbnail grid) */
 .block-grid { display: block; overflow: hidden; }
 .block-grid > li { display: block; float: left; }
 .block-grid.two-up { margin-left: -4%; }
 .block-grid.two-up > li { margin-left: 4%; width: 46%; }
+
+/* Footer section centering */
+footer section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
 
 /* ==========================================================================
    Header & Logo
@@ -258,12 +267,9 @@ nav#main-nav a.sel:hover { cursor: default; color: var(--color-red); }
 nav#main-nav a:visited { text-decoration: none; }
 nav#main-nav a:focus { text-decoration: none; outline: none; }
 nav#main-nav a:hover { text-decoration: none; }
-nav#main-nav div { text-align: justify; }
-nav#main-nav div::after { content: ''; display: inline-block; width: 100%; }
+nav#main-nav::after { content: ''; display: inline-block; width: 100%; }
 nav#main-nav a::first-letter { color: var(--color-red); }
-nav#main-nav div > a:hover { color: var(--color-dark); }
-nav#main-nav div.ten.columns.centered {
-  height: 70px;
+nav#main-nav {
   border-bottom: 2px dotted var(--color-dark);
 }
 
@@ -285,8 +291,8 @@ nav#main-nav div.ten.columns.centered {
 hgroup {
   border-bottom: 2px dotted var(--color-dark);
   padding-bottom: 10px;
+  margin-bottom: 25px;
 }
-hgroup.row { margin-bottom: 25px; }
 hgroup h1 {
   font-family: var(--font-heading);
   font-size: 22px;
@@ -450,7 +456,8 @@ article.about #home-slides .orbit-slide { width: 500px; height: 332px; }
   cursor: pointer;
   float: right;
 }
-.services-list .dropdown.row .columns { margin-top: 20px; }
+.services-list .dropdown .service-text,
+.services-list .dropdown .service-aside { margin-top: 0; }
 .services-list .block-grid.two-up { margin-left: 0; }
 .services-list .block-grid.two-up li {
   width: 100px;
@@ -864,9 +871,10 @@ article.contact #contact_loader {
 /* ==========================================================================
    Blog
    ========================================================================== */
-.tetragon-main.row .a-tetragon-blog hgroup.row { margin-bottom: 25px; }
-.tetragon-main.row .a-tetragon-blog h1.a-blog-item-title a,
-.tetragon-main.row .a-tetragon-blog h3.a-blog-item-title a {
+/* Blog heading */
+.blog-layout .blog-main hgroup { margin-bottom: 25px; }
+.blog-layout h1.blog-item-title a,
+.blog-layout h3.blog-item-title a {
   color: var(--color-red);
   font-family: var(--font-heading);
   font-size: 22px;
@@ -877,13 +885,13 @@ article.contact #contact_loader {
   margin-top: 10px;
   font-weight: normal;
 }
-.tetragon-main.row .a-tetragon-blog h1.a-blog-item-title a:hover,
-.tetragon-main.row .a-tetragon-blog h3.a-blog-item-title a:hover {
+.blog-layout h1.blog-item-title a:hover,
+.blog-layout h3.blog-item-title a:hover {
   color: #891411;
   text-decoration: none;
 }
-.tetragon-main.row .a-tetragon-blog article.blog h3.a-blog-item-title a { font-size: 20px; }
-.tetragon-main.row .a-tetragon-blog h2.a-blog-item-meta {
+.blog-layout article.blog h3.blog-item-title a { font-size: 20px; }
+.blog-layout h2.blog-item-meta {
   color: var(--color-olive);
   font-size: 16px;
   line-height: 24px;
@@ -893,27 +901,26 @@ article.contact #contact_loader {
   margin-bottom: 10px;
   margin-top: -5px;
 }
-.tetragon-main.row .a-tetragon-blog h2.a-blog-item-meta span {
+.blog-layout h2.blog-item-meta span {
   font-style: normal;
   float: left;
   margin-right: 12px;
 }
-.tetragon-main.row .a-tetragon-blog h2.a-blog-item-meta span:not(:last-child)::after {
+.blog-layout h2.blog-item-meta span:not(:last-child)::after {
   content: '\00b7';
   margin-left: 6px;
 }
-.tetragon-main.row .a-tetragon-blog .a-blog-item-content,
-.tetragon-main.row .a-tetragon-blog .a-excerpt-extras {
+.blog-layout .blog-item-content,
+.blog-layout .excerpt-extras {
   font-size: 2rem;
   line-height: 1.5;
   text-align: justify;
   -webkit-hyphens: auto;
   hyphens: auto;
 }
-.tetragon-main.row .a-tetragon-blog .a-blog-item-content.columnar { width: 100%; }
-.tetragon-main.row .a-tetragon-blog .aut {
+.blog-layout .blog-item-content.columnar { width: 100%; }
+.blog-layout .aut {
   text-align: right;
-  letter-spacing: 0.2em;
   color: var(--color-red);
   text-indent: 0;
   font-variant: small-caps;
@@ -921,22 +928,22 @@ article.contact #contact_loader {
   letter-spacing: 0.1em;
   font-weight: bolder;
 }
-.tetragon-main.row .a-tetragon-blog .aut a { color: var(--color-red); }
-.tetragon-main.row .a-tetragon-blog div.a-blog-item-tags {
+.blog-layout .aut a { color: var(--color-red); }
+.blog-layout div.blog-item-tags {
   text-align: left;
   margin-top: 25px;
 }
-.tetragon-main.row .a-tetragon-blog div.a-blog-item-tags a {
+.blog-layout div.blog-item-tags a {
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: 0.1em;
   color: var(--color-red);
 }
-.tetragon-main.row .a-tetragon-blog div.a-blog-item-tags a:hover {
+.blog-layout div.blog-item-tags a:hover {
   text-decoration: none;
   color: #180303;
 }
-.tetragon-main.row .a-tetragon-blog div.a-blog-read-more a {
+.blog-layout div.blog-read-more a {
   float: right;
   font-family: var(--font-heading);
   font-size: 20px;
@@ -947,30 +954,30 @@ article.contact #contact_loader {
   background: url('../img/bullet.png') 0 11px no-repeat;
   padding-left: 20px;
 }
-.tetragon-main.row .a-tetragon-blog div.a-blog-read-more a:hover {
+.blog-layout div.blog-read-more a:hover {
   text-decoration: none;
   color: #891411;
 }
-.tetragon-main.row .a-tetragon-blog .a-excerpt {
+.blog-layout .excerpt {
   padding-bottom: 25px;
   margin-bottom: 10px;
 }
-.tetragon-main.row .a-tetragon-blog .a-excerpt:not(:last-child) {
+.blog-layout .excerpt:not(:last-child) {
   border-bottom: 2px dotted var(--color-gray);
 }
-.tetragon-main.row .a-tetragon-blog hgroup.a-ui.a-blog-heading { margin-bottom: 25px; }
-.tetragon-main.row .a-tetragon-blog hgroup.a-ui.a-blog-heading h3.a-blog-filters {
+.blog-layout hgroup.blog-heading { margin-bottom: 25px; }
+.blog-layout hgroup.blog-heading h3.blog-filters {
   border: 0;
   font-size: 20px;
   margin-bottom: 0;
 }
-.tetragon-main.row .a-tetragon-blog .a-blog-item-tags-label {
+.blog-layout .blog-item-tags-label {
   font-family: var(--font-heading);
   font-size: 16px;
   color: var(--color-dark);
   margin-right: 4px;
 }
-.tetragon-main.row .a-tetragon-blog .a-blog-item-tags.tags {
+.blog-layout .blog-item-tags.tags {
   font-family: var(--font-heading);
   font-variant: small-caps;
   text-transform: lowercase;
@@ -978,13 +985,12 @@ article.contact #contact_loader {
 }
 
 /* Blog sidebar */
-.a-ui.a-subnav-wrapper {
+.blog-sidebar {
   margin: 0 0 20px 0;
   width: auto;
   overflow: visible;
 }
-.a-ui.a-subnav-wrapper .a-subnav-inner { padding: 9px; }
-.a-ui.a-subnav-wrapper h4 {
+.blog-sidebar h4.sidebar-title {
   font-family: var(--font-heading);
   font-size: 20px;
   letter-spacing: 0.08em;
@@ -995,7 +1001,7 @@ article.contact #contact_loader {
   margin-top: 18px;
   margin-bottom: 4px;
 }
-.a-ui.a-subnav-wrapper .a-link {
+.blog-sidebar .tag-list a {
   color: var(--color-red);
   font-variant: small-caps;
   text-transform: lowercase;
@@ -1003,7 +1009,7 @@ article.contact #contact_loader {
   font-family: var(--font-body);
   font-size: 16px;
 }
-.a-tag-sidebar-list .a-tag-count {
+.blog-sidebar .tag-list .tag-count {
   font-size: 14px;
   color: var(--color-gray);
   margin-right: 4px;
@@ -1014,8 +1020,8 @@ article.contact #contact_loader {
   border-top: 2px dotted var(--color-gray);
 }
 /* Sidebar tag list */
-.a-tag-sidebar-list { margin-left: 1em; }
-.a-tag-sidebar-list li { margin-bottom: 4px; }
+.blog-sidebar .tag-list { margin-left: 1em; }
+.blog-sidebar .tag-list li { margin-bottom: 4px; }
 
 /* ==========================================================================
    FOUC (Flash of Unstyled Content)
@@ -1038,18 +1044,15 @@ html.fouc, html.wf-loading {
    RESPONSIVE - Tablet (768px - 939px)
    ========================================================================== */
 @media only screen and (max-width: 939px) {
-  .row { padding-left: var(--gutter); padding-right: var(--gutter); }
-
   /* Header & logo: scale down 25% */
   header { height: 123px; }
   header a { width: 107px; height: 107px; top: 8px; }
 
   /* Nav: keep within main text bounds */
   nav#main-nav a { font-size: 22px; }
-  nav#main-nav div.ten.columns.centered { height: auto; padding-bottom: 10px; }
 
   /* hgroup: dotted line above and below the title block, remove nav bottom border */
-  nav#main-nav div.ten.columns.centered { border-bottom: none; }
+  nav#main-nav { border-bottom: none; }
   hgroup { border-top: 2px dotted var(--color-dark); padding-top: 10px; }
 
   /* About: slideshow below text instead of floated alongside */
@@ -1100,15 +1103,6 @@ html.fouc, html.wf-loading {
    RESPONSIVE - Phone (0 - 767px)
    ========================================================================== */
 @media only screen and (max-width: 767px) {
-  .row { padding-left: 15px; padding-right: 15px; }
-
-  /* Stack all columns */
-  .column, .columns {
-    float: none !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-  }
-
   /* --- Typography --- */
   p { font-size: 18px; }
   .bodytext p { text-align: left; hyphens: none; -webkit-hyphens: none; }
@@ -1130,13 +1124,13 @@ html.fouc, html.wf-loading {
 
   /* --- Navigation: Hamburger --- */
   .nav-toggle { display: block; }
-  nav#main-nav { height: auto; line-height: normal; }
-  nav#main-nav div.ten.columns.centered {
-    height: auto !important;
+  nav#main-nav {
+    height: auto;
+    line-height: normal;
     text-align: left;
-    padding-bottom: 0;
+    border-bottom: none;
   }
-  nav#main-nav div.ten.columns.centered a {
+  nav#main-nav a {
     display: none;
     width: 100%;
     text-align: left;
@@ -1145,9 +1139,9 @@ html.fouc, html.wf-loading {
     font-size: 22px;
     line-height: 1.4;
   }
-  nav#main-nav div.ten.columns.centered.nav-open a { display: block; }
+  nav#main-nav.nav-open a { display: block; }
   nav#main-nav span { display: none; }
-  nav#main-nav div::after { display: none; }
+  nav#main-nav::after { display: none; }
 
   /* --- hgroup --- */
   hgroup h1 { font-size: 18px; }
@@ -1176,9 +1170,11 @@ html.fouc, html.wf-loading {
     margin-left: 0;
   }
 
-  /* --- Services Page --- */
+  /* --- Services Page: stack to single column --- */
   .services-list { margin-bottom: 60px; }
   .services-list h2 { font-size: 26px; line-height: 40px; }
+  .services-list .dropdown { flex-direction: column; }
+  .service-aside { flex: none; width: 100%; }
   .services-list figure.square-banner {
     float: none;
     width: 100%;
@@ -1198,7 +1194,10 @@ html.fouc, html.wf-loading {
     margin: 20px 0;
   }
 
-  /* --- Clients Page --- */
+  /* --- Clients Page: stack to single column --- */
+  div.clients {
+    grid-template-columns: 1fr;
+  }
   div.clients .clients-list {
     border-right: none;
     border-bottom: 2px dotted var(--color-dark);
@@ -1226,7 +1225,11 @@ html.fouc, html.wf-loading {
     float: none;
   }
 
-  /* --- Contact Page --- */
+  /* --- Contact Page: stack to single column --- */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
   article.contact form.nice {
     width: 100%;
     max-width: 100%;
@@ -1258,9 +1261,11 @@ html.fouc, html.wf-loading {
   article.contact #map_canvas { height: 250px; }
   article.contact div.phone { text-align: left; }
 
-  /* --- Blog --- */
-  #a-blog-main { margin-left: 0; }
-  .tetragon-main.row .a-tetragon-blog .a-blog-item-content.columnar {
+  /* --- Blog: stack to single column --- */
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+  .blog-layout .blog-item-content.columnar {
     column-count: 1;
   }
 
