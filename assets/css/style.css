@@ -1155,29 +1155,34 @@ html.fouc, html.wf-loading {
   header { height: auto; padding: 20px 0; }
   header a { top: 0; width: 80px; height: 73px; }
 
-  /* --- Navigation: Hamburger --- */
-  .nav-toggle { display: block; }
+  /* --- Navigation: horizontal inline with bullet separators --- */
+  .nav-toggle { display: none; }
   nav#main-nav {
     height: auto;
-    line-height: normal;
-    text-align: left;
+    line-height: 1.6;
+    text-align: center;
     border-bottom: none;
   }
   nav#main-nav a {
-    display: none;
-    width: 100%;
-    text-align: left;
-    padding: 12px 0;
-    border-top: 1px solid rgba(48, 34, 36, 0.15);
-    font-size: 22px;
-    line-height: 1.4;
+    font-size: 18px;
+    display: inline;
+    padding: 0;
   }
-  nav#main-nav.nav-open a { display: block; }
+  nav#main-nav a + a::before {
+    content: '\b7';
+    margin: 0 6px;
+    color: var(--color-gray);
+  }
+  nav#main-nav a.services { margin-left: 0; }
+  nav#main-nav a.blog::before {
+    content: '\A';
+    white-space: pre;
+    margin: 0;
+  }
   nav#main-nav span { display: none; }
   nav#main-nav::after { display: none; }
 
   /* --- hgroup --- */
-  hgroup { border-top: none; padding-top: 0; }
   hgroup h1 { font-size: 18px; }
   hgroup h2 { padding-left: 0; font-size: 18px; }
 

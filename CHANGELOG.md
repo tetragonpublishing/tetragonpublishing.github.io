@@ -5,6 +5,9 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Phone nav: replaced hamburger dropdown with horizontal inline links and bullet separators (About · Clients · Services / Blog · Contact)
+- Reinstated dotted top border on hgroup at phone size
+- Shrunk hamburger button (now hidden, kept in CSS for potential reuse)
 - Replaced jQuery Orbit home page slideshow with custom vanilla JS horizontal slider
 - Slideshow now uses CSS flexbox + translateX transitions instead of Orbit plugin
 - Slideshow arrows always visible (not hover-only) for touch device compatibility
