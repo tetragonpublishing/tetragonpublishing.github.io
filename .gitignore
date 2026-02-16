@@ -1,0 +1,44 @@
+# === Legacy assets (not yet replaced, kept locally) ===
+assets/css/app.css
+assets/css/apostrophe.css
+assets/css/ie.css
+assets/css/style.scss
+assets/css/foundation/
+assets/css/validationEngine.jquery.css
+assets/img/spr/
+assets/img/header-bg.png
+assets/js/apostrophe.js
+
+# === Apostrophe CMS artifacts ===
+assets/uploads/
+
+# === Unreferenced large/source files ===
+assets/img/services/giggs-ebook.jpg
+assets/img/services/lightship-ebook.jpg
+assets/img/services/ebook-banner.jpg
+assets/img/services/ebook-banner-warm.jpg
+assets/img/services/editing-banner.png
+assets/img/services/no/
+assets/img/services/keep/
+assets/img/services/pdf/
+
+# === Build/tooling artifacts ===
+_compass/
+_sass/
+_site/
+.sass-cache/
+.jekyll-metadata
+Gemfile
+Gemfile.lock
+Rakefile
+WebContent/
+
+# === OS / editor ===
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+.project
+.settings/
+.compass/

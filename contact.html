@@ -1,0 +1,47 @@
+---
+layout: default
+permalink: /contact
+title: Tetragon | Contact us in London
+description: Tetragon Publishing Services is based in London, England. You can contact us by email or phone. 
+---
+            <article class="contact">
+        <hgroup class="row nine columns offset-by-one">
+             <h1>Contact Us</h1>
+             <h2>We're in Camden Town, London.</h2>
+        </hgroup>
+        
+        <div class="contact row">
+          <div class="five columns offset-by-one contact-form">
+            <form class="nice" id="contact-form" novalidate>
+              <label for="contact_name" class="required">Name:<span class="req">*</span></label>
+              <input type="text" class="input-text validate[required]" name="contact[name]" id="contact_name" required/>
+              <label for="contact_email" type="email" class="required">Email:<span class="req">*</span></label>
+              <input type="email" class="input-text validate[required,custom[email]]" id="contact_email" name="contact[email]" required />
+              <label for="contact_company">Company:</label>
+              <input type="text" class="input-text" id="contact_company" name="contact[company]" />
+              <label for="contact_enquiry" class="required">Enquiry:<span class="req">*</span></label>
+              <textarea id="contact_enquiry" name="contact[enquiry]" class="validate[required]" required></textarea>
+              <input type="submit" id="contact_submit" value="send" />
+<div id="contact_loader"></div>
+                                                </form>
+<div id="contact_res" class="hide"></div>
+          </div>
+          <div class="five columns map">
+            <!-- Google maps -->
+            <div id="map_canvas"></div>
+            <div class="phone">
+              <p><span class="red">phone:</span> +44 (0)20 7 100 1575</p>
+              <p><span class="red">email:</span> <span class="enc-mail" title="Enquiry">info собачка tetragonpublishing точка com</span></p>
+            </div>
+          </div>
+        </div> <!--  !contact row -->
+      </article>
+
+
+  <!-- jQuery validation for browsers that don't support HTML5 -->
+  <script src="/assets/js/jquery.validationEngine-en.js"></script>
+  <script src="/assets/js/jquery.validationEngine.js"></script> 
+  <link rel="stylesheet" href="/assets/css/validationEngine.jquery.css" />
+  <script src="/assets/js/contact.js"></script>
+  
+

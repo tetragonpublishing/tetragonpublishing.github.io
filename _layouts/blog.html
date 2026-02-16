@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class="a-blog">
+<div class="wrapper">
+	<div class="container">
+
+{% include header.html %}
+{% if page.url == '/blog' %}
+	{% include blog-index.html %}
+{% elsif page.url contains '/blog/tag' %}
+	{% include blog-index.html %}
+{% else %}
+	{% include blog-post.html %}
+{% endif %}
+
+	</div>
+</div>
+    {% include footer.html %}
+  </body>
+</html>
