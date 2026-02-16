@@ -327,21 +327,22 @@ $("dl.clients-list dd:first").each(function() {
 });
 
 ///////////////////////////////////////////////////////
-// HOME / ABOUT PAGE
-
-$('#home-slides').orbit({
-  animation: 'horizontal-push',                  // fade, horizontal-slide, vertical-slide, horizontal-push
-  animationSpeed: 1000,                // how fast animtions are
-  timer: false, 			 // true or false to have the timer
-  advanceSpeed: 8000, 		 // if timer is enabled, time between transitions 
-  pauseOnHover: true, 		 // if you hover pauses the slider
-  directionalNav: true, 		 // manual advancing directional navs
-  captions: false, 			 // do you want captions?
-  bullets: false,			 // true or false to activate the bullet navigation
-  bulletThumbs: false,		 // thumbnails for the bullets
-  bulletThumbLocation: '',		 // location from this file where thumbs will be
-  fluid: true                         // or set a aspect ratio for content slides (ex: '4x3')   
-});
+// HOME / ABOUT PAGE — custom slider
+(function() {
+  var slides = document.getElementById('home-slides');
+  if (!slides) return;
+  var total = slides.children.length;
+  var current = 0;
+  function goTo(n) {
+    current = ((n % total) + total) % total;
+    slides.style.transform = 'translateX(-' + (current * 25) + '%)';
+  }
+  var wrap = slides.parentNode;
+  var prev = wrap.querySelector('.slide-prev');
+  var next = wrap.querySelector('.slide-next');
+  if (prev) prev.addEventListener('click', function() { goTo(current - 1); });
+  if (next) next.addEventListener('click', function() { goTo(current + 1); });
+})();
 
 /////////// FOUC /////////////
 // remove the fouc class from html

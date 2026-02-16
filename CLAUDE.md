@@ -20,6 +20,7 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `assets/js/common.js` - updated: added hamburger toggle handler
 - `index-static.html` - standalone preview page for development
 - `CLAUDE.md` - this file
+- `CHANGELOG.md` - project changelog
 - `.gitignore`
 
 ### Files NOT to version (legacy, left in place)
@@ -55,8 +56,16 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 
 ## Key dependencies still in use
 - jQuery (loaded via modernizr.foundation.js)
-- jquery.orbit-1.4.0.js (image slider)
+- jquery.orbit-1.4.0.js (services page slider/modals only; removed from home page)
 - jquery.reveal.js (modals)
 - jquery.color.js (animated colour transitions for fading links)
 - jquery.sharrre.js (social media buttons)
 - Google WebFont Loader (EB Garamond + Lato)
+
+## Working practices
+
+### Changelog
+Maintain `CHANGELOG.md` using [Keep a Changelog](https://keepachangelog.com/) format. When committing, add entries under `[Unreleased]` grouped by: Added, Changed, Removed, Fixed. When tagging a release, move unreleased entries into a dated version heading.
+
+### Keeping this file up to date
+Update `CLAUDE.md` whenever project structure, dependencies, design tokens, breakpoints, or working practices change. If a dependency is added or removed, update the "Key dependencies" list. If new files are added to the repo, update the "Files to version" list. This file is the source of truth for project conventions.
