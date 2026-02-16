@@ -205,12 +205,7 @@ div.clients {
 .block-grid.two-up { margin-left: -4%; }
 .block-grid.two-up > li { margin-left: 4%; width: 46%; }
 
-/* Footer section centering */
-footer section {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-}
+/* Footer section centering — layout rules in Footer section below */
 
 /* ==========================================================================
    Header & Logo
@@ -316,42 +311,47 @@ hgroup h2 {
 /* ==========================================================================
    Footer
    ========================================================================== */
+/* --- Social Media (bottom-right of container, above footer) --- */
+.soc-med {
+  text-align: right;
+}
+#social-media {
+  display: inline-block;
+  font-family: var(--font-heading);
+}
+
 footer {
   flex-shrink: 0;
-  height: 82px;
   background-color: var(--color-dark);
   border-top: 4px solid var(--color-red);
   width: 100%;
-  position: relative;
+  padding: 0 0 14px;
+}
+footer section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 footer h6 {
   font-size: 28px;
   border-left: 16px solid var(--color-red);
-  padding-left: 14px;
+  margin-left: calc(var(--gutter) * -1);
+  padding: 14px 0 6px 14px;
   color: var(--color-gray);
-  padding-top: 6px;
-  padding-bottom: 4px;
   text-transform: lowercase;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 footer p.address {
   font-variant: small-caps;
   letter-spacing: 0.18em;
   padding-left: 30px;
   font-size: 16px;
-  margin-bottom: 0;
-  position: absolute;
-  bottom: -28px;
-  left: 0;
+  margin: 0;
   color: var(--color-gray);
   text-transform: lowercase;
-}
-footer .soc-med { float: right; }
-
-/* --- Social Media --- */
-#social-media {
-  float: right;
-  margin-top: -60px;
-  font-family: var(--font-heading);
+  text-indent: 0;
+  white-space: nowrap;
 }
 #social-media .box {
   line-height: 30px;
@@ -1108,8 +1108,7 @@ html.fouc, html.wf-loading {
   article.contact form.nice { width: 100%; max-width: 360px; }
 
   /* Footer */
-  footer { height: auto; min-height: 82px; }
-  footer p.address { position: static; margin-top: 10px; }
+  footer p.address { padding-left: 30px; }
 
   /* Modals */
   .reveal-modal {
@@ -1301,16 +1300,17 @@ html.fouc, html.wf-loading {
   }
 
   /* --- Footer --- */
-  footer { height: auto; padding: 15px 0; }
-  footer h6 { font-size: 22px; }
+  footer h6 {
+    font-size: 22px;
+    border-left-width: 12px;
+    padding: 10px 0 8px 10px;
+  }
   footer p.address {
-    position: static;
-    margin-top: 10px;
+    padding-left: 22px;
     font-size: 13px;
     letter-spacing: 0.1em;
+    white-space: normal;
   }
-  #social-media { float: none; margin-top: 10px; }
-  #social-media .buttons { position: static; margin-left: 0; margin-top: 10px; }
 
   /* --- Modals --- */
   .reveal-modal {

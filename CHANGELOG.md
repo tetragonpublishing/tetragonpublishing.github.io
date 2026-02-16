@@ -5,6 +5,8 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Footer: address stacked below "Tetragon" heading, red vertical bar connects to horizontal border at all sizes
+- Footer: social media widget moved to bottom-right of main container (new social.html include)
 - Phone nav: replaced hamburger dropdown with horizontal inline links and bullet separators (About · Clients · Services / Blog · Contact)
 - Reinstated dotted top border on hgroup at phone size
 - Shrunk hamburger button (now hidden, kept in CSS for potential reuse)
