@@ -5,6 +5,8 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Contact page: replaced jQuery validationEngine with native HTML5 validation (required, type=email)
+- Contact page: contact.js rewritten — cleaned up code, removed validationEngine dependency, consistent formatting
 - Services page: replaced Orbit slider + Reveal modal plugins with vanilla JS modal slider (~45 lines, no dependencies)
 - Services page: modal HTML restructured — captions inline as figcaptions instead of 22 external orbit-caption divs
 - Services page: modal CSS now inherently responsive (flexbox centering, percentage width) — no tablet/phone overrides needed
@@ -30,10 +32,12 @@ All notable changes to the Tetragon Publishing website redevelopment.
 - Vanilla JS modal slider for services page galleries (IIFE, ~45 lines, no dependencies)
 - Keyboard support for modals (Escape to close, click-outside to close)
 - services-static.html standalone preview page for browser testing (no Jekyll needed)
+- contact-static.html standalone preview page for browser testing (no Jekyll needed)
 - Prev/next arrow buttons on home page slideshow (index.html, index-static.html)
 - Custom slider JS in common.js (IIFE, ~12 lines, no dependencies)
 
 ### Removed
+- jquery.validationEngine-en.js, jquery.validationEngine.js, and validationEngine.jquery.css references from contact page
 - jquery.orbit-1.4.0.js and jquery.reveal.js script references from all pages (no longer used)
 - ~145 lines of Orbit/Reveal CSS (orbit-wrapper, slider-nav, orbit-caption, orbit-bullets, reveal-modal)
 - Orbit/Reveal JS setup in common.js (~50 lines of jQuery plugin calls)

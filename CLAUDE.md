@@ -21,6 +21,9 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `index-static.html` - standalone preview page for development
 - `clients-static.html` - standalone preview page for development
 - `services-static.html` - standalone preview page for development
+- `contact-static.html` - standalone preview page for development
+- `contact.html` - updated: removed validationEngine classes and script tags
+- `assets/js/contact.js` - updated: rewritten, removed validationEngine dependency
 - `CLAUDE.md` - this file
 - `CHANGELOG.md` - project changelog
 - `.gitignore`
@@ -31,7 +34,9 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `assets/css/ie.css` - old IE-specific styles
 - `assets/css/style.scss` - old Sass source
 - `assets/css/foundation/` - old Foundation CSS source
-- `assets/css/validationEngine.jquery.css` - still used by contact.html (version when replaced)
+- `assets/css/validationEngine.jquery.css` - no longer used (replaced by native HTML5 validation)
+- `assets/js/jquery.validationEngine.js` - no longer used
+- `assets/js/jquery.validationEngine-en.js` - no longer used
 - `assets/img/spr/` - old sprite sheets (replaced by extracted individual images)
 - `assets/img/header-bg.png` - replaced by CSS borders
 - `_compass/` - Sass/Foundation/ZURB source and sprites config
