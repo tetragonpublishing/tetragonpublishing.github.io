@@ -180,7 +180,6 @@ div.clients {
   display: grid;
   grid-template-columns: 200px 1fr 60px;
   gap: 20px;
-  margin-top: 20px;
 }
 
 /* Blog: main content + sidebar */
@@ -723,7 +722,7 @@ div.clients .clients-list dd {
   line-height: 1.05;
 }
 div.clients .clients-list dd.sel { color: var(--color-red); }
-div.clients section { margin-left: -15px; clear: both; }
+div.clients section { clear: both; }
 div.clients section .client-logo {
   width: 156px;
   height: 156px;
@@ -741,6 +740,9 @@ div.clients section .client-logo img {
   opacity: 0.9;
 }
 div.clients section .client-text { overflow: hidden; }
+div.clients section figure {
+  width: fit-content;
+}
 div.clients section figure img {
   border: 1px solid var(--color-gray);
   background: white;
@@ -771,25 +773,23 @@ div.clients section figure figcaption a {
 div.clients section figure figcaption a:hover { color: var(--color-red); }
 
 /* Client navigation dots (pure CSS, replacing sprite) */
-div.clients dl.client-nav { margin-left: -20px; }
+div.clients dl.client-nav { margin-left: 0; }
 div.clients dl.client-nav dd {
   width: 22px;
   height: 22px;
   margin-bottom: 5px;
   cursor: pointer;
   border-radius: 50%;
-  border: 1.5px solid var(--color-gray);
+  border: 1.5px solid var(--color-dark);
   background: transparent;
   position: relative;
 }
 div.clients dl.client-nav dd:hover {
-  border-color: var(--color-red);
-  background: rgba(160, 23, 20, 0.1);
+  background: rgba(255, 151, 124, 0.3);
 }
 /* Selected state - the JS swaps class names like nav-page-1 <-> nav-page-1_sel */
 div.clients dl.client-nav dd[class$="_sel"] {
-  background: var(--color-red);
-  border-color: var(--color-red);
+  background: rgb(255, 151, 124);
 }
 /* Number labels for dots - use data-page attribute */
 div.clients dl.client-nav dd::after {
@@ -798,13 +798,15 @@ div.clients dl.client-nav dd::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-heading);
-  font-size: 11px;
-  color: var(--color-gray);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: var(--color-dark);
   line-height: 1;
 }
 div.clients dl.client-nav dd:hover::after { color: var(--color-red); }
-div.clients dl.client-nav dd[class$="_sel"]::after { color: white; }
+div.clients dl.client-nav dd[class$="_sel"]::after { color: var(--color-dark); }
 
 /* ==========================================================================
    Contact Page
@@ -1129,6 +1131,21 @@ html.fouc, html.wf-loading {
   #ebook-modal div.orbit-wrapper div.slider-nav span.right { margin-right: 0; }
   #pic-grid-modal div.orbit-wrapper div.slider-nav span.left,
   #ebook-modal div.orbit-wrapper div.slider-nav span.left { margin-left: 0; }
+
+  /* Clients: narrow columns, unfloat logo at tablet */
+  div.clients {
+    grid-template-columns: 160px 1fr 50px;
+  }
+  div.clients .clients-list {
+    padding-right: 15px;
+  }
+  div.clients section .client-logo {
+    float: none;
+    margin: 0 auto 15px auto;
+  }
+  div.clients dl.client-nav {
+    margin-left: -10px;
+  }
 }
 
 /* ==========================================================================
@@ -1182,6 +1199,7 @@ html.fouc, html.wf-loading {
   nav#main-nav::after { display: none; }
 
   /* --- hgroup --- */
+  hgroup { margin-bottom: 10px; }
   hgroup h1 { font-size: 18px; }
   hgroup h2 { padding-left: 0; font-size: 18px; }
 
@@ -1232,14 +1250,20 @@ html.fouc, html.wf-loading {
     border-right: none;
     border-bottom: 2px dotted var(--color-dark);
     padding-right: 0;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     margin-bottom: 15px;
+    text-align: center;
   }
   div.clients .clients-list dd {
-    text-align: left;
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 16px;
+    display: inline;
+    font-size: 18px;
+    color: var(--color-dark);
+    cursor: pointer;
+  }
+  div.clients .clients-list dd + dd::before {
+    content: '\b7';
+    margin: 0 6px;
+    color: var(--color-gray);
   }
   div.clients section { margin-left: 0; }
   div.clients section .client-logo {

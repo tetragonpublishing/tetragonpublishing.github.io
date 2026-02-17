@@ -5,6 +5,9 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Clients page: removed stale Foundation margin offset from content sections
+- Clients page: added tablet breakpoint rules (narrower grid columns, logo centered above text)
+- Clients page: added cursor pointer on phone client names
 - Footer: address stacked below "Tetragon" heading, red vertical bar connects to horizontal border at all sizes
 - Footer: social media widget moved to bottom-right of main container (new social.html include)
 - Phone nav: replaced hamburger dropdown with horizontal inline links and bullet separators (About · Clients · Services / Blog · Contact)
