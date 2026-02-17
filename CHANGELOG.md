@@ -5,6 +5,13 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Services page: replaced Orbit slider + Reveal modal plugins with vanilla JS modal slider (~45 lines, no dependencies)
+- Services page: modal HTML restructured — captions inline as figcaptions instead of 22 external orbit-caption divs
+- Services page: modal CSS now inherently responsive (flexbox centering, percentage width) — no tablet/phone overrides needed
+- Services page: reduced excessive margin-bottom on .services-list from 150px to 50px (30px at phone)
+- Services page: moved flex stacking (aside below text) from phone-only to tablet breakpoint for better text readability
+- Services page: tablet now unfloats figures (square-banner, left-banner, hosting-banner) and pic-grid
+- Services page: slimmed phone-specific overrides (stacking inherited from tablet, phone only adjusts max-widths and heading size)
 - Clients page: removed stale Foundation margin offset from content sections
 - Clients page: added tablet breakpoint rules (narrower grid columns, logo centered above text)
 - Clients page: added cursor pointer on phone client names
@@ -20,10 +27,17 @@ All notable changes to the Tetragon Publishing website redevelopment.
 - Responsive slideshow uses aspect-ratio instead of fixed pixel dimensions
 
 ### Added
+- Vanilla JS modal slider for services page galleries (IIFE, ~45 lines, no dependencies)
+- Keyboard support for modals (Escape to close, click-outside to close)
+- services-static.html standalone preview page for browser testing (no Jekyll needed)
 - Prev/next arrow buttons on home page slideshow (index.html, index-static.html)
 - Custom slider JS in common.js (IIFE, ~12 lines, no dependencies)
 
 ### Removed
+- jquery.orbit-1.4.0.js and jquery.reveal.js script references from all pages (no longer used)
+- ~145 lines of Orbit/Reveal CSS (orbit-wrapper, slider-nav, orbit-caption, orbit-bullets, reveal-modal)
+- Orbit/Reveal JS setup in common.js (~50 lines of jQuery plugin calls)
+- 22 external orbit-caption divs from services page HTML
 - jQuery Orbit initialisation for home page slides in common.js
 - Orbit-specific CSS rules (.orbit-slide, loading gif, display:none defaults)
 

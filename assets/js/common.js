@@ -138,57 +138,64 @@ $("article.services .services-list h2").css('cursor','pointer')
   $('.pic-grid li').bgTransparency({
     duration: 300
   });
-  // set up modals
-  $('.pic-grid li').click(function() {
-	  $('#pic-grid-slides').trigger('orbit.goto', $(this).index());
-	  $('#pic-grid-modal').reveal({
-	     animation: 'fade',                   //fade, fadeAndPop, none
-	     animationspeed: 300,                       //how fast animtions are
-	     closeonbackgroundclick: true,              //if you click background will modal close?
-	     dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
-	  });
+
+// Services modal sliders (vanilla JS, replaces Orbit + Reveal)
+(function() {
+  function modalSlider(modalId, slidesId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return null;
+    var track = document.getElementById(slidesId);
+    var total = track.querySelectorAll('.modal-slide').length;
+    var current = 0;
+
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    }
+    function open(i) {
+      goTo(i || 0);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modal.querySelector('.modal-prev').addEventListener('click', function() { goTo(current - 1); });
+    modal.querySelector('.modal-next').addEventListener('click', function() { goTo(current + 1); });
+    modal.querySelector('.modal-close').addEventListener('click', close);
+    modal.addEventListener('click', function(e) { if (e.target === modal) close(); });
+
+    return { open: open };
+  }
+
+  // Typesetting samples — open to the clicked thumbnail index
+  var pg = modalSlider('pic-grid-modal', 'pic-grid-slides');
+  if (pg) {
+    document.querySelectorAll('.pic-grid li').forEach(function(li, i) {
+      li.addEventListener('click', function() { pg.open(i); });
+    });
+  }
+
+  // eBook samples — always open to slide 0
+  var eb = modalSlider('ebook-modal', 'ebook-slides');
+  if (eb) {
+    document.querySelectorAll('.start-ebook-slides').forEach(function(el) {
+      el.addEventListener('click', function() { eb.open(0); });
+    });
+  }
+
+  // Escape key closes any open modal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
   });
-  $('.start-ebook-slides').click(function() {
-	  $('#ebook-slides').trigger('orbit.goto', 0);
-	  $('#ebook-modal').reveal({
-	     animation: 'fade',                   //fade, fadeAndPop, none
-	     animationspeed: 300,                       //how fast animtions are
-	     closeonbackgroundclick: true,              //if you click background will modal close?
-	     dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
-	  });
-  });
-  // start the slides
-  $('#pic-grid-slides').orbit({
-  	 animation: 'horizontal-push',                  // fade, horizontal-slide, vertical-slide, horizontal-push
-     animationSpeed: 800,                // how fast animtions are
-     timer: false, 			 // true or false to have the timer
-     // advanceSpeed: 4000, 		 // if timer is enabled, time between transitions 
-     // pauseOnHover: false, 		 // if you hover pauses the slider
-     // startClockOnMouseOut: false, 	 // if clock should start on MouseOut
-     // startClockOnMouseOutAfter: 1000, 	 // how long after MouseOut should the timer start again
-     directionalNav: true, 		 // manual advancing directional navs
-     captions: true, 			 // do you want captions?
-     captionAnimation: 'slideOpen', 		 // fade, slideOpen, none
-     captionAnimationSpeed: 800, 	 // if so how quickly should they animate in
-     bullets: false,			 // true or false to activate the bullet navigation
-     bulletThumbs: false,		 // thumbnails for the bullets
-     bulletThumbLocation: '',		 // location from this file where thumbs will be
-//     afterSlideChange: function(){}, 	 // empty function 
-     fluid: true                         // or set a aspect ratio for content slides (ex: '4x3')   
-     });
-  $('#ebook-slides').orbit({
-  	 animation: 'horizontal-push',                  // fade, horizontal-slide, vertical-slide, horizontal-push
-     animationSpeed: 800,                // how fast animtions are
-     timer: false, 			 // true or false to have the timer
-     directionalNav: true, 		 // manual advancing directional navs
-     captions: true, 			 // do you want captions?
-     captionAnimation: 'slideOpen', 		 // fade, slideOpen, none
-     captionAnimationSpeed: 800, 	 // if so how quickly should they animate in
-     bullets: false,			 // true or false to activate the bullet navigation
-     bulletThumbs: false,		 // thumbnails for the bullets
-     bulletThumbLocation: '',		 // location from this file where thumbs will be
-     fluid: true                         // or set a aspect ratio for content slides (ex: '4x3')   
-     });
+})();
 
 // ------ CLIENTS PAGE -------- //
 

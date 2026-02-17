@@ -470,7 +470,7 @@ article.about .slideshow-home {
    ========================================================================== */
 .services-list {
   padding-top: 20px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 .services-list h2 {
   text-align: center;
@@ -519,7 +519,7 @@ article.about .slideshow-home {
 .services-list figure.square-banner figcaption {
   float: right;
   font-style: italic;
-  font-size: 1.66em;
+  font-size: 0.85em;
   line-height: 20px;
   height: 20px;
   color: var(--color-red);
@@ -532,7 +532,7 @@ article.about .slideshow-home {
 .services-list figure.left-banner figcaption {
   float: left;
   font-style: italic;
-  font-size: 1.66em;
+  font-size: 0.85em;
   line-height: 25px;
   color: var(--color-red);
   border-right: 20px solid var(--color-red);
@@ -546,7 +546,7 @@ article.about .slideshow-home {
 .services-list figure.hosting-banner figcaption {
   float: right;
   font-style: italic;
-  font-size: 1.66em;
+  font-size: 0.85em;
   line-height: 20px;
   height: 20px;
   color: var(--color-red);
@@ -555,127 +555,30 @@ article.about .slideshow-home {
   margin-top: 20px;
 }
 
-/* --- Orbit Slider (services modals) --- */
-#pic-grid-slides, #ebook-slides {
-  height: 550px;
-  width: 712px;
-  background: url('../img/loading.gif') no-repeat center center;
-}
-#pic-grid-slides img, #pic-grid-slides div,
-#ebook-slides img, #ebook-slides div {
+/* ==========================================================================
+   Modal Slider (services page galleries)
+   ========================================================================== */
+.modal-overlay {
   display: none;
-  background: url('../img/body-light-bg.png') repeat;
-}
-#pic-grid-slides .orbit-slide, #ebook-slides .orbit-slide { height: 550px; width: 712px; }
-#ebook-slides .orbit-slide { height: 431px; }
-
-/* ==========================================================================
-   Orbit Slider (shared)
-   ========================================================================== */
-div.orbit-wrapper { position: relative; }
-div.orbit { position: relative; overflow: hidden; }
-div.orbit .orbit-slide { max-width: 100%; position: absolute; top: 0; left: 0; }
-div.orbit a.orbit-slide { border: none; line-height: 0; display: none; }
-div.orbit div.orbit-slide { width: 100%; height: 100%; }
-.orbit, .orbit-wrapper { width: 100% !important; }
-.orbit .fluid-placeholder { visibility: hidden; position: static; display: block; width: 100%; }
-div.orbit-wrapper div.slider-nav { display: block; }
-div.orbit-wrapper div.slider-nav span {
-  width: 78px;
-  height: 100px;
-  text-indent: -99999px;
-  position: absolute;
-  z-index: 30;
-  top: 50%;
-  margin-top: -50px;
-  cursor: pointer;
-}
-div.orbit-wrapper div.slider-nav span.right {
-  background: url('../img/orbit/right-arrow.png');
-  right: 0;
-}
-div.orbit-wrapper div.slider-nav span.left {
-  background: url('../img/orbit/left-arrow.png');
-  left: 0;
-}
-.orbit-wrapper .orbit-caption {
-  background: none;
-  background: rgba(0, 0, 0, 0.05);
-  font-family: inherit;
-  z-index: 30;
-  color: #fff;
-  text-align: center;
-  padding: 7px 0;
-  font-size: 13px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-}
-.orbit-wrapper .orbit-caption p {
-  font-style: italic;
-  text-indent: 0;
-  font-size: 1.3em;
-  color: var(--color-gray);
-}
-.orbit-wrapper .orbit-caption p a { color: var(--color-red); border-bottom: 0; }
-.orbit-wrapper .orbit-caption p.caption-title {
-  text-transform: lowercase;
-  font-variant: small-caps;
-  letter-spacing: 0.12em;
-  font-style: normal;
-  font-size: 1.6em;
-  font-family: var(--font-heading);
-}
-/* Orbit timer/bullets (keep minimal for JS compatibility) */
-div.orbit-wrapper div.timer { display: none; }
-ul.orbit-bullets {
-  position: absolute;
-  z-index: 30;
-  list-style: none;
-  bottom: -40px;
-  left: 50%;
-  margin-left: -50px;
-  padding: 0;
-}
-ul.orbit-bullets li {
-  float: left;
-  margin-left: 5px;
-  cursor: pointer;
-  text-indent: -99999px;
-  background: url('../img/orbit/bullets.jpg') no-repeat 4px 0;
-  width: 13px;
-  height: 12px;
-  overflow: hidden;
-}
-ul.orbit-bullets li.active { background-position: -8px 0; }
-
-/* ==========================================================================
-   Reveal Modal
-   ========================================================================== */
-.reveal-modal-bg {
   position: fixed;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  inset: 0;
   z-index: 40;
-  display: none;
-  top: 0;
-  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
 }
-.reveal-modal {
-  visibility: hidden;
-  top: 0;
-  left: 0;
-  margin: 0 auto;
+.modal-overlay.active { display: flex; }
+.modal-content {
+  position: relative;
+  max-width: 900px;
+  width: 90%;
+  overflow: visible;
   background: url('../img/body-light-bg.png') repeat;
-  position: absolute;
-  z-index: 41;
-  padding: 30px 40px 34px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 30px 40px 34px;
 }
-.reveal-modal .close-reveal-modal {
+.modal-close {
   font-size: 22px;
   line-height: 0.5;
   position: absolute;
@@ -684,20 +587,73 @@ ul.orbit-bullets li.active { background-position: -8px 0; }
   color: #aaa;
   font-weight: bold;
   cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 2;
 }
-#pic-grid-modal, #ebook-modal {
-  width: 712px;
-  left: 50%;
-  margin-left: -396px;
-  top: 10%;
+.modal-slider {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: calc(90vh - 64px);
+  position: relative;
 }
-#pic-grid-modal div.orbit-wrapper div.slider-nav span.right,
-#ebook-modal div.orbit-wrapper div.slider-nav span.right { margin-right: -80px; }
-#pic-grid-modal div.orbit-wrapper div.slider-nav span.left,
-#ebook-modal div.orbit-wrapper div.slider-nav span.left { margin-left: -80px; }
-#ebook-modal .orbit-caption { background: none; }
-#pic-grid-modal { height: 630px; }
-#ebook-modal { height: 511px; }
+.modal-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.modal-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.modal-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.modal-slide figcaption {
+  text-align: center;
+  padding: 7px 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+.modal-slide figcaption p {
+  font-style: italic;
+  text-indent: 0;
+  font-size: 0.85em;
+  color: var(--color-gray);
+}
+.modal-slide figcaption p a { color: var(--color-red); border-bottom: 0; }
+.modal-slide figcaption .caption-title {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-style: normal;
+  font-size: 1.3em;
+  padding-bottom: 0.25em;
+  line-height: 0.8;
+  font-family: var(--font-heading);
+}
+/* Nav arrows — overlaid on image area only, same style as home page */
+.modal-prev, .modal-next {
+  position: absolute;
+  top: 35%;
+  height: 20%;
+  width: 60px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  z-index: 2;
+}
+.modal-prev { left: -30px; }
+.modal-next { right: -30px; }
+.modal-prev:hover, .modal-next:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
 
 /* ==========================================================================
    Clients Page
@@ -1102,35 +1058,32 @@ html.fouc, html.wf-loading {
   article.about .columnar { order: 3; }
   article.about .intro p { height: auto; }
 
-  /* Services: fluid figures */
-  .services-list figure.square-banner { width: 100%; max-width: 300px; }
-  .services-list .pic-grid { width: 100%; max-width: 240px; }
+  /* Services: stack aside below text at tablet */
+  .services-list .dropdown { flex-direction: column; }
+  .service-aside { flex: none; }
+  .services-list figure.square-banner {
+    float: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
+  }
+  .services-list figure.left-banner img,
+  .services-list figure.hosting-banner img {
+    float: none;
+    max-width: 100%;
+  }
+  .services-list .pic-grid {
+    width: 100%;
+    max-width: 240px;
+    float: none;
+    margin: 20px 0;
+  }
 
   /* Contact: fluid form */
   article.contact form.nice { width: 100%; max-width: 360px; }
 
   /* Footer */
   footer p.address { padding-left: 30px; }
-
-  /* Modals */
-  .reveal-modal {
-    width: 80% !important;
-    left: 10% !important;
-    margin-left: 0 !important;
-    top: 60px !important;
-  }
-  #pic-grid-modal, #ebook-modal {
-    width: 80%;
-    left: 10%;
-    margin-left: 0;
-  }
-  #pic-grid-modal, #ebook-modal { height: auto; }
-  #pic-grid-slides, #ebook-slides { width: 100%; height: auto; }
-  #pic-grid-slides .orbit-slide, #ebook-slides .orbit-slide { width: 100%; height: auto; }
-  #pic-grid-modal div.orbit-wrapper div.slider-nav span.right,
-  #ebook-modal div.orbit-wrapper div.slider-nav span.right { margin-right: 0; }
-  #pic-grid-modal div.orbit-wrapper div.slider-nav span.left,
-  #ebook-modal div.orbit-wrapper div.slider-nav span.left { margin-left: 0; }
 
   /* Clients: narrow columns, unfloat logo at tablet */
   div.clients {
@@ -1218,29 +1171,11 @@ html.fouc, html.wf-loading {
     margin-left: 0;
   }
 
-  /* --- Services Page: stack to single column --- */
-  .services-list { margin-bottom: 60px; }
+  /* --- Services Page: phone-specific overrides (stacking inherited from tablet) --- */
+  .services-list { margin-bottom: 30px; }
   .services-list h2 { font-size: 26px; line-height: 40px; }
-  .services-list .dropdown { flex-direction: column; }
-  .service-aside { flex: none; width: 100%; }
-  .services-list figure.square-banner {
-    float: none;
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin: 20px 0;
-  }
-  .services-list figure.left-banner img,
-  .services-list figure.hosting-banner img {
-    float: none;
-    max-width: 100%;
-  }
-  .services-list .pic-grid {
-    width: 100%;
-    max-width: 100%;
-    float: none;
-    margin: 20px 0;
-  }
+  .services-list figure.square-banner { max-width: 100%; }
+  .services-list .pic-grid { max-width: 100%; }
 
   /* --- Clients Page: stack to single column --- */
   div.clients {
@@ -1336,20 +1271,8 @@ html.fouc, html.wf-loading {
     white-space: normal;
   }
 
-  /* --- Modals --- */
-  .reveal-modal {
-    width: 90% !important;
-    left: 5% !important;
-    margin-left: 0 !important;
-    top: 10px !important;
-    padding: 15px;
-  }
-  #pic-grid-modal, #ebook-modal {
-    width: 90%;
-    left: 5%;
-    margin-left: 0;
-    height: auto;
-  }
+  /* --- Modals: reduced padding on phone --- */
+  .modal-content { padding: 15px; }
 }
 
 /* ==========================================================================

@@ -19,6 +19,8 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `publishing-services.html` - updated: sprite spans replaced with img tags
 - `assets/js/common.js` - updated: added hamburger toggle handler
 - `index-static.html` - standalone preview page for development
+- `clients-static.html` - standalone preview page for development
+- `services-static.html` - standalone preview page for development
 - `CLAUDE.md` - this file
 - `CHANGELOG.md` - project changelog
 - `.gitignore`
@@ -56,8 +58,6 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 
 ## Key dependencies still in use
 - jQuery (loaded via modernizr.foundation.js)
-- jquery.orbit-1.4.0.js (services page slider/modals only; removed from home page)
-- jquery.reveal.js (modals)
 - jquery.color.js (animated colour transitions for fading links)
 - jquery.sharrre.js (social media buttons)
 - Google WebFont Loader (EB Garamond + Lato)
