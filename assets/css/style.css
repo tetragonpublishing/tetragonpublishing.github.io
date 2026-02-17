@@ -904,6 +904,33 @@ article.contact #contact_loader {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+.blog-layout .blog-item-content ul { margin: 20px 0; }
+.blog-layout .blog-item-content ul li {
+  background: url('../img/bullet.png') no-repeat 0 10px;
+  margin-left: 65px;
+  padding-left: 22px;
+  text-indent: 0;
+}
+.blog-layout .blog-item-content figure {
+  margin: 25px 0;
+}
+.blog-layout .blog-item-content figure img {
+  width: 100%;
+  border: 1px solid var(--color-gray);
+  opacity: 0.9;
+}
+.blog-layout .blog-item-content figure figcaption {
+  font-size: 0.85em;
+  color: var(--color-gray);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+  text-indent: 0;
+}
+.blog-layout .blog-item-content code {
+  font-size: 0.8em;
+}
 .blog-layout .aut {
   text-align: right;
   color: var(--color-red);
@@ -1239,6 +1266,10 @@ html.fouc, html.wf-loading {
   /* --- Blog: stack to single column --- */
   .blog-layout {
     grid-template-columns: 1fr;
+  }
+  .blog-layout .blog-item-content ul li {
+    margin-left: 15px;
+    font-size: 18px;
   }
 
   /* --- Footer --- */

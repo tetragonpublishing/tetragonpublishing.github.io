@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="title" content="Popup Footnotes in iOS" />
-	<meta name="description" content="Solutions for popup footnote issues in ePub 3 on iOS devices" />
+	<meta name="title" content="Killing Runts in InDesign with Grep" />
+	<meta name="description" content="How to use GREP styles in InDesign to eliminate runts at the end of paragraphs" />
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	<title>Tetragon | Popup Footnotes in iOS</title>
+	<title>Tetragon | Killing Runts in InDesign with Grep</title>
 
 	<script type="text/javascript">
 	    document.documentElement.className = 'fouc';
@@ -51,31 +51,52 @@
 	<div class="blog-main">
 		<div class="blog-item post">
 			<hgroup>
-				<h1 class="blog-item-title"><a href="/blog/2017/02/02/popup-footnotes-in-ios">Popup Footnotes in iOS</a></h1>
+				<h1 class="blog-item-title"><a href="/blog/2012/05/25/killing-runts-in-indesign-with-grep">Killing Runts in InDesign with Grep</a></h1>
 				<h2 class="blog-item-meta">
-					<span class="post-date">Feb 2 '17</span>
+					<span class="post-date">May 25 '12</span>
 					<span class="post-author">Posted By: A B</span>
 				</h2>
 			</hgroup>
 
 			<div class="blog-item-content bodytext">
-				<p>
-				If you're hoping to create eBooks in the ePub 3 format with popup notes, you might have been plagued by some issues getting iOS to work happily. There are instructions in a few places detailing how to do this, but there isn't much help with the various glitches you find using iOS as opposed to iBooks. The main problem I've found is that iOS can freeze when you click on a link to a footnote that's stored in a separate file (e.g. "notes.xhtml"). This doesn't happen with iBooks on a Mac. There are two possible solutions that I've found, at least at the moment:&nbsp;</p>
-				<ul><li>
-					You can have your entire eBook in one single XHTML file. iOS iBooks works fine with this for some reason, since the references are in the same file. However, this can mean slow loading and poor formatting on Adobe Digital Editions (ADE), which doesn't honour "page-break-before: always" CSS, so everything is likely to stream together in one ungainly mess on some e-readers.</li>
-				<li>
-					Through a tedious process of trial and error on one book, I've found that if there are more than 300 note references in a separate notes file, iOS simply freezes when you click on a note cue. Therefore, you'll need to split your notes into separate XHTML files, with each file containing fewer than 300 references. For books that have separate sections (e.g. "Notes to Chapter 1", "Notes to Chapter 2"), this should be fairly straightforward if there are less than 300 notes in all chapters, which is (at least in the books I work on) fairly standard.</li>
+				<p>There's always been a certain degree of confusion as to the definition of "orphans", "widows" and "runts" in typography. Runts are occasionally referred to as orphans, which does not help matters. And they are sometimes (mistakenly) called widows, too. So let's just clear this up once and for all:</p>
+				<ul>
+					<li><strong>Orphans</strong>&nbsp;are, to quote <a href="http://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style">Bringhurst</a>, "isolated lines created when paragraphs&nbsp;<em>begin</em> on the <em>last</em> line of a page&hellip; They have no past, but they have a future, and they need not trouble the typographer". As a rule, I try to avoid them without going too far out of my way.</li>
+					<li><strong>Widows</strong>&nbsp;are "the stub-ends left when paragraphs&nbsp;<em>end&nbsp;</em>on the&nbsp;<em>first</em> line of a page&hellip; They have a past but not a future, and they look foreshortened and forlorn. It is the custom&hellip; to give them one additional line for company".</li>
+					<li><strong>Runts</strong> are words which share this demeanour: they are short words at the end of a multiline paragraph, or the short, last part of a longer hyphenated word which ends a paragraph. The definition of "short" is really a visual one, but certainly if it ends before the first line indent of the following paragraph, it's not going to look terribly nice.</li>
 				</ul>
-				<p>
-				I hope that's useful for some of you out there struggling with the boring stuff!</p>
+				<p>InDesign has a few features to help deal with runts.&nbsp;The first of these is in the hyphenation control. You can disable the hyphenation of the last word in a paragraph in that paragraph's style options (and set various other limits, too). So far, so good.</p>
+				<p>To deal with runts that are whole words, we need to bring out the big guns: GREP styles. It's worth getting to grips with GREPs if you manipulate text a lot, as they can save a lot of time in typesetting. Here's how I do things:</p>
+				<ul>
+					<li>Create a new character style called "no-break", based on "none". Under "Basic Character Formats", just tick "No Break".</li>
+				</ul>
+				<figure>
+					<img alt="GREP - no break char" width="480" height="297" src="assets/uploads/media_items/grep-no-break-char.480.297.s.png" />
+					<figcaption>Simple "no break" character style</figcaption>
+				</figure>
+				<ul>
+					<li>In the paragraph style in which you want to kill off runts, go to "GREP Style" [why not plural?!]</li>
+					<li>Create a new GREP style. We want to use the following GREP (note the space character at the very start):</li>
+					<li><code>&nbsp;[^ ]{1,5}[[:space:]]*$</code></li>
+				</ul>
+				<figure>
+					<img alt="GREP - no break style" width="480" height="400" src="assets/uploads/media_items/grep-no-break-style.480.400.s.png" />
+					<figcaption>Applying the style with a GREP</figcaption>
+				</figure>
+				<ul>
+					<li>In plain(er) English, this means "find a space, followed by 1-5 non-spaces, and ending either with a carriage return or some empty space and then a carriage return (because quite often you end up working with texts that have pointless but harmless&nbsp;spaces at the end of paragraphs).</li>
+				</ul>
+				<p>That's all there is to it. If you want to change the length of what's considered a "runt" (to make it shorter, for example), just change the 5 to 3 or 4.</p>
+				<p>Unfortunately, InDesign has precious few to deal with orphans and widows, which I check for manually. This is a bit tedious and I've developed some scripts to locate them, but really it all depends on the dynamics of the text on the page, so it needs a bit of human love.</p>
 			</div>
 
 			<div class="aut">&mdash; A B</div>
 			<div class="blog-item-tags tags">
 				<span class="blog-item-tags-label">Tags:</span>
-				<a href="/blog/tag/ebooks">eBooks</a>,
-				<a href="/blog/tag/epub">ePub</a>,
-				<a href="/blog/tag/popup-footnotes">Popup Footnotes</a>
+				<a href="/blog/tag/grep">Grep</a>,
+				<a href="/blog/tag/indesign">InDesign</a>,
+				<a href="/blog/tag/typesetting">Typesetting</a>,
+				<a href="/blog/tag/typography">Typography</a>
 			</div>
 		</div>
 	</div>
