@@ -1,61 +1,101 @@
-// Google Maps
-function initialize() {
-  var latlng = new google.maps.LatLng(51.54039047516868, -0.14271204359829426);
-  var map = new google.maps.Map(document.getElementById('map_canvas'), {
-    zoom: 14,
-    center: latlng,
-    disableDefaultUI: true,
-    scaleControl: true,
-    zoomControl: true,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+/* ==========================================================================
+   Tetragon Publishing — contact.js
+   Vanilla JS. No frameworks.
+   ========================================================================== */
+(function() {
+  'use strict';
+
+  // Google Maps
+  function initialize() {
+    var latlng = new google.maps.LatLng(51.54039047516868, -0.14271204359829426);
+    var map = new google.maps.Map(document.getElementById('map_canvas'), {
+      zoom: 14,
+      center: latlng,
+      disableDefaultUI: true,
+      scaleControl: true,
+      zoomControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    new google.maps.Marker({
+      position: latlng,
+      map: map,
+      icon: '/assets/img/marker.png',
+      title: 'Tetragon'
+    });
+  }
+
+  // Expose callback for Google Maps async load
+  window._initMap = initialize;
+
+  // Load Google Maps script
+  function loadMapScript() {
+    var script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmNn6HldGUbESi0i0ubVWWJ3bbrGuT2Wc&callback=_initMap';
+    document.body.appendChild(script);
+  }
+
+  // Contact form
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  var submitBtn = document.getElementById('contact_submit');
+  var loader = document.getElementById('contact_loader');
+  var result = document.getElementById('contact_res');
+
+  // Enable all inputs and clear fields
+  form.querySelectorAll('input, textarea').forEach(function(el) {
+    el.removeAttribute('disabled');
   });
-  new google.maps.Marker({
-    position: latlng,
-    map: map,
-    icon: '/assets/img/marker.png',
-    title: 'Tetragon'
+  ['contact_name', 'contact_enquiry', 'contact_email', 'contact_company'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
   });
-}
 
-function loadScript() {
-  var script = document.createElement('script');
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmNn6HldGUbESi0i0ubVWWJ3bbrGuT2Wc&sensor=true&callback=initialize';
-  document.body.appendChild(script);
-}
+  if (result) result.style.display = 'none';
+  if (submitBtn) submitBtn.style.display = '';
 
-// Contact form
-$(document).ready(function() {
-  $('input, textarea').removeAttr('disabled');
-  $('#contact_name, #contact_enquiry, #contact_email, #contact_company').val('');
-  $('#contact_res').hide();
-  $('#contact_submit').show();
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function(e) {
+      e.preventDefault();
 
-  $('#contact_submit').click(function() {
-    if ($('#contact-form')[0].checkValidity()) {
-      $('#contact_submit').hide();
-      $('#contact_loader').show();
-      $.ajax({
-        type: 'POST',
-        url: 'https://dev.tetragonpublishing.com/m',
-        data: $('#contact-form').serialize(),
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
-        success: function(data) {
-          if (!data.success) {
-            alert(data.errors);
-            $('#contact_submit').show();
-          } else {
-            $('#contact-form').hide();
-            $('#contact_res').show();
-            $('#contact_res').html('<p><span class="dropcap">T</span>hanks for your enquiry. We\'ll do our best to get back to you within a day.</p>');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitBtn.style.display = 'none';
+      if (loader) loader.style.display = '';
+
+      fetch('https://dev.tetragonpublishing.com/m', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if (!data.success) {
+          alert(data.errors);
+          submitBtn.style.display = '';
+        } else {
+          form.style.display = 'none';
+          if (result) {
+            result.style.display = '';
+            result.innerHTML = '<p><span class="dropcap">T</span>hanks for your enquiry. We\'ll do our best to get back to you within a day.</p>';
           }
-          $('#contact_loader').hide();
         }
+        if (loader) loader.style.display = 'none';
+      })
+      .catch(function() {
+        alert('An error occurred. Please try again.');
+        submitBtn.style.display = '';
+        if (loader) loader.style.display = 'none';
       });
-    } else {
-      $('#contact-form')[0].reportValidity();
-    }
-    return false;
-  });
+    });
+  }
 
-  loadScript();
-});
+  // Load the map
+  loadMapScript();
+})();

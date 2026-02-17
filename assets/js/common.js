@@ -1,388 +1,429 @@
-// add absolute positioned empty divs for browsers without multiple bgs
-// ## this is now unnecessary
-// $(".no-multiplebgs body").prepend('<div class="nobg-header"/>').append('<div class="nobg-footer"/>');
-
-/* fading links */
-jQuery.fn.fadeToOriginal = function(settings) {
-	settings = jQuery.extend({
-		duration: 300
-		}, settings);
-	$(this).animate({ color: $(this).data('originalColour') },settings.duration, function() {
-    	if ($(this).data('originalAttr') == null) {
-    		$(this).css('color','');	// wipe the attribute instead of fixing it in the style override, if there never was one
-    	}
-    	$(this).removeClass('sel');
-    });
-};
-	
-jQuery.fn.dwFadingLinks = function(settings) {
-  settings = jQuery.extend({
-    color: '#ff8c00',
-    duration: 300,
-    ignoreClass: 'sel'
-  }, settings);
-  return this.each(function() {
-    $(this).data('originalColour', $(this).css('color'));
-    $(this).data('originalAttr', $(this).attr('color'));
-    $(this).mouseover(function() {
-    	if (!($(this).hasClass(settings.ignoreClass))) {
-    		$(this).css('cursor','pointer');
-        	$(this).animate({ color: settings.color },settings.duration); 
-    	}
-    	else {
-    		$(this).css('cursor','default');
-    	}
-    });
-    $(this).mouseout(function() { 
-    	if (!($(this).hasClass(settings.ignoreClass))) {
-    		$(this).css('cursor','pointer');
-        	$(this).fadeToOriginal(settings);
-    	}
-    	else {
-    		$(this).css('cursor','default');
-    	}
-    });
-  });
-};
-
-jQuery.fn.bgTransparency = function(settings) {
-  settings = jQuery.extend({
-    duration: 300
-  }, settings);
-  return this.each(function() {
-    $(this).mouseover(function() { $(this).animate({ opacity: 0.3 },settings.duration); });
-    $(this).mouseout(function() { $(this).animate({ opacity: 0.6 },settings.duration); });
-  });
-};
-
-jQuery.fn.createMail = function () {
-    var atsign = / собачка /;
-    var dot = / точка /g;
-    this.each(function () {
-      var addr = $(this).text().replace(atsign, "@").replace(dot, ".");
-      var title = $(this).attr('title');
-      $(this).after('<a title="' + title + '" href="mailto:' + addr + '?Subject=' + title + '">' + addr + '</a>')
-             .remove();
-    });
-};
-
-// fixes for ie7 and below
-// $("html.lt-ie8 div.orbit-caption p").each((function() { $(this).css('bottom', '-30px').css('background', 'black');}) ); 
-
-function findLast(element, pattern, callback) {
-    for (var childi = element.childNodes.length; childi-->0;) {
-        var child = element.childNodes[childi];
-        if (child.nodeType == 1) {
-            findLast(child, pattern, callback);
-        } else if (child.nodeType == 3) {
-            var lastIndex = child.data.lastIndexOf(pattern);
-            if (lastIndex !== -1) {
-                callback.call(window, child, child.data.substr(lastIndex, pattern.length));
-            }
-        }
-    }
-}
-// add end of article block
-
-// ---- DROPCAPS BECAUSE CSS FIRST-LETTER SELECTOR HAS TROUBLE WITH HEIGHTS
-$(".bodytext").each(function() {
-	$(this).find('p:first').html(function() { 
-	    if ($(this).html().trim().substr(0,1) == "<") {
-		$(this).find(">:first-child").html(($(this).children(1).html().replace(/[ ]*([A-Za-z\?])(.*)/g, "<span class='dropcap'>$1</span>$2")));
-
-		return $(this).html();
-	    }
-	    else {
-		return($(this).html().replace(/[ ]*([A-Za-z\?])(.*)/g, "<span class='dropcap'>$1</span>$2"));
-	    }
-	});
-	$(this).find('p:last').html(function() { 
-	// get last word from text
-	      var lastWord = (/.*[\s-](\S+)/.exec($(this).text())[1]);
-	      // this instead of $(this) as we're switching out of jQuery mode
-	      findLast(this, lastWord, function(node, match) {
-	        var lastWordSpan = document.createElement('span');
-	        lastWordSpan.className= 'article-end';
-	        var lastWordNode = node.splitText(node.data.lastIndexOf(match));
-	        lastWordSpan.appendChild(lastWordNode);
-	        // create a span for the end block
-	        var endBlockSpan = document.createElement('span');
-	        endBlockSpan.className = 'article-end-block';
-	        lastWordSpan.appendChild(endBlockSpan);
-	        node.parentNode.insertBefore(lastWordSpan, node.nextSibling);
-	      });
-	    });  
-});
-
-// NAV FADING LINKS //
-$('#main-nav a').dwFadingLinks({
-  color: '#A01714', // tetragon red
-  duration: 300
-});
-
-
-// ---- SERVICES PAGE ----- /
-$("article.services .dropdown").hide();
-$("article.services .services-list h2").css('cursor','pointer')
-	.dwFadingLinks({
-	    color: '#A01714', // tetragon red
-	    duration: 300
-	})
-	.click(
-        function() {
-        	$(this).next().slideToggle();
-        }
-	);
-
-	// activate fading links
-  $('.pic-grid li').bgTransparency({
-    duration: 300
-  });
-
-// Services modal sliders (vanilla JS, replaces Orbit + Reveal)
+/* ==========================================================================
+   Tetragon Publishing — common.js
+   Vanilla JS. No frameworks.
+   ========================================================================== */
 (function() {
-  function modalSlider(modalId, slidesId) {
-    var modal = document.getElementById(modalId);
-    if (!modal) return null;
-    var track = document.getElementById(slidesId);
-    var total = track.querySelectorAll('.modal-slide').length;
-    var current = 0;
+  'use strict';
 
-    function goTo(n) {
-      current = ((n % total) + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    }
-    function open(i) {
-      goTo(i || 0);
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function close() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    modal.querySelector('.modal-prev').addEventListener('click', function() { goTo(current - 1); });
-    modal.querySelector('.modal-next').addEventListener('click', function() { goTo(current + 1); });
-    modal.querySelector('.modal-close').addEventListener('click', close);
-    modal.addEventListener('click', function(e) { if (e.target === modal) close(); });
-
-    return { open: open };
+  /* --- Utility: fade out an element ------------------------------------ */
+  function fadeOut(el, duration, callback) {
+    if (!el) { if (callback) callback(); return; }
+    el.style.transition = 'opacity ' + duration + 'ms';
+    el.style.opacity = '0';
+    setTimeout(function() {
+      el.style.display = 'none';
+      el.style.transition = '';
+      el.style.opacity = '';
+      if (callback) callback();
+    }, duration);
   }
 
-  // Typesetting samples — open to the clicked thumbnail index
-  var pg = modalSlider('pic-grid-modal', 'pic-grid-slides');
-  if (pg) {
-    document.querySelectorAll('.pic-grid li').forEach(function(li, i) {
-      li.addEventListener('click', function() { pg.open(i); });
+  /* --- Utility: fade in an element ------------------------------------- */
+  function fadeIn(el, duration, callback) {
+    if (!el) { if (callback) callback(); return; }
+    el.style.opacity = '0';
+    el.style.display = '';
+    el.offsetHeight; // force reflow
+    el.style.transition = 'opacity ' + duration + 'ms';
+    el.style.opacity = '1';
+    setTimeout(function() {
+      el.style.transition = '';
+      el.style.opacity = '';
+      if (callback) callback();
+    }, duration);
+  }
+
+  /* --- Utility: slide toggle ------------------------------------------- */
+  function slideToggle(el, duration) {
+    duration = duration || 400;
+    if (!el.offsetHeight || el.style.display === 'none') {
+      // slide down
+      el.style.display = '';
+      el.style.overflow = 'hidden';
+      var h = el.scrollHeight;
+      el.style.maxHeight = '0';
+      el.offsetHeight; // reflow
+      el.style.transition = 'max-height ' + duration + 'ms ease';
+      el.style.maxHeight = h + 'px';
+      setTimeout(function() {
+        el.style.maxHeight = '';
+        el.style.overflow = '';
+        el.style.transition = '';
+      }, duration);
+    } else {
+      // slide up
+      el.style.overflow = 'hidden';
+      el.style.maxHeight = el.scrollHeight + 'px';
+      el.offsetHeight; // reflow
+      el.style.transition = 'max-height ' + duration + 'ms ease';
+      el.style.maxHeight = '0';
+      setTimeout(function() {
+        el.style.display = 'none';
+        el.style.maxHeight = '';
+        el.style.overflow = '';
+        el.style.transition = '';
+      }, duration);
+    }
+  }
+
+  /* --- Fading links (CSS transition, replaces jquery.color.js) --------- */
+  function fadingLinks(elements, color, duration, ignoreClass) {
+    color = color || '#ff8c00';
+    duration = duration || 300;
+    ignoreClass = ignoreClass || 'sel';
+    if (typeof elements === 'string') {
+      elements = document.querySelectorAll(elements);
+    }
+    elements.forEach(function(el) {
+      el.style.transition = 'color ' + duration + 'ms';
+      el.addEventListener('mouseenter', function() {
+        if (!el.classList.contains(ignoreClass)) {
+          el.style.cursor = 'pointer';
+          el.style.color = color;
+        } else {
+          el.style.cursor = 'default';
+        }
+      });
+      el.addEventListener('mouseleave', function() {
+        if (!el.classList.contains(ignoreClass)) {
+          el.style.color = '';
+        }
+      });
     });
   }
 
-  // eBook samples — always open to slide 0
-  var eb = modalSlider('ebook-modal', 'ebook-slides');
-  if (eb) {
-    document.querySelectorAll('.start-ebook-slides').forEach(function(el) {
-      el.addEventListener('click', function() { eb.open(0); });
-    });
+  /* --- Find last text node matching pattern (for article-end block) ---- */
+  function findLast(element, pattern, callback) {
+    for (var i = element.childNodes.length; i-- > 0;) {
+      var child = element.childNodes[i];
+      if (child.nodeType === 1) {
+        findLast(child, pattern, callback);
+      } else if (child.nodeType === 3) {
+        var idx = child.data.lastIndexOf(pattern);
+        if (idx !== -1) {
+          callback(child, child.data.substr(idx, pattern.length));
+        }
+      }
+    }
   }
 
-  // Escape key closes any open modal
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
-        m.classList.remove('active');
+  /* =====================================================================
+     DROPCAPS + ARTICLE END BLOCKS
+     ===================================================================== */
+  document.querySelectorAll('.bodytext').forEach(function(bodytext) {
+    // Dropcap on first paragraph
+    var firstP = bodytext.querySelector('p');
+    if (firstP) {
+      var html = firstP.innerHTML.trim();
+      if (html.charAt(0) === '<') {
+        var firstChild = firstP.firstElementChild;
+        if (firstChild) {
+          firstChild.innerHTML = firstChild.innerHTML.replace(
+            /[ ]*([A-Za-z?])(.*)/, "<span class='dropcap'>$1</span>$2"
+          );
+        }
+      } else {
+        firstP.innerHTML = firstP.innerHTML.replace(
+          /[ ]*([A-Za-z?])(.*)/, "<span class='dropcap'>$1</span>$2"
+        );
+      }
+    }
+
+    // End-of-article block on last paragraph
+    var ps = bodytext.querySelectorAll('p');
+    var lastP = ps.length ? ps[ps.length - 1] : null;
+    if (lastP) {
+      var match = /.*[\s-](\S+)/.exec(lastP.textContent);
+      if (match) {
+        findLast(lastP, match[1], function(node, m) {
+          var span = document.createElement('span');
+          span.className = 'article-end';
+          var textNode = node.splitText(node.data.lastIndexOf(m));
+          span.appendChild(textNode);
+          var block = document.createElement('span');
+          block.className = 'article-end-block';
+          span.appendChild(block);
+          node.parentNode.insertBefore(span, node.nextSibling);
+        });
+      }
+    }
+  });
+
+  /* =====================================================================
+     EMAIL DEOBFUSCATION
+     ===================================================================== */
+  document.querySelectorAll('span.enc-mail').forEach(function(span) {
+    var addr = span.textContent.replace(/ собачка /, '@').replace(/ точка /g, '.');
+    var title = span.getAttribute('title') || '';
+    var link = document.createElement('a');
+    link.title = title;
+    link.href = 'mailto:' + addr + '?Subject=' + title;
+    link.textContent = addr;
+    span.parentNode.replaceChild(link, span);
+  });
+
+  /* =====================================================================
+     NAV FADING LINKS
+     ===================================================================== */
+  fadingLinks('#main-nav a', '#A01714', 300);
+
+  /* =====================================================================
+     SERVICES PAGE
+     ===================================================================== */
+
+  // Accordion: hide dropdowns, toggle on heading click
+  document.querySelectorAll('article.services .dropdown').forEach(function(el) {
+    el.style.display = 'none';
+  });
+  var serviceHeadings = document.querySelectorAll('article.services .services-list h2');
+  fadingLinks(serviceHeadings, '#A01714', 300);
+  serviceHeadings.forEach(function(h2) {
+    h2.style.cursor = 'pointer';
+    h2.addEventListener('click', function() {
+      slideToggle(h2.nextElementSibling);
+    });
+  });
+
+  // Pic grid opacity hover
+  document.querySelectorAll('.pic-grid li').forEach(function(li) {
+    li.style.transition = 'opacity 300ms';
+    li.addEventListener('mouseenter', function() { li.style.opacity = '0.3'; });
+    li.addEventListener('mouseleave', function() { li.style.opacity = '0.6'; });
+  });
+
+  // Modal sliders (vanilla JS, replaces Orbit + Reveal)
+  (function() {
+    function modalSlider(modalId, slidesId) {
+      var modal = document.getElementById(modalId);
+      if (!modal) return null;
+      var track = document.getElementById(slidesId);
+      var total = track.querySelectorAll('.modal-slide').length;
+      var current = 0;
+
+      function goTo(n) {
+        current = ((n % total) + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      }
+      function open(i) {
+        goTo(i || 0);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        modal.classList.remove('active');
         document.body.style.overflow = '';
+      }
+
+      modal.querySelector('.modal-prev').addEventListener('click', function() { goTo(current - 1); });
+      modal.querySelector('.modal-next').addEventListener('click', function() { goTo(current + 1); });
+      modal.querySelector('.modal-close').addEventListener('click', close);
+      modal.addEventListener('click', function(e) { if (e.target === modal) close(); });
+
+      return { open: open };
+    }
+
+    var pg = modalSlider('pic-grid-modal', 'pic-grid-slides');
+    if (pg) {
+      document.querySelectorAll('.pic-grid li').forEach(function(li, i) {
+        li.addEventListener('click', function() { pg.open(i); });
       });
     }
-  });
-})();
 
-// ------ CLIENTS PAGE -------- //
+    var eb = modalSlider('ebook-modal', 'ebook-slides');
+    if (eb) {
+      document.querySelectorAll('.start-ebook-slides').forEach(function(el) {
+        el.addEventListener('click', function() { eb.open(0); });
+      });
+    }
 
-function setWorking(state) {
-	// to track bits that are clickable so we don't queue up rubbish
-	$("body").data('working', state);
-}
-function isWorking() {
-	return $("body").data('working');
-}
-// numbered pagination
-jQuery.fn.swapToTabPage = function(settings) {
-	  settings = jQuery.extend({
-		    duration: 400,
-		    affectGlobalWorking: true,
-		    fade: true
-	}, settings);
-  	var outPage = $(this).parent().find("dd[class$=_sel]").data("page");
-	$(this).parent().find("dd[class$=_sel]").attr('class',
-		(($(this).parent().find("dd[class$=_sel]").attr('class').replace(/(.*)(nav-page-[0-9]+)_sel(.*)/,"$1$2$3"))));
-    var mainId = $(this).parent().attr("id").match(/[^-]+-(.+)/)[1];
-    var curElem = $(this);	// to access $(this) in the callback later
-    $(this).attr('class',($(this).attr('class').replace(/(.*)(nav-page-[0-9]+)(.*)/,"$1$2_sel$3")));
-    // fadeOut current, fadeIn the next
-    if (settings.fade) {
-        $("#" + mainId + " .page-"+ outPage).fadeOut(settings.duration, function() {
-        	$("#" + mainId + " .page-" + curElem.data("page")).fadeIn(settings.duration, function() {
-        		if (settings.affectGlobalWorking) {
-            		setWorking(false);
-        		}
-        	});
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+          m.classList.remove('active');
+          document.body.style.overflow = '';
         });
-    }
-    else {
-        $("#" + mainId + " .page-"+ outPage).hide();
-        $("#" + mainId + " .page-" + curElem.data("page")).show();
-    }
-}
-jQuery.fn.numberedTabHandler = function(settings) {
-  settings = jQuery.extend({
-    duration: 400
-  }, settings);
-  return this.each(function() {
-    $(this).click(function() {
-    	if (!isWorking() && (!$(this).attr('class').match(/(.*)(nav-page-[0-9]+)_sel(.*)/))) {
-    		setWorking(true);
-//////////////////////////////////////////
-        	$(this).swapToTabPage(settings);
+      }
+    });
+  })();
+
+  /* =====================================================================
+     CLIENTS PAGE
+     ===================================================================== */
+  (function() {
+    var clientsList = document.querySelector('dl.clients-list');
+    if (!clientsList) return;
+
+    var working = false;
+
+    // Hide all client sections and nav on load (so non-JS browsers still see content)
+    clientsList.querySelectorAll('dd').forEach(function(dd) {
+      var id = dd.dataset.client;
+      var section = document.getElementById(id);
+      var nav = document.getElementById('nav-' + id);
+      if (section) section.style.display = 'none';
+      if (nav) nav.style.display = 'none';
+    });
+    document.querySelectorAll('section [class^=page-]').forEach(function(el) {
+      el.style.display = 'none';
+    });
+
+    // Swap tab page within a client section
+    function swapToTabPage(dd, options) {
+      var duration = (options && options.duration !== undefined) ? options.duration : 400;
+      var affectWorking = (options && options.affectWorking !== undefined) ? options.affectWorking : true;
+      var fade = (options && options.fade !== undefined) ? options.fade : true;
+
+      var nav = dd.parentElement;
+      var selDd = nav.querySelector('dd[class*="_sel"]');
+      var outPage = selDd ? selDd.dataset.page : null;
+
+      // Remove _sel from current
+      if (selDd) {
+        selDd.className = selDd.className.replace('_sel', '');
+      }
+      // Add _sel to clicked
+      dd.className = dd.className.replace(/(nav-page-\d+)/, '$1_sel');
+
+      var mainId = nav.id.replace(/^nav-/, '');
+      var mainEl = document.getElementById(mainId);
+      if (!mainEl) return;
+
+      var inEl = mainEl.querySelector('.page-' + dd.dataset.page);
+
+      if (fade && outPage) {
+        var outEl = mainEl.querySelector('.page-' + outPage);
+        fadeOut(outEl, duration, function() {
+          fadeIn(inEl, duration, function() {
+            if (affectWorking) working = false;
+          });
+        });
+      } else {
+        if (outPage) {
+          var outEl = mainEl.querySelector('.page-' + outPage);
+          if (outEl) outEl.style.display = 'none';
         }
-    });
-  });
-  return false;
-};
+        if (inEl) inEl.style.display = '';
+      }
+    }
 
-// show the first full client page, 1st numbered page
-jQuery.fn.activatePage = function(settings) {
-	settings = jQuery.extend({
-		duration: 400
-    }, settings);
-	if (!isWorking() && !$(this).hasClass('sel')) {
-		setWorking(true);
-		$("dl.clients-list dd.sel").fadeToOriginal(); // fade old selected main nav back to normal text
-		$(this).addClass('sel');
-		// fade everything else out first, and in the callback fade in
-		var curElem = $(this);
-		// fade out existing elements:
-		
-		// this belongs in fadeOut
-		// unset "active-nav, act synchronously with the page
-		$(".active-nav").fadeOut(settings.duration, function() {
-			$(this).removeClass("active-nav");
-			// swap all tab pages back to 1 for later
-			$("dl.client-nav dd:first-child").each(function() {
-				$(this).swapToTabPage( { affectGlobalWorking: false, fade: false } );	// don't turn off waiting state
-			});
-		});
-		// if there's no active-page, just fade in; there's nothing to fade out
-		if ($(".active-page").length == 0) {
-			curElem.fadeBackIn(settings);
-		}
-		else {
-    		$(".active-page").fadeOut(settings.duration, function() {
-    			// fade in at callback
-    			$(this).removeClass("active-page");	// unset "active-page"
-    			curElem.fadeBackIn(settings);
-    		});
-    	}
-	}
-};
-jQuery.fn.fadeBackIn = function(settings) {
-    $("#" + $(this).data("client") + " .page-1").show();	// show instantly, since parent container is hidden
-    $("#nav-" + $(this).data("client")).fadeIn(settings.duration);	// show nav buttons
-    var curElem = $(this); 
-    $("#" + $(this).data("client")).fadeIn(settings.duration, function() {	// fade in parent container
-    	// callback (technically either could fade in first, but should be the same for our purposes)
-    	$("#" + curElem.data("client")).addClass("active-page");
-    	$("#nav-" + curElem.data("client")).addClass("active-nav");
-    	setWorking(false);
-    });
-    $(this).parent().find('.sel').removeClass("sel");
-    $(this).addClass("sel");
-    $(this).css('cursor','');
-}
-jQuery.fn.pageHandler = function() {
-	return this.each(function() {
-        $(this).click(function() {
-           	$(this).activatePage();
+    // Fade a client section back in
+    function fadeBackIn(dd, duration) {
+      var clientId = dd.dataset.client;
+      var section = document.getElementById(clientId);
+      var nav = document.getElementById('nav-' + clientId);
+      var page1 = section ? section.querySelector('.page-1') : null;
+
+      if (page1) page1.style.display = '';
+
+      fadeIn(nav, duration);
+      fadeIn(section, duration, function() {
+        if (section) section.classList.add('active-page');
+        if (nav) nav.classList.add('active-nav');
+        working = false;
+      });
+
+      // Update selection in client list
+      clientsList.querySelectorAll('dd.sel').forEach(function(el) {
+        if (el !== dd) el.classList.remove('sel');
+      });
+      dd.classList.add('sel');
+      dd.style.cursor = '';
+    }
+
+    // Activate a client page
+    function activatePage(dd, duration) {
+      duration = duration || 400;
+      if (working || dd.classList.contains('sel')) return;
+      working = true;
+
+      // Deselect previous
+      var prevSel = clientsList.querySelector('dd.sel');
+      if (prevSel) {
+        prevSel.style.color = '';
+        prevSel.classList.remove('sel');
+      }
+      dd.classList.add('sel');
+
+      // Fade out active nav
+      var activeNav = document.querySelector('.active-nav');
+      if (activeNav) {
+        fadeOut(activeNav, duration, function() {
+          activeNav.classList.remove('active-nav');
+          // Reset all tab pages back to page 1
+          document.querySelectorAll('dl.client-nav dd:first-child').forEach(function(firstDd) {
+            swapToTabPage(firstDd, { duration: 0, affectWorking: false, fade: false });
+          });
         });
-	});
-}
+      }
 
-// hide everything (with JS so non-JS browsers can see everything)
-$("dl.clients-list dd").each(function() {
-	$("#" + $(this).data("client")).hide();
-	$("#nav-" + $(this).data("client")).hide();	// page numbers
-});
-$("section [class^=page-]").hide();
+      // Fade out active page, then fade in new one
+      var activePage = document.querySelector('.active-page');
+      if (!activePage) {
+        fadeBackIn(dd, duration);
+      } else {
+        fadeOut(activePage, duration, function() {
+          activePage.classList.remove('active-page');
+          fadeBackIn(dd, duration);
+        });
+      }
+    }
 
+    // Set up fading links on client names
+    var clientDds = clientsList.querySelectorAll('dd');
+    fadingLinks(clientDds, '#A01714', 300, 'sel');
+    clientDds.forEach(function(dd) {
+      dd.style.cursor = 'pointer';
+      dd.addEventListener('click', function() {
+        activatePage(dd);
+      });
+    });
 
-// set the working state to allow clicks
-setWorking(false);
+    // Numbered tab handlers
+    document.querySelectorAll('dl.client-nav dd').forEach(function(dd) {
+      dd.addEventListener('click', function() {
+        if (!working && !dd.className.match(/nav-page-\d+_sel/)) {
+          working = true;
+          swapToTabPage(dd);
+        }
+      });
+    });
 
-//load the handlers for the main client nav
-$("dl.clients-list dd")
-	.css('cursor','pointer')	// only enabled for JS
-	.dwFadingLinks({
-	    color: '#A01714', // tetragon red
-	    duration: 300,
-	    ignoreClass: 'sel'
-	})
-	.pageHandler();
-$('dl.client-nav dd').numberedTabHandler();
-// on page load, load in the 1st page
-$("dl.clients-list dd:first").each(function() {
-	$(this).activatePage();
-});
+    // Activate first client on load
+    var firstClient = clientsList.querySelector('dd');
+    if (firstClient) activatePage(firstClient);
+  })();
 
-///////////////////////////////////////////////////////
-// HOME / ABOUT PAGE — custom slider
-(function() {
-  var slides = document.getElementById('home-slides');
-  if (!slides) return;
-  var total = slides.children.length;
-  var current = 0;
-  function goTo(n) {
-    current = ((n % total) + total) % total;
-    slides.style.transform = 'translateX(-' + (current * 25) + '%)';
+  /* =====================================================================
+     HOME / ABOUT PAGE — image slider
+     ===================================================================== */
+  (function() {
+    var slides = document.getElementById('home-slides');
+    if (!slides) return;
+    var total = slides.children.length;
+    var current = 0;
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      slides.style.transform = 'translateX(-' + (current * 25) + '%)';
+    }
+    var wrap = slides.parentNode;
+    var prev = wrap.querySelector('.slide-prev');
+    var next = wrap.querySelector('.slide-next');
+    if (prev) prev.addEventListener('click', function() { goTo(current - 1); });
+    if (next) next.addEventListener('click', function() { goTo(current + 1); });
+  })();
+
+  /* =====================================================================
+     FOUC + MOBILE NAV
+     ===================================================================== */
+  document.documentElement.classList.remove('fouc');
+
+  var navToggle = document.querySelector('.nav-toggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', function() {
+      navToggle.parentElement.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded',
+        navToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+    });
   }
-  var wrap = slides.parentNode;
-  var prev = wrap.querySelector('.slide-prev');
-  var next = wrap.querySelector('.slide-next');
-  if (prev) prev.addEventListener('click', function() { goTo(current - 1); });
-  if (next) next.addEventListener('click', function() { goTo(current + 1); });
+
 })();
-
-/////////// FOUC /////////////
-// remove the fouc class from html
-$('html.fouc').removeClass('fouc');
-$('span.enc-mail').createMail();
-
-// SOCIAL MEDIA (after FOUC) //////////////
-$('#social-media').sharrre({
- share: {
-  googlePlus: true,
-  facebook: true,
-  twitter: true,
-  digg: true
- },
- enableTracking: true,
- buttons: {
-  googlePlus: {size: 'tall'},
-  facebook: {layout: 'box_count'},
-  twitter: {count: 'vertical', via: '_tetragon'},
-  digg: {type: 'DiggMedium'}
- },
- hover: function(api, options){
-  $(api.element).find('.buttons').show();
- },
- hide: function(api, options){
-  $(api.element).find('.buttons').hide();
- },
- urlCurl: '/s'
-});
-
-// Mobile nav toggle
-$('.nav-toggle').on('click', function() {
-    $(this).parent().toggleClass('nav-open');
-    $(this).attr('aria-expanded',
-        $(this).attr('aria-expanded') === 'false' ? 'true' : 'false');
-});
