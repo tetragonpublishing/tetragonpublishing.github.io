@@ -5,6 +5,11 @@ All notable changes to the Tetragon Publishing website redevelopment.
 ## [Unreleased]
 
 ### Changed
+- Blog page: cleaned up blog index template — removed Apostrophe `columnar` class from excerpt content, removed `blog-browser` wrapper div
+- Blog page: cleaned up blog post template — removed Disqus comment count from meta, removed Disqus thread and embed script
+- Blog page: removed `a-blog` body class from blog layout (Apostrophe CMS remnant)
+- Blog page: removed google-code-prettify script from sidebar include
+- Blog CSS: removed dead `.blog-item-content.columnar` rules (desktop and phone), removed `.aut a` rule (no links in element), removed `#disqus_thread` styles
 - Contact page: replaced jQuery validationEngine with native HTML5 validation (required, type=email)
 - Contact page: contact.js rewritten — cleaned up code, removed validationEngine dependency, consistent formatting
 - Services page: replaced Orbit slider + Reveal modal plugins with vanilla JS modal slider (~45 lines, no dependencies)
@@ -33,6 +38,8 @@ All notable changes to the Tetragon Publishing website redevelopment.
 - Keyboard support for modals (Escape to close, click-outside to close)
 - services-static.html standalone preview page for browser testing (no Jekyll needed)
 - contact-static.html standalone preview page for browser testing (no Jekyll needed)
+- blog-static.html standalone preview page for browser listing (no Jekyll needed)
+- blog-post-static.html standalone preview page for blog post (no Jekyll needed)
 - Prev/next arrow buttons on home page slideshow (index.html, index-static.html)
 - Custom slider JS in common.js (IIFE, ~12 lines, no dependencies)
 
@@ -44,6 +51,11 @@ All notable changes to the Tetragon Publishing website redevelopment.
 - 22 external orbit-caption divs from services page HTML
 - jQuery Orbit initialisation for home page slides in common.js
 - Orbit-specific CSS rules (.orbit-slide, loading gif, display:none defaults)
+- Disqus comment count spans from blog index and blog post templates
+- Disqus thread embed script from blog post template
+- google-code-prettify script reference from blog sidebar
+- `a-blog` body class from blog layout (Apostrophe CMS artifact)
+- Dead blog CSS: `.blog-item-content.columnar` width override, `.aut a` link rule, `#disqus_thread` styles
 
 ## [0.2.0] - 2026-02-16
 

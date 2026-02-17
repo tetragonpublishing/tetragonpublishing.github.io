@@ -858,8 +858,6 @@ article.contact #contact_loader {
 /* ==========================================================================
    Blog
    ========================================================================== */
-/* Blog heading */
-.blog-layout .blog-main hgroup { margin-bottom: 25px; }
 .blog-layout h1.blog-item-title a,
 .blog-layout h3.blog-item-title a {
   color: var(--color-red);
@@ -887,6 +885,7 @@ article.contact #contact_loader {
   letter-spacing: 0.1em;
   margin-bottom: 10px;
   margin-top: -5px;
+  overflow: hidden;
 }
 .blog-layout h2.blog-item-meta span {
   font-style: normal;
@@ -905,7 +904,6 @@ article.contact #contact_loader {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
-.blog-layout .blog-item-content.columnar { width: 100%; }
 .blog-layout .aut {
   text-align: right;
   color: var(--color-red);
@@ -915,7 +913,6 @@ article.contact #contact_loader {
   letter-spacing: 0.1em;
   font-weight: bolder;
 }
-.blog-layout .aut a { color: var(--color-red); }
 .blog-layout div.blog-item-tags {
   text-align: left;
   margin-top: 25px;
@@ -951,12 +948,6 @@ article.contact #contact_loader {
 }
 .blog-layout .excerpt:not(:last-child) {
   border-bottom: 2px dotted var(--color-gray);
-}
-.blog-layout hgroup.blog-heading { margin-bottom: 25px; }
-.blog-layout hgroup.blog-heading h3.blog-filters {
-  border: 0;
-  font-size: 20px;
-  margin-bottom: 0;
 }
 .blog-layout .blog-item-tags-label {
   font-family: var(--font-heading);
@@ -1000,11 +991,6 @@ article.contact #contact_loader {
   font-size: 14px;
   color: var(--color-gray);
   margin-right: 4px;
-}
-#disqus_thread {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 2px dotted var(--color-gray);
 }
 /* Sidebar tag list */
 .blog-sidebar .tag-list { margin-left: 1em; }
@@ -1253,9 +1239,6 @@ html.fouc, html.wf-loading {
   /* --- Blog: stack to single column --- */
   .blog-layout {
     grid-template-columns: 1fr;
-  }
-  .blog-layout .blog-item-content.columnar {
-    column-count: 1;
   }
 
   /* --- Footer --- */

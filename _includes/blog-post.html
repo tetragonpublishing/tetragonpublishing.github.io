@@ -6,7 +6,6 @@
 				<h2 class="blog-item-meta">
 					<span class="post-date">{{ page.date | date: '%b %-d' }} '{{ page.date | date: '%y' }}</span>
 					<span class="post-author">Posted By: A B</span>
-					<span><a class="disqus-comment-count" data-disqus-identifier="{{ page.disqus-identifier }}" href="{{ post.url }}#disqus_thread">0</a></span>
 				</h2>
 			</hgroup>
 
@@ -24,17 +23,6 @@
 				{% endfor %}
 			</div>
 		</div>
-
-		<div id="disqus_thread"></div>
-		<script type="text/javascript">
-			var disqus_identifier = "{{ page.disqus-identifier }}";
-			(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = "https://tetragon.disqus.com/embed.js";
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=tetragon">comments powered by Disqus.</a></noscript>
 	</div>
 
 {% include blog-sidebar.html %}

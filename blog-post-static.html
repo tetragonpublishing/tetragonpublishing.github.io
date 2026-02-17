@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="title" content="Popup Footnotes in iOS" />
+	<meta name="description" content="Solutions for popup footnote issues in ePub 3 on iOS devices" />
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<title>Tetragon | Popup Footnotes in iOS</title>
+
+	<script type="text/javascript">
+	    document.documentElement.className = 'fouc';
+	    WebFontConfig = {
+	      google: { families: [ 'EB Garamond', 'Lato:400' ] }
+	    };
+	    (function(d) {
+	       var wf = d.createElement('script'), s = d.scripts[0];
+	       wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+	       wf.async = true;
+	       s.parentNode.insertBefore(wf, s);
+	    })(document);
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+	<script type="text/javascript" data-asset-group="global" src="assets/js/apostrophe.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+	<div class="container">
+
+<!-- HEADER -->
+<header>
+	<a href="/" class="logo"></a>
+</header>
+<nav id="main-nav">
+	<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+	<a href="/" class="about">About</a>
+	<a href="/clients" class="clients">Clients</a>
+	<a href="/publishing-services" class="services">Services</a>
+	<a href="/blog" class="blog sel">Blog</a>
+	<a href="/contact" class="contact">Contact</a>
+	<span></span>
+</nav>
+
+<!-- MAIN CONTENT: BLOG POST -->
+<main class="blog-layout">
+	<div class="blog-main">
+		<div class="blog-item post">
+			<hgroup>
+				<h1 class="blog-item-title"><a href="/blog/2017/02/02/popup-footnotes-in-ios">Popup Footnotes in iOS</a></h1>
+				<h2 class="blog-item-meta">
+					<span class="post-date">Feb 2 '17</span>
+					<span class="post-author">Posted By: A B</span>
+				</h2>
+			</hgroup>
+
+			<div class="blog-item-content bodytext">
+				<p>
+				If you're hoping to create eBooks in the ePub 3 format with popup notes, you might have been plagued by some issues getting iOS to work happily. There are instructions in a few places detailing how to do this, but there isn't much help with the various glitches you find using iOS as opposed to iBooks. The main problem I've found is that iOS can freeze when you click on a link to a footnote that's stored in a separate file (e.g. "notes.xhtml"). This doesn't happen with iBooks on a Mac. There are two possible solutions that I've found, at least at the moment:&nbsp;</p>
+				<ul><li>
+					You can have your entire eBook in one single XHTML file. iOS iBooks works fine with this for some reason, since the references are in the same file. However, this can mean slow loading and poor formatting on Adobe Digital Editions (ADE), which doesn't honour "page-break-before: always" CSS, so everything is likely to stream together in one ungainly mess on some e-readers.</li>
+				<li>
+					Through a tedious process of trial and error on one book, I've found that if there are more than 300 note references in a separate notes file, iOS simply freezes when you click on a note cue. Therefore, you'll need to split your notes into separate XHTML files, with each file containing fewer than 300 references. For books that have separate sections (e.g. "Notes to Chapter 1", "Notes to Chapter 2"), this should be fairly straightforward if there are less than 300 notes in all chapters, which is (at least in the books I work on) fairly standard.</li>
+				</ul>
+				<p>
+				I hope that's useful for some of you out there struggling with the boring stuff!</p>
+			</div>
+
+			<div class="aut">&mdash; A B</div>
+			<div class="blog-item-tags tags">
+				<span class="blog-item-tags-label">Tags:</span>
+				<a href="/blog/tag/ebooks">eBooks</a>,
+				<a href="/blog/tag/epub">ePub</a>,
+				<a href="/blog/tag/popup-footnotes">Popup Footnotes</a>
+			</div>
+		</div>
+	</div>
+
+	<aside class="blog-sidebar">
+		<h4 class="sidebar-title">Popular Tags</h4>
+		<ul class="tag-list">
+			<li><a href="/blog/tag/typesetting"><span class="tag-count">5</span>Typesetting</a></li>
+			<li><a href="/blog/tag/epub"><span class="tag-count">3</span>ePub</a></li>
+			<li><a href="/blog/tag/typography"><span class="tag-count">2</span>Typography</a></li>
+			<li><a href="/blog/tag/cs5-5"><span class="tag-count">2</span>CS5.5</a></li>
+			<li><a href="/blog/tag/indesign"><span class="tag-count">2</span>InDesign</a></li>
+		</ul>
+	</aside>
+</main>
+
+<!-- SOCIAL -->
+<div class="soc-med">
+	<div id="social-media" data-text="Tetragon" data-title="share" data-url="https://tetragonpublishing.com/"></div>
+</div>
+
+	</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+	<section itemscope itemtype="http://schema.org/organization">
+		<h6 itemprop="name">Tetragon</h6>
+		<p class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			Collective Auction Rooms &para; <span itemprop="streetAddress">5&mdash;7 Buck Street</span> &para; <span itemprop="addressLocality">London</span> &para; <span itemprop="postalCode">NW1 8NJ</span>
+		</p>
+	</section>
+</footer>
+
+<!-- JS -->
+<script src="assets/js/modernizr.foundation.js"></script>
+<script src="assets/js/forms.jquery.js"></script>
+<script src="assets/js/jquery.customforms.js"></script>
+<script src="assets/js/jquery.placeholder.min.js"></script>
+<script src="assets/js/jquery.tooltips.min.js"></script>
+<script src="assets/js/jquery.color.js"></script>
+<script src="assets/js/jquery.sharrre.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/common.js"></script>
+
+</body>
+</html>

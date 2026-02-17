@@ -14,7 +14,11 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `_includes/head.html` - updated: viewport meta, new stylesheet link, removed IE conditionals
 - `_includes/header.html` - updated: added hamburger nav button
 - `_layouts/default.html` - updated: removed IE conditionals
-- `_layouts/blog.html` - updated: removed IE conditionals
+- `_layouts/blog.html` - updated: removed IE conditionals and Apostrophe body class
+- `_includes/blog-index.html` - updated: removed Apostrophe wrapper div
+- `_includes/blog-post.html` - updated: removed Disqus comment count and thread
+- `_includes/blog-sidebar.html` - updated: removed google-code-prettify script
+- `blog/index.html` - updated: removed columnar class, Disqus spans, cleaned up markup
 - `clients.html` - updated: sprite spans replaced with img tags
 - `publishing-services.html` - updated: sprite spans replaced with img tags
 - `assets/js/common.js` - updated: added hamburger toggle handler
@@ -22,6 +26,8 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `clients-static.html` - standalone preview page for development
 - `services-static.html` - standalone preview page for development
 - `contact-static.html` - standalone preview page for development
+- `blog-static.html` - standalone preview page for development (blog listing)
+- `blog-post-static.html` - standalone preview page for development (single post)
 - `contact.html` - updated: removed validationEngine classes and script tags
 - `assets/js/contact.js` - updated: rewritten, removed validationEngine dependency
 - `CLAUDE.md` - this file
