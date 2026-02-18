@@ -210,8 +210,18 @@ div.clients {
    Header & Logo
    ========================================================================== */
 header {
-  height: 164px;
+  height: 125px;
   position: relative;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.45);
 }
 header::after {
   content: '';
@@ -225,11 +235,12 @@ header::after {
 }
 header a {
   display: block;
-  width: 142px;
-  height: 142px;
+  width: 105px;
+  height: 105px;
   margin: 0 auto;
   position: relative;
-  top: 11px;
+  top: 8px;
+  z-index: 1;
   background: url('../img/logo-full.png') no-repeat center center;
   background-size: contain;
 }
@@ -1046,8 +1057,8 @@ html.fouc, html.wf-loading {
    ========================================================================== */
 @media only screen and (max-width: 939px) {
   /* Header & logo: scale down 25% */
-  header { height: 123px; }
-  header a { width: 107px; height: 107px; top: 8px; }
+  header { height: 110px; }
+  header a { width: 90px; height: 90px; top: 8px; }
 
   /* Nav: keep within main text bounds */
   nav#main-nav a { font-size: 22px; }
@@ -1145,9 +1156,10 @@ html.fouc, html.wf-loading {
     line-height: 1.6;
     text-align: center;
     border-bottom: none;
+    padding: 8px 0;
   }
   nav#main-nav a {
-    font-size: 18px;
+    font-size: 21px;
     display: inline;
     padding: 0;
   }
