@@ -7,8 +7,7 @@
 			<hgroup>
 				<h1 class="blog-item-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
 				<p class="blog-item-meta">
-					<span class="post-date">{{ post.date_display }}</span>
-					<span class="post-author">Posted By: A B</span>
+					<time class="post-date" datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
 				</p>
 			</hgroup>
 
@@ -16,7 +15,7 @@
 {{ post.content }}
 			</div>
 
-			<div class="aut">&mdash; A B</div>
+			<div class="aut">&mdash; Tetragon</div>
 			<div class="blog-item-tags tags">
 				<span class="blog-item-tags-label">Tags:</span>
 {%- for cat in post.categories %}

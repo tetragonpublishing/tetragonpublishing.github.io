@@ -3,7 +3,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="title" content="{{ title }}" />
 	<meta name="description" content="{{ description }}" />
+{%- if not is_404|default(false) %}
 	<link rel="canonical" href="https://tetragonpublishing.com{{ page_url }}" />
+{%- endif %}
+{%- if noindex|default(false) %}
+	<meta name="robots" content="noindex, follow" />
+{%- endif %}
 	<meta property="og:title" content="{{ title }}" />
 	<meta property="og:url" content="https://tetragonpublishing.com{{ page_url }}" />
 	<meta property="og:image" content="https://tetragonpublishing.com/assets/img/t-square-notext.png" />

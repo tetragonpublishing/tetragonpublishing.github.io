@@ -14,8 +14,7 @@
 			<div class="excerpt">
 				<h2 class="blog-item-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
 				<p class="blog-item-meta">
-					<span class="post-date">{{ post.date_display }}</span>
-					<span class="post-author">Posted By: A B</span>
+					<time class="post-date" datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
 				</p>
 				<div class="blog-item-content columnar">
 					<p>{{ post.excerpt }}&hellip;</p>

@@ -102,10 +102,25 @@ def read_posts():
         # Strip the excerpt separator from rendered content
         content = content.replace('<!--more-->', '')
 
+        # Find latest comment date (comments have "· Mon DD, YYYY" format)
+        comment_dates = re.findall(
+            r'class="blog-comment-meta">[^·]*·\s*(\w+ \d{1,2}, \d{4})', content
+        )
+        last_modified = date
+        for cd in comment_dates:
+            try:
+                parsed = datetime.strptime(cd, '%b %d, %Y')
+                if parsed > last_modified:
+                    last_modified = parsed
+            except ValueError:
+                pass
+
         posts.append({
             'title': meta.get('title', ''),
             'date': date,
             'date_display': format_date(date),
+            'date_iso': date.strftime('%Y-%m-%d'),
+            'last_modified': last_modified.strftime('%Y-%m-%d'),
             'url': url,
             'slug': slug,
             'categories': categories,
@@ -165,6 +180,7 @@ def build():
             nav_active=page.get('nav', ''),
             body_class=page.get('body_class', ''),
             extra_js=page.get('extra_js', []),
+            is_404=(page['out'] == '404.html'),
         )
         out = OUTPUT / page['out']
         out.parent.mkdir(parents=True, exist_ok=True)
@@ -217,6 +233,7 @@ def build():
             page_url=f'/blog/tag/{s}',
             nav_active='blog', tag_name=tag_name,
             posts=tag_posts, popular_tags=popular_tags,
+            noindex=True,
         )
         d = OUTPUT / 'blog' / 'tag' / s
         d.mkdir(parents=True, exist_ok=True)
@@ -237,21 +254,22 @@ def build():
     (OUTPUT / '.nojekyll').touch()
 
     # --- Generate sitemap.xml ---
-    sitemap_urls = []
+    today = datetime.now().strftime('%Y-%m-%d')
+    sitemap_entries = []
     for page in PAGES:
         if page['out'] == '404.html':
             continue
-        sitemap_urls.append(page['url'])
-    sitemap_urls.append('/blog')
+        sitemap_entries.append((page['url'], today))
+    # Blog index: use the most recent post's last_modified date
+    blog_lastmod = posts[0]['last_modified'] if posts else today
+    sitemap_entries.append(('/blog', blog_lastmod))
     for post in posts:
-        sitemap_urls.append(post['url'])
-    for tag_name in all_tags:
-        sitemap_urls.append(f'/blog/tag/{slugify(tag_name)}')
+        sitemap_entries.append((post['url'], post['last_modified']))
 
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for url in sitemap_urls:
-        sitemap_lines.append(f'  <url><loc>{SITE_URL}{url}</loc></url>')
+    for url, lastmod in sitemap_entries:
+        sitemap_lines.append(f'  <url><loc>{SITE_URL}{url}</loc><lastmod>{lastmod}</lastmod></url>')
     sitemap_lines.append('</urlset>')
     sitemap_lines.append('')
     (OUTPUT / 'sitemap.xml').write_text('\n'.join(sitemap_lines), encoding='utf-8')

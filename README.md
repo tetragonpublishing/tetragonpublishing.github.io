@@ -12,26 +12,43 @@ python build.py serve             # build + local dev server on http://localhost
 
 The dev server does **not** hot-reload. After editing files, kill the server (Ctrl+C) and re-run `python build.py serve`.
 
+## Git remotes
+
+This repo has two remotes:
+
+- **`origin`** — private dev repo at `https://github.com/tetragonpublishing/website-redevelopment.git` (for backup/versioning during development)
+- **`live`** — the public GitHub Pages repo at `https://github.com/tetragonpublishing/tetragonpublishing.github.io.git` (pushing here triggers deployment)
+
+Check with `git remote -v`. If `live` is missing, add it:
+
+```bash
+git remote add live https://github.com/tetragonpublishing/tetragonpublishing.github.io.git
+```
+
 ## Deployment
 
-Deployment is fully automatic via GitHub Actions. Here's what happens:
+Deployment is fully automatic via GitHub Actions on the `live` remote. Here's what happens:
 
 ### The normal workflow
 
 1. Make your changes locally
 2. Test with `python build.py serve` and check `http://localhost:8000`
 3. Commit your changes
-4. Push to `main`:
+4. Push to the private dev repo (optional, for backup):
    ```bash
    git push origin main
    ```
-5. GitHub Actions automatically:
+5. Push to the live repo to deploy (local `main` → remote `master`):
+   ```bash
+   git push live main:master
+   ```
+6. GitHub Actions automatically:
    - Checks out the repo
    - Installs Python 3.12 and the pip dependencies
    - Runs `python build.py` (generates `_site/`)
    - Uploads `_site/` as a GitHub Pages artifact
    - Deploys to GitHub Pages
-6. The site is live at `https://tetragonpublishing.com` within a couple of minutes
+7. The site is live at `https://tetragonpublishing.com` within a couple of minutes
 
 ### Checking deployment status
 
@@ -57,16 +74,18 @@ The workflow is defined in `.github/workflows/deploy.yml`. It uses GitHub's offi
 
 ### Rolling back to the old Jekyll site
 
-The previous Jekyll version of the site is preserved as the git tag `legacy-jekyll`. To restore it:
+The previous Jekyll version of the site is preserved as the git tag `legacy-jekyll` (tagged from `live/master` — the old repo used `master` as its default branch). To restore it:
 
 ```bash
 git checkout legacy-jekyll       # switch to the old version locally
-# or, to fully roll back main:
+# or, to fully roll back:
 git reset --hard legacy-jekyll
-git push --force origin main     # this will trigger a deploy of the old site
+git push --force live HEAD:master   # deploy the old site to live/master
 ```
 
-The old Jekyll site will deploy and go live within a couple of minutes (GitHub Pages still supports Jekyll natively). To switch back to the current Python build, reset main to the latest commit again.
+The old Jekyll site will deploy and go live within a couple of minutes (GitHub Pages still supports Jekyll natively). To switch back to the current Python build, reset to the latest commit and push to `live` again.
+
+Note: the live repo's default branch is `master`. When pushing the new site, use `git push --force live main:master` (or change the default branch to `main` in the repo's GitHub settings).
 
 ### DNS and domain
 
