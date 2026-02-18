@@ -14,11 +14,63 @@ The dev server does **not** hot-reload. After editing files, kill the server (Ct
 
 ## Deployment
 
-Push to `main` and GitHub Actions handles the rest. The workflow (`.github/workflows/deploy.yml`) runs `build.py`, then deploys `_site/` to GitHub Pages.
+Deployment is fully automatic via GitHub Actions. Here's what happens:
 
-To deploy manually: push to `main`, or trigger the workflow from the Actions tab ("Run workflow").
+### The normal workflow
 
-**DNS**: the site is served via GitHub Pages with a custom domain (`tetragonpublishing.com`). The DNS CNAME is configured at the domain registrar, not in this repo.
+1. Make your changes locally
+2. Test with `python build.py serve` and check `http://localhost:8000`
+3. Commit your changes
+4. Push to `main`:
+   ```bash
+   git push origin main
+   ```
+5. GitHub Actions automatically:
+   - Checks out the repo
+   - Installs Python 3.12 and the pip dependencies
+   - Runs `python build.py` (generates `_site/`)
+   - Uploads `_site/` as a GitHub Pages artifact
+   - Deploys to GitHub Pages
+6. The site is live at `https://tetragonpublishing.com` within a couple of minutes
+
+### Checking deployment status
+
+- Go to the repo on GitHub → **Actions** tab to see the workflow runs
+- Green tick = deployed successfully, red cross = something failed
+- Click into a failed run to see the build log and error details
+- You can also manually trigger a deploy from Actions → "Build and Deploy" → "Run workflow"
+
+### How it works under the hood
+
+The workflow is defined in `.github/workflows/deploy.yml`. It uses GitHub's official Pages actions (not the older `gh-pages` branch method). The key settings:
+
+- **Trigger**: any push to `main`, or manual trigger (`workflow_dispatch`)
+- **Concurrency**: only one deploy runs at a time; a new push cancels any in-progress deploy
+- **Permissions**: the workflow has write access to Pages and read access to the repo (set in the yml, not in repo settings)
+- **No `gh-pages` branch**: the site is deployed directly from the workflow artifact, not pushed to a separate branch
+
+### If something goes wrong
+
+- The live site stays on the **last successful deploy** until the next successful one — a failed build won't take the site down
+- Check the Actions tab for error details (usually a Python/template error in build.py)
+- Fix locally, test with `python build.py`, commit, push again
+
+### Rolling back to the old Jekyll site
+
+The previous Jekyll version of the site is preserved as the git tag `legacy-jekyll`. To restore it:
+
+```bash
+git checkout legacy-jekyll       # switch to the old version locally
+# or, to fully roll back main:
+git reset --hard legacy-jekyll
+git push --force origin main     # this will trigger a deploy of the old site
+```
+
+The old Jekyll site will deploy and go live within a couple of minutes (GitHub Pages still supports Jekyll natively). To switch back to the current Python build, reset main to the latest commit again.
+
+### DNS and domain
+
+The site is served via GitHub Pages with a custom domain (`tetragonpublishing.com`). The DNS CNAME record is configured at the domain registrar, not in this repo. If GitHub Pages ever loses the custom domain setting (it shouldn't), re-add it in the repo's Settings → Pages → Custom domain.
 
 ## How the build works
 
@@ -80,9 +132,7 @@ To deploy manually: push to `main`, or trigger the workflow from the Actions tab
 │   └── deploy.yml            # GitHub Actions: build + deploy to Pages
 │
 ├── CLAUDE.md                 # AI assistant context file
-├── CHANGELOG.md              # Project changelog
-├── TODO.md                   # Completed to-do items (for reference)
-└── tetragon-spellchecker.html  # Legacy — to be moved to dev.tetragonpublishing.com repo
+└── CHANGELOG.md              # Project changelog
 ```
 
 ## Pages
