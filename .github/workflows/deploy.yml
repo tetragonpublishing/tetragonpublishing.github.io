@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    if: github.repository == 'tetragonpublishing/tetragonpublishing.github.io'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
