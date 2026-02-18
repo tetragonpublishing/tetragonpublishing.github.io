@@ -27,69 +27,69 @@ git remote add live https://github.com/tetragonpublishing/tetragonpublishing.git
 
 ## Deployment
 
-Deployment is fully automatic via GitHub Actions on the `live` remote. Here's what happens:
+### 1. Tag a known good state (before making changes)
 
-### The normal workflow
+Before starting work, tag the current live state so you can roll back if needed:
 
-1. Make your changes locally
-2. Test with `python build.py serve` and check `http://localhost:8000`
-3. Commit your changes
-4. Push to the private dev repo (optional, for backup):
-   ```bash
-   git push origin main
-   ```
-5. Push to the live repo to deploy (local `main` → remote `master`):
-   ```bash
-   git push live main:master
-   ```
-6. GitHub Actions automatically:
-   - Checks out the repo
-   - Installs Python 3.12 and the pip dependencies
-   - Runs `python build.py` (generates `_site/`)
-   - Uploads `_site/` as a GitHub Pages artifact
-   - Deploys to GitHub Pages
-7. The site is live at `https://tetragonpublishing.com` within a couple of minutes
+```bash
+git tag -f last-good-deploy
+```
+
+### 2. Make and test changes locally
+
+Edit the source files, then build and preview:
+
+```bash
+python build.py serve    # check http://localhost:8000
+```
+
+### 3. Commit and back up
+
+```bash
+git add -A
+git commit -m "Description of changes"
+git push origin main
+```
+
+### 4. Deploy to live
+
+The live repo uses `master` as its default branch. Push a squashed, single-commit deploy (no development history is exposed publicly):
+
+```bash
+git push --force live $(git commit-tree HEAD^{tree} -m "Deploy site"):master
+```
+
+GitHub Actions will build the site and deploy it to GitHub Pages. Check the **Actions** tab on the live repo for status — green tick means success.
+
+The site is live at `https://tetragonpublishing.com` within a couple of minutes.
+
+### 5. Roll back in an emergency
+
+If the deploy breaks the site, restore the last known good state:
+
+```bash
+git reset --hard last-good-deploy
+git push --force live $(git commit-tree HEAD^{tree} -m "Deploy site"):master
+```
+
+To roll back to the original Jekyll site (preserved as the `legacy-jekyll` tag):
+
+```bash
+git push --force live legacy-jekyll:master
+```
+
+To return to the current Python build afterwards, reset to `main` and redeploy.
 
 ### Checking deployment status
 
-- Go to the repo on GitHub → **Actions** tab to see the workflow runs
-- Green tick = deployed successfully, red cross = something failed
-- Click into a failed run to see the build log and error details
-- You can also manually trigger a deploy from Actions → "Build and Deploy" → "Run workflow"
-
-### How it works under the hood
-
-The workflow is defined in `.github/workflows/deploy.yml`. It uses GitHub's official Pages actions (not the older `gh-pages` branch method). The key settings:
-
-- **Trigger**: any push to `main`, or manual trigger (`workflow_dispatch`)
-- **Concurrency**: only one deploy runs at a time; a new push cancels any in-progress deploy
-- **Permissions**: the workflow has write access to Pages and read access to the repo (set in the yml, not in repo settings)
-- **No `gh-pages` branch**: the site is deployed directly from the workflow artifact, not pushed to a separate branch
-
-### If something goes wrong
-
-- The live site stays on the **last successful deploy** until the next successful one — a failed build won't take the site down
-- Check the Actions tab for error details (usually a Python/template error in build.py)
-- Fix locally, test with `python build.py`, commit, push again
-
-### Rolling back to the old Jekyll site
-
-The previous Jekyll version of the site is preserved as the git tag `legacy-jekyll` (tagged from `live/master` — the old repo used `master` as its default branch). To restore it:
-
-```bash
-git checkout legacy-jekyll       # switch to the old version locally
-# or, to fully roll back:
-git reset --hard legacy-jekyll
-git push --force live HEAD:master   # deploy the old site to live/master
-```
-
-The old Jekyll site will deploy and go live within a couple of minutes (GitHub Pages still supports Jekyll natively). To switch back to the current Python build, reset to the latest commit and push to `live` again.
-
-Note: the live repo's default branch is `master`. When pushing the new site, use `git push --force live main:master` (or change the default branch to `main` in the repo's GitHub settings).
+- Go to the live repo on GitHub → **Actions** tab
+- Green tick = deployed, red cross = failed (click into the run for error details)
+- You can manually trigger a deploy from Actions → "Build and Deploy" → "Run workflow"
+- A failed build won't take the site down — the live site stays on the last successful deploy
 
 ### DNS and domain
 
-The site is served via GitHub Pages with a custom domain (`tetragonpublishing.com`). The DNS CNAME record is configured at the domain registrar, not in this repo. If GitHub Pages ever loses the custom domain setting (it shouldn't), re-add it in the repo's Settings → Pages → Custom domain.
+The custom domain (`tetragonpublishing.com`) is configured in the live repo's GitHub Pages settings (not via a `CNAME` file). The DNS CNAME record is set at the domain registrar. If the custom domain setting is ever lost, re-add it in Settings → Pages → Custom domain.
 
 ## How the build works
 
