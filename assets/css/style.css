@@ -9,7 +9,6 @@
   --color-dark: #302224;
   --color-gray: #A19D96;
   --color-olive: #60632E;
-  --color-cream: #f5f4f0;
   --font-body: 'EB Garamond', Georgia, serif;
   --font-heading: 'Lato', 'Futura', Arial, sans-serif;
   --max-width: 940px;
@@ -83,15 +82,12 @@ small { font-size: 60%; }
 
 /* --- Utility Classes --- */
 .hide { display: none; }
-.clearfix::after { content: ''; display: table; clear: both; }
 .small-caps {
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: 0.1em;
 }
 .ital { font-style: italic; }
-.smaller { font-size: smaller; line-height: 30px; }
-p.spaced { margin-top: 30px; text-indent: 0; }
 p.new-section {
   margin-top: 29px;
   padding-top: 29px;
@@ -252,6 +248,7 @@ nav#main-nav {
   height: 72px;
   line-height: 72px;
   text-align: justify;
+  border-bottom: 2px dotted var(--color-dark);
 }
 nav#main-nav span {
   width: 100%;
@@ -274,9 +271,6 @@ nav#main-nav a:focus { text-decoration: none; outline: none; }
 nav#main-nav a:hover { text-decoration: none; }
 nav#main-nav::after { content: ''; display: inline-block; width: 100%; }
 nav#main-nav a::first-letter { color: var(--color-red); }
-nav#main-nav {
-  border-bottom: 2px dotted var(--color-dark);
-}
 
 /* Hamburger button - hidden on desktop */
 .nav-toggle {
@@ -321,15 +315,6 @@ hgroup h2 {
 /* ==========================================================================
    Footer
    ========================================================================== */
-/* --- Social Media (bottom-right of container, above footer) --- */
-.soc-med {
-  text-align: right;
-}
-#social-media {
-  display: inline-block;
-  font-family: var(--font-heading);
-}
-
 footer {
   flex-shrink: 0;
   background-color: var(--color-dark);
@@ -362,51 +347,6 @@ footer p.address {
   text-transform: lowercase;
   text-indent: 0;
   white-space: nowrap;
-}
-#social-media .box {
-  line-height: 30px;
-  float: right;
-  margin-top: 5px;
-}
-#social-media .box a {
-  color: var(--color-gray);
-  text-shadow: 0 1px 1px rgba(167, 167, 167, 0.4);
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: 0.1em;
-}
-#social-media .box a:hover { text-decoration: none; }
-#social-media .count {
-  font-weight: bold;
-  font-size: 20px;
-  float: left;
-  border-right: 2px solid var(--color-red);
-  line-height: 30px;
-  padding-right: 10px;
-  display: none;
-}
-#social-media .buttons {
-  width: 100%;
-  opacity: 0.8;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: 120px;
-}
-#social-media .button {
-  float: left;
-  max-width: 50px;
-  margin: 0 10px 0 0;
-  background: none;
-  padding: 0;
-}
-#social-media .button:hover { background: none; }
-.soc-med .share {
-  float: left;
-  margin-left: 14px;
-  font-size: 20px;
-  border-left: 2px solid var(--color-red);
-  line-height: 30px;
-  padding-left: 10px;
 }
 
 /* ==========================================================================
@@ -1038,7 +978,6 @@ article.contact #contact_loader {
    ========================================================================== */
 @media print {
   * { background: transparent !important; color: #141414 !important; }
-  .hide-on-print { display: none !important; }
   nav#main-nav, footer { display: none; }
 }
 

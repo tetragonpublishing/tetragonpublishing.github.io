@@ -29,10 +29,10 @@ OUTPUT = ROOT / '_site'
 
 # Pages: source file, output path, canonical URL, nav highlight, body class, extra JS
 PAGES = [
-    {'src': 'index.html',               'out': 'index.html',               'url': '/',                    'nav': 'about',    'body_class': 'a-home'},
-    {'src': 'clients.html',             'out': 'clients.html',             'url': '/clients',             'nav': 'clients',  'body_class': 'a-home'},
-    {'src': 'publishing-services.html', 'out': 'publishing-services.html', 'url': '/publishing-services', 'nav': 'services', 'body_class': 'a-home'},
-    {'src': 'contact.html',             'out': 'contact.html',             'url': '/contact',             'nav': 'contact',  'body_class': 'a-home', 'extra_js': ['/assets/js/contact.js']},
+    {'src': 'index.html',               'out': 'index.html',               'url': '/',                    'nav': 'about'},
+    {'src': 'clients.html',             'out': 'clients.html',             'url': '/clients',             'nav': 'clients'},
+    {'src': 'publishing-services.html', 'out': 'publishing-services.html', 'url': '/publishing-services', 'nav': 'services'},
+    {'src': 'contact.html',             'out': 'contact.html',             'url': '/contact',             'nav': 'contact',  'extra_js': ['/assets/js/contact.js']},
     {'src': '404.html',                 'out': '404.html',                 'url': '/404',                 'nav': None,        'body_class': ''},
 ]
 
