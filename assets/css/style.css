@@ -872,7 +872,7 @@ article.contact #contact_loader {
    Blog
    ========================================================================== */
 .blog-layout h1.blog-item-title a,
-.blog-layout h3.blog-item-title a {
+.blog-layout h2.blog-item-title a {
   color: var(--color-red);
   font-family: var(--font-heading);
   font-size: 22px;
@@ -884,11 +884,11 @@ article.contact #contact_loader {
   font-weight: normal;
 }
 .blog-layout h1.blog-item-title a:hover,
-.blog-layout h3.blog-item-title a:hover {
+.blog-layout h2.blog-item-title a:hover {
   color: #891411;
   text-decoration: none;
 }
-.blog-layout article.blog h3.blog-item-title a { font-size: 20px; }
+.blog-layout article.blog h2.blog-item-title a { font-size: 20px; }
 .blog-layout h2.blog-item-meta {
   color: var(--color-olive);
   font-size: 16px;
