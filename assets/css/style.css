@@ -1302,6 +1302,68 @@ html.fouc, html.wf-loading {
   .modal-content { padding: 15px; }
 }
 
+/* ==========================================================================
+   Blog Comments (static, imported from Disqus)
+   ========================================================================== */
+.blog-comments {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px dotted var(--color-gray);
+}
+.blog-comments h3 {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+  margin-bottom: 20px;
+}
+.blog-comment {
+  margin-bottom: 20px;
+}
+.blog-comment.reply {
+  margin-left: 30px;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-gray);
+}
+.blog-comment-meta {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gray);
+  margin-bottom: 4px;
+}
+.blog-comment-meta .comment-author {
+  color: var(--color-dark);
+}
+.blog-comment-meta .comment-author.is-op {
+  color: var(--color-red);
+}
+.blog-comment-meta .comment-author.is-op::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('/apple-touch-icon.png') no-repeat center;
+  background-size: contain;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+.blog-comment-meta a {
+  color: var(--color-gray);
+}
+.blog-comment-meta a:hover {
+  color: var(--color-dark);
+}
+.blog-comment p {
+  font-size: 18px;
+  text-indent: 0;
+  margin-bottom: 0;
+}
+
 /* Native form validation highlight */
 article.contact form.nice input:invalid,
 article.contact form.nice textarea:invalid {

@@ -4,6 +4,27 @@ All notable changes to the Tetragon Publishing website redevelopment.
 
 ## [Unreleased]
 
+### Added
+- Custom Python build script (`build.py`) replacing Jekyll — uses Jinja2 + PyYAML (~160 lines)
+- Jinja2 templates in `_templates/`: base, head, header, footer, social, blog-index, blog-post, blog-tag, blog-sidebar
+- `requirements.txt` for Python dependencies (jinja2, pyyaml)
+- GitHub Actions workflow (`.github/workflows/deploy.yml`) for automated build and deploy to GitHub Pages
+- `.nojekyll` marker in build output to prevent GitHub from running Jekyll
+- Blog tag archive pages generated at `/blog/tag/:slug/`
+- Prev/next post data available in blog post template context
+
+### Changed
+- Build system: replaced Jekyll (Ruby) with custom Python build script + Jinja2 templates
+- Templates: Liquid syntax replaced with Jinja2 (template inheritance, includes, filters)
+- Nav active state: now computed in header.html template via `nav_active` variable (replaces Jekyll `page.url` conditionals)
+- Contact page: `contact.js` script tag moved from page content to base template `extra_js` mechanism
+
+### Removed
+- Jekyll dependency: `_config.yml`, `_layouts/`, `_includes/`, `Gemfile`, `Gemfile.lock`, `Rakefile` no longer needed for build (kept locally, gitignored)
+- Ruby/Bundler/Gems build toolchain — replaced by Python/pip
+- All legacy jQuery plugins from page output (modernizr.foundation.js, jquery.color.js, jquery.sharrre.js, app.js, etc.)
+- `apostrophe.js` script reference from head template
+
 ### Changed
 - Blog page: cleaned up blog index template — removed Apostrophe `columnar` class from excerpt content, removed `blog-browser` wrapper div
 - Blog page: cleaned up blog post template — removed Disqus comment count from meta, removed Disqus thread and embed script

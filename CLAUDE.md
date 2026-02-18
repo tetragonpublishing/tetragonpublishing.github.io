@@ -1,37 +1,54 @@
 # Tetragon Publishing - Website Redevelopment
 
 ## Project overview
-Rebuilding the CSS (and eventually JS) for the Tetragon Publishing website from scratch, replacing 15-year-old Foundation 2.x / Compass / Apostrophe CMS stylesheets with modern CSS (Grid, Flexbox, custom properties). The site is a static Jekyll site with 5 pages: About, Clients, Services, Blog, Contact.
+Rebuilding the Tetragon Publishing website from scratch, replacing 15-year-old Foundation 2.x / Compass / Apostrophe CMS / Jekyll stack with modern CSS (Grid, Flexbox, custom properties) and a custom Python build script (Jinja2 + PyYAML). The site has 5 pages: About, Clients, Services, Blog, Contact.
+
+## Build system
+Replaced Jekyll with a custom Python build script (`build.py`, ~160 lines). Dependencies: `jinja2`, `pyyaml`.
+
+### Commands
+- `python build.py` — build the site to `_site/`
+- `python build.py serve` — build and start a local dev server on port 8000
+
+### How it works
+1. Reads static pages (`index.html`, `clients.html`, etc.) — strips YAML front matter, wraps content with Jinja2 templates
+2. Reads blog posts from `blog/_posts/` — parses front matter (title, date, categories), generates excerpts, computes prev/next links
+3. Generates blog index, individual post pages, and tag archive pages
+4. Copies `assets/` and root files (favicons) to `_site/`
+5. Creates `.nojekyll` to prevent GitHub from running Jekyll
+
+### Deployment
+GitHub Actions workflow (`.github/workflows/deploy.yml`): push to `main` → Python builds site → deploys to GitHub Pages.
 
 ## Versioning approach
 This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites, Sass source, etc.) remain in the working directory but are excluded via `.gitignore`. The aim is to build totally new CSS and JS, leaving old files in place until the new versions are approved and working.
 
 ### Files to version (new/modified work)
+- `build.py` - site build script (Jinja2 + PyYAML)
+- `requirements.txt` - Python dependencies
+- `.github/workflows/deploy.yml` - GitHub Actions deploy workflow
+- `_templates/` - Jinja2 templates (base, head, header, footer, social, blog-index, blog-post, blog-tag, blog-sidebar)
 - `assets/css/style.css` - new single stylesheet replacing app.css + apostrophe.css
 - `assets/img/clients/logos/` - extracted individual client logo PNGs (from sprite)
 - `assets/img/services/thumbs/` - extracted individual service thumbnail PNGs (from sprite)
 - `assets/img/logo.png`, `logo-notext.png`, `logo-full.png` - extracted from common sprite
-- `_includes/head.html` - updated: viewport meta, new stylesheet link, removed IE conditionals
-- `_includes/header.html` - updated: added hamburger nav button
-- `_layouts/default.html` - updated: removed IE conditionals
-- `_layouts/blog.html` - updated: removed IE conditionals and Apostrophe body class
-- `_includes/blog-index.html` - updated: removed Apostrophe wrapper div
-- `_includes/blog-post.html` - updated: removed Disqus comment count and thread
-- `_includes/blog-sidebar.html` - updated: removed google-code-prettify script
-- `blog/index.html` - updated: removed columnar class, Disqus spans, cleaned up markup
-- `clients.html` - updated: sprite spans replaced with img tags
-- `publishing-services.html` - updated: sprite spans replaced with img tags
-- `assets/js/common.js` - updated: added hamburger toggle handler
+- `index.html` - About page content (YAML front matter + HTML)
+- `clients.html` - Clients page content
+- `publishing-services.html` - Services page content
+- `contact.html` - Contact page content
+- `404.html` - Error page content
+- `blog/_posts/*.html` - Blog posts (YAML front matter + HTML)
+- `assets/js/common.js` - all vanilla JS (nav, fading links, dropcaps, sliders, modals, clients page, email deobfuscation)
+- `assets/js/contact.js` - contact form + Google Maps
 - `index-static.html` - standalone preview page for development
 - `clients-static.html` - standalone preview page for development
 - `services-static.html` - standalone preview page for development
 - `contact-static.html` - standalone preview page for development
 - `blog-static.html` - standalone preview page for development (blog listing)
 - `blog-post-static.html` - standalone preview page for development (single post)
-- `contact.html` - updated: removed validationEngine classes and script tags
-- `assets/js/contact.js` - updated: rewritten, removed validationEngine dependency
 - `CLAUDE.md` - this file
 - `CHANGELOG.md` - project changelog
+- `TODO.md` - project to-do list
 - `.gitignore`
 
 ### Files NOT to version (legacy, left in place)
@@ -40,16 +57,19 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - `assets/css/ie.css` - old IE-specific styles
 - `assets/css/style.scss` - old Sass source
 - `assets/css/foundation/` - old Foundation CSS source
-- `assets/css/validationEngine.jquery.css` - no longer used (replaced by native HTML5 validation)
-- `assets/js/jquery.validationEngine.js` - no longer used
-- `assets/js/jquery.validationEngine-en.js` - no longer used
+- `assets/css/validationEngine.jquery.css` - no longer used
+- `assets/js/modernizr.foundation.js` - old Foundation + jQuery bundle
+- `assets/js/jquery.*.js` - old jQuery plugins (no longer used)
+- `assets/js/app.js` - old Foundation app JS
+- `assets/js/apostrophe.js` - old CMS artifact
 - `assets/img/spr/` - old sprite sheets (replaced by extracted individual images)
 - `assets/img/header-bg.png` - replaced by CSS borders
 - `_compass/` - Sass/Foundation/ZURB source and sprites config
 - `_sass/` - Sass partials (if present)
-- `_site/` - Jekyll build output
-- `Gemfile`, `Gemfile.lock`, `Rakefile` - Ruby/Jekyll build dependencies
-- `assets/js/apostrophe.js` - CMS artifact (still referenced in head.html, remove when ready)
+- `_site/` - build output (regenerated by build.py)
+- `_config.yml`, `Gemfile`, `Gemfile.lock`, `Rakefile` - old Jekyll/Ruby config
+- `_layouts/`, `_includes/` - old Jekyll templates (replaced by `_templates/`)
+- `_data/` - old Jekyll data files
 
 ## Design tokens
 ```
@@ -67,11 +87,9 @@ This repo tracks only **new or modified files**. Old assets (legacy CSS, sprites
 - Tablet: 768px - 939px
 - Phone: 0 - 767px
 
-## Key dependencies still in use
-- jQuery (loaded via modernizr.foundation.js)
-- jquery.color.js (animated colour transitions for fading links)
-- jquery.sharrre.js (social media buttons)
+## Key dependencies
 - Google WebFont Loader (EB Garamond + Lato)
+- Jinja2 + PyYAML (build only, not runtime)
 
 ## Working practices
 

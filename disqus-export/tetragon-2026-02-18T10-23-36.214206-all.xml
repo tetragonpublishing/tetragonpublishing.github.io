@@ -1,0 +1,579 @@
+<?xml version='1.0' encoding='utf-8'?>
+<disqus xmlns="http://disqus.com" xmlns:dsq="http://disqus.com/disqus-internals" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://disqus.com/api/schemas/1.0/disqus.xsd http://disqus.com/api/schemas/1.0/disqus-internals.xsd">
+<category dsq:id="1361000">
+<forum>tetragon</forum>
+<title>General</title>
+<isDefault>true</isDefault>
+</category>
+<thread dsq:id="615623845">
+<id>1</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/13/something-about-dickens</link>
+<title>http://bl/blog/2012/03/13/something-about-dickens</title>
+<message />
+<createdAt>2012-03-18T19:34:26Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="615625441">
+<id />
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/18/something-about-kafka</link>
+<title>http://bl/blog/2012/03/18/something-about-kafka</title>
+<message />
+<createdAt>2012-03-18T19:36:16Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="617065442">
+<id />
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/13/welcome?preview=1</link>
+<title>http://bl/blog/2012/03/13/welcome?preview=1</title>
+<message />
+<createdAt>2012-03-19T21:59:40Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="618324404">
+<id />
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/20/new-post-1</link>
+<title>http://bl/blog/2012/03/20/new-post-1</title>
+<message />
+<createdAt>2012-03-20T20:03:11Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="622028264">
+<id />
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/23/newnew</link>
+<title>http://bl/blog/2012/03/23/newnew</title>
+<message />
+<createdAt>2012-03-23T17:58:16Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="622101197">
+<id>19</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/23/introducing</link>
+<title>http://tetragonpublishing.com/blog/2012/03/23/introducing</title>
+<message />
+<createdAt>2012-03-23T19:17:55Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="622113069">
+<id />
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/03/23/introducing-3</link>
+<title>http://tetragonpublishing.com/blog/2012/03/23/introducing-3</title>
+<message />
+<createdAt>2012-03-23T19:31:23Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="647831963">
+<id>21</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/04/13/at-the-london-book-fair</link>
+<title>http://tetragonpublishing.com/blog/2012/04/13/at-the-london-book-fair</title>
+<message />
+<createdAt>2012-04-13T12:27:16Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="673067296">
+<id>22</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/05/02/open-atrium?preview=1</link>
+<title>http://tetragonpublishing.com/blog/2012/05/02/open-atrium?preview=1</title>
+<message />
+<createdAt>2012-05-02T16:56:03Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="684382309">
+<id>23</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/05/10/working-with-images-and-captions-in-indesign-cs5-5?preview=1</link>
+<title>http://tetragonpublishing.com/blog/2012/05/10/working-with-images-and-captions-in-indesign-cs5-5?preview=1</title>
+<message />
+<createdAt>2012-05-10T16:35:31Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="703206834">
+<id>34</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/05/25/killing-runts-in-indesign?preview=1</link>
+<title>http://tetragonpublishing.com/blog/2012/05/25/killing-runts-in-indesign?preview=1</title>
+<message />
+<createdAt>2012-05-25T13:12:40Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="739669434">
+<id>35</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2012/06/25/when-the-iron-lady-ruled-britain</link>
+<title>http://tetragonpublishing.com/blog/2012/06/25/when-the-iron-lady-ruled-britain</title>
+<message />
+<createdAt>2012-06-25T10:50:08Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="1509805723">
+<id>36</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2013/07/18/change-of-address</link>
+<title>  Change of Address</title>
+<message />
+<createdAt>2013-07-18T14:26:51Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="1855678208">
+<id>37</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf</link>
+<title>  Page Numbers in InDesign appear as "Variable" in PDF</title>
+<message />
+<createdAt>2013-10-14T12:11:00Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>false</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<thread dsq:id="5515290372">
+<id>38</id>
+<forum>tetragon</forum>
+<category dsq:id="1361000" />
+<link>http://tetragonpublishing.com/blog/2017/02/02/popup-footnotes-in-ios?preview=1</link>
+<title>  Popup Footnotes in iOS</title>
+<message />
+<createdAt>2017-02-02T13:14:25Z</createdAt>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<isClosed>true</isClosed>
+<isDeleted>false</isDeleted>
+</thread>
+<post dsq:id="474777014">
+<id />
+<message>&lt;p&gt;Lovely website. I like the drop caps – I have not seen them on any other web pages. I'll check out your blogs for typesetting tips.&lt;br&gt;&lt;/p&gt;</message>
+<createdAt>2012-03-23T20:32:10Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Publisher</name>
+<isAnonymous>true</isAnonymous>
+</author>
+<thread dsq:id="622101197" />
+</post>
+<post dsq:id="533358824">
+<id />
+<message>&lt;p&gt;Thanks for the tips. Great job and I have just implemented them on my site.&lt;/p&gt;</message>
+<createdAt>2012-05-20T02:29:47Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Jeremy Monroe</name>
+<isAnonymous>true</isAnonymous>
+</author>
+<thread dsq:id="673067296" />
+</post>
+<post dsq:id="575825963">
+<id />
+<message>&lt;p&gt;Hi, thanks for taking the time to write this, but it's not working for me. I've done exactly as you said and copied, pasted and checked the characters in the Grep style (including the one space at the beginning), but no worky. Any ideas?&lt;/p&gt;</message>
+<createdAt>2012-07-04T03:38:24Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Bobi</name>
+<isAnonymous>true</isAnonymous>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="575997325">
+<id />
+<message>&lt;p&gt;You're welcome! Which version of ID are you using? You could try temporarily changing no-break to bold or red or something, so you can see what's going on. You could also try removing that whole end bit:&lt;br&gt;[[:space:]]*&lt;br&gt;…if your paragraphs end as they should (without any extraneous spaces). Remember to keep the dollar sign at the end though!&lt;/p&gt;</message>
+<createdAt>2012-07-04T10:05:00Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="575825963" />
+</post>
+<post dsq:id="609204739">
+<id />
+<message>&lt;p&gt;I was really excited to find this technique. Unfortunately, when I used it for my body style, it deleted all the text in the story before the first runt on. When I removed that section of the script as directed, it did the same thing. CS6. &lt;/p&gt;&lt;p&gt;In regard to orphans and widows, is using Keep lines together (keep options) ineffective? I have been successful with this. Also, for keeping subheads with their paragraphs, using "keep with" next 2 lines works well (Keep Options).&lt;/p&gt;</message>
+<createdAt>2012-08-03T22:41:13Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Susan</name>
+<isAnonymous>true</isAnonymous>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="680259175">
+<id />
+<message>&lt;p&gt;This is such a wonderful post!&lt;/p&gt;</message>
+<createdAt>2012-10-12T22:20:05Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Michael J Kormendy</name>
+<isAnonymous>false</isAnonymous>
+<username>mkormendy</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="681765828">
+<id />
+<message>&lt;p&gt;Thanks for the valuable feedback. This article is called "Killing Runts in InDesign with Grep". It should be fairly apparent that it is about working with InDesign.&lt;br&gt;Please do write an article on how to do this in nice-looking cross-browser HTML.&lt;/p&gt;</message>
+<createdAt>2012-10-14T10:24:37Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="680259175" />
+</post>
+<post dsq:id="681810347">
+<id />
+<message>&lt;p&gt;The last space, between the last two words of a paragraph, can be a non-breaking space.&lt;/p&gt;</message>
+<createdAt>2012-10-14T12:17:18Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>sooshi</name>
+<isAnonymous>false</isAnonymous>
+<username>sooshi</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="681765828" />
+</post>
+<post dsq:id="681913449">
+<id />
+<message>&lt;p&gt;I would love to!&lt;/p&gt;</message>
+<createdAt>2012-10-14T15:35:59Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Michael J Kormendy</name>
+<isAnonymous>false</isAnonymous>
+<username>mkormendy</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="681765828" />
+</post>
+<post dsq:id="682390892">
+<id />
+<message>&lt;p&gt;Wow! What a nasty comment. Just because you're feeling awful doesn't mean you have to lash out at somebody else Michael. Your comment says more about you and your state of mind than anything else.&lt;/p&gt;</message>
+<createdAt>2012-10-15T05:33:45Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Mrsfings</name>
+<isAnonymous>true</isAnonymous>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="680259175" />
+</post>
+<post dsq:id="682587309">
+<id />
+<message>&lt;p&gt;I know, but thanks anyway: I'm not sure it's something I'd like to always enforce on a site though. With books, the layout is fixed and you can override if you're not happy. I'm a bit cautious of treating print and digital media in the same way as lonely lines are sometimes better than very gappy / tight lines. &lt;/p&gt;</message>
+<createdAt>2012-10-15T10:39:41Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="681810347" />
+</post>
+<post dsq:id="685156894">
+<id />
+<message>&lt;p&gt;Brilliant! It worked perfectly for me (CS6) – thanks for posting.&lt;br&gt;Any tips on where to learn more about GREP? You've got me interested now...&lt;/p&gt;</message>
+<createdAt>2012-10-17T13:06:59Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Ben Wilson</name>
+<isAnonymous>false</isAnonymous>
+<username>disqus_r0VZ9QP4HY</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="710064094">
+<id />
+<message>&lt;p&gt;This site is amazing. (I've found it while I was searching a solution to get rid of runts, and yours worked perfectly.) It feels like reading a neat book. I'm a huge fan of great typographic solutions and text is very well treated here. It's a real eye-candy, goes well with my afternoon hot chocolate, thanks :) &lt;/p&gt;</message>
+<createdAt>2012-11-14T14:53:33Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Zita Major</name>
+<isAnonymous>false</isAnonymous>
+<username>disqus_RfBbVwPhs6</username>
+</author>
+<thread dsq:id="622101197" />
+</post>
+<post dsq:id="710067392">
+<id />
+<message>&lt;p&gt; Thanks for the kind words. And kudos to the guys who made Open Garamond!&lt;/p&gt;</message>
+<createdAt>2012-11-14T14:58:38Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<thread dsq:id="622101197" />
+<parent dsq:id="710064094" />
+</post>
+<post dsq:id="743119972">
+<id />
+<message>&lt;p&gt;Wow! It's true. By opening your mouth (in this case typing a comment) you have proven yourself a fool.&lt;/p&gt;</message>
+<createdAt>2012-12-19T22:14:54Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Jake Otto</name>
+<isAnonymous>false</isAnonymous>
+<username>jakeotto</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="680259175" />
+</post>
+<post dsq:id="806485724">
+<id />
+<message>&lt;p&gt;Huh?&lt;/p&gt;</message>
+<createdAt>2013-02-21T04:14:32Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Michael J Kormendy</name>
+<isAnonymous>false</isAnonymous>
+<username>mkormendy</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="682390892" />
+</post>
+<post dsq:id="833697837">
+<id />
+<message>&lt;p&gt;I don't know how to paste the image with the caption inside the anchored object, how can I do that?&lt;/p&gt;</message>
+<createdAt>2013-03-18T16:08:23Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Augusto Carmo</name>
+<isAnonymous>false</isAnonymous>
+<username>augustocarmo</username>
+</author>
+<thread dsq:id="684382309" />
+</post>
+<post dsq:id="849753848">
+<id />
+<message>&lt;p&gt;Thank you - this saved me hours and hours of work!&lt;/p&gt;</message>
+<createdAt>2013-04-02T18:37:09Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Aubrey MillerSchmidt</name>
+<isAnonymous>false</isAnonymous>
+<username>aubreymillerschmidt</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="899748194">
+<id />
+<message>&lt;p&gt;I never noticed that "GREP Style" wasn't pluralized in the paragraph styles menu before I read your article, and now that's really bothering me! Oh, and thanks for a terrific piece of knowledge, too!&lt;/p&gt;</message>
+<createdAt>2013-05-16T22:04:26Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Matt Hodtwalker</name>
+<isAnonymous>false</isAnonymous>
+<username>disqus_eOcUbM5Gqn</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="1283570969">
+<id />
+<message>&lt;p&gt;You can run your HTML through a text editor like BareBones free TextWrangler, which is very GREP friendly. Just use a similar search term to find short word before the &lt;br&gt; or &lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt; tag, and rep[lace the space with an non-breaking space.&lt;/p&gt;</message>
+<createdAt>2014-03-13T21:39:26Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>heymcdermott</name>
+<isAnonymous>false</isAnonymous>
+<username>heymcdermott</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="681810347" />
+</post>
+<post dsq:id="1673011681">
+<id />
+<message>&lt;p&gt;Awesome - much appreciated. Am attempting to develop code in grep for runting bullet points - will come back and update if successful.&lt;/p&gt;&lt;p&gt;ps, love that the little bastards are called runts. &lt;/p&gt;</message>
+<createdAt>2014-11-02T22:40:28Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Angelo KW</name>
+<isAnonymous>false</isAnonymous>
+<username>angelokw</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="1752864731">
+<id />
+<message>&lt;p&gt;I tried this with InDesign CC (2014). Funnily enough when doing a grep search this worked great, but when I tried to make it a style it didn't work. So I simply did a search and replac.e..&lt;/p&gt;</message>
+<createdAt>2014-12-21T15:18:06Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Raphael Freeman</name>
+<isAnonymous>false</isAnonymous>
+<username>raphaelfreeman</username>
+</author>
+<thread dsq:id="703206834" />
+<parent dsq:id="575997325" />
+</post>
+<post dsq:id="1799689026">
+<id />
+<message>&lt;p&gt;Thank you. It helps me a lot. &lt;br&gt;But for some reason, the GREP search query interprates footnote markers as CR symbol. this means it changes every space pereceding a word with footnote marker on it. Any solution for that?&lt;/p&gt;</message>
+<createdAt>2015-01-18T15:39:08Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>David Hillel</name>
+<isAnonymous>false</isAnonymous>
+<username>david_hillel</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="1883129500">
+<id />
+<message>&lt;p&gt;Just curious as to whether anyone has had any issues/crashes with this GREP command in Indesign CC?&lt;/p&gt;</message>
+<createdAt>2015-03-02T10:39:40Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Robert Mayers</name>
+<isAnonymous>false</isAnonymous>
+<username>RobertWilliamMayers</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+<post dsq:id="3336775163">
+<id />
+<message>&lt;p&gt;An update on this: for some reason the latest version of InDesign doesn't seem to like the $ at the end of the expression (though previous versions were fine with it). If you replace it with a \r, you should be in luck. If you want to test how it works, change your no-break character style to another colour to see how what it's applied to.&lt;/p&gt;</message>
+<createdAt>2017-06-02T10:53:01Z</createdAt>
+<isDeleted>false</isDeleted>
+<isSpam>false</isSpam>
+<author>
+<name>Tetragon</name>
+<isAnonymous>false</isAnonymous>
+<username>tetragon_publishing</username>
+</author>
+<thread dsq:id="703206834" />
+</post>
+</disqus>

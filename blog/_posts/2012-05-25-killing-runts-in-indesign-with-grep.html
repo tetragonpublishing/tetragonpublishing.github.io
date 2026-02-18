@@ -70,4 +70,81 @@ disqus-identifier: '34'
 			<li>In plain(er) English, this means "find a space, followed by 1-5 non-spaces, and ending either with a carriage return or some empty space and then a carriage return (because quite often you end up working with texts that have pointless but harmless&nbsp;spaces at the end of paragraphs).</li>
 		</ul>
 <p>That's all there is to it. If you want to change the length of what's considered a "runt" (to make it shorter, for example), just change the 5 to 3 or 4.</p>
-<p>Unfortunately, InDesign has precious few to deal with orphans and widows, which I check for manually. This is a bit tedious and I've developed some scripts to locate them, but really it all depends on the dynamics of the text on the page, so it needs a bit of human love.</p>	
+<p>Unfortunately, InDesign has precious few to deal with orphans and widows, which I check for manually. This is a bit tedious and I've developed some scripts to locate them, but really it all depends on the dynamics of the text on the page, so it needs a bit of human love.</p>
+
+<div class="blog-comments">
+<h3>Comments</h3>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author">Bobi</span> · Jul 4, 2012</p>
+<p>Hi, thanks for taking the time to write this, but it's not working for me. I've done exactly as you said and copied, pasted and checked the characters in the Grep style (including the one space at the beginning), but no worky. Any ideas?</p>
+</div>
+
+<div class="blog-comment reply">
+<p class="blog-comment-meta"><span class="comment-author is-op">Tetragon</span> · Jul 4, 2012</p>
+<p>You're welcome! Which version of ID are you using? You could try temporarily changing no-break to bold or red or something, so you can see what's going on. You could also try removing that whole end bit: [[:space:]]* …if your paragraphs end as they should (without any extraneous spaces). Remember to keep the dollar sign at the end though!</p>
+</div>
+
+<div class="blog-comment reply">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/raphaelfreeman/">Raphael Freeman</a></span> · Dec 21, 2014</p>
+<p>I tried this with InDesign CC (2014). Funnily enough when doing a grep search this worked great, but when I tried to make it a style it didn't work. So I simply did a search and replace.</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author">Susan</span> · Aug 3, 2012</p>
+<p>I was really excited to find this technique. Unfortunately, when I used it for my body style, it deleted all the text in the story before the first runt on. When I removed that section of the script as directed, it did the same thing. CS6.</p>
+<p>In regard to orphans and widows, is using Keep lines together (keep options) ineffective? I have been successful with this. Also, for keeping subheads with their paragraphs, using "keep with" next 2 lines works well (Keep Options).</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/sooshi/">sooshi</a></span> · Oct 14, 2012</p>
+<p>The last space, between the last two words of a paragraph, can be a non-breaking space.</p>
+</div>
+
+<div class="blog-comment reply">
+<p class="blog-comment-meta"><span class="comment-author is-op">Tetragon</span> · Oct 15, 2012</p>
+<p>I know, but thanks anyway: I'm not sure it's something I'd like to always enforce on a site though. With books, the layout is fixed and you can override if you're not happy. I'm a bit cautious of treating print and digital media in the same way as lonely lines are sometimes better than very gappy / tight lines.</p>
+</div>
+
+<div class="blog-comment reply">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/heymcdermott/">heymcdermott</a></span> · Mar 13, 2014</p>
+<p>You can run your HTML through a text editor like BareBones free TextWrangler, which is very GREP friendly. Just use a similar search term to find short word before the &lt;br&gt; or &lt;/p&gt; tag, and replace the space with a non-breaking space.</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/disqus_r0VZ9QP4HY/">Ben Wilson</a></span> · Oct 17, 2012</p>
+<p>Brilliant! It worked perfectly for me (CS6) – thanks for posting. Any tips on where to learn more about GREP? You've got me interested now…</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/aubreymillerschmidt/">Aubrey MillerSchmidt</a></span> · Apr 2, 2013</p>
+<p>Thank you – this saved me hours and hours of work!</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/disqus_eOcUbM5Gqn/">Matt Hodtwalker</a></span> · May 16, 2013</p>
+<p>I never noticed that "GREP Style" wasn't pluralized in the paragraph styles menu before I read your article, and now that's really bothering me! Oh, and thanks for a terrific piece of knowledge, too!</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/angelokw/">Angelo KW</a></span> · Nov 2, 2014</p>
+<p>Awesome – much appreciated. Am attempting to develop code in grep for runting bullet points – will come back and update if successful.</p>
+<p>PS, love that the little bastards are called runts.</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/david_hillel/">David Hillel</a></span> · Jan 18, 2015</p>
+<p>Thank you. It helps me a lot. But for some reason, the GREP search query interprets footnote markers as CR symbol. This means it changes every space preceding a word with footnote marker on it. Any solution for that?</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/RobertWilliamMayers/">Robert Mayers</a></span> · Mar 2, 2015</p>
+<p>Just curious as to whether anyone has had any issues/crashes with this GREP command in InDesign CC?</p>
+</div>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author is-op">Tetragon</span> · Jun 2, 2017</p>
+<p>An update on this: for some reason the latest version of InDesign doesn't seem to like the $ at the end of the expression (though previous versions were fine with it). If you replace it with a \r, you should be in luck. If you want to test how it works, change your no-break character style to another colour to see what it's applied to.</p>
+</div>
+
+</div>

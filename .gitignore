@@ -9,6 +9,18 @@ assets/img/spr/
 assets/img/header-bg.png
 assets/js/apostrophe.js
 
+# === Legacy JS (replaced by common.js) ===
+assets/js/modernizr.foundation.js
+assets/js/forms.jquery.js
+assets/js/jquery.customforms.js
+assets/js/jquery.placeholder.min.js
+assets/js/jquery.tooltips.min.js
+assets/js/jquery.color.js
+assets/js/jquery.sharrre.js
+assets/js/app.js
+assets/js/jquery.validationEngine.js
+assets/js/jquery.validationEngine-en.js
+
 # === Apostrophe CMS artifacts ===
 assets/uploads/
 
@@ -22,16 +34,26 @@ assets/img/services/no/
 assets/img/services/keep/
 assets/img/services/pdf/
 
-# === Build/tooling artifacts ===
+# === Jekyll (replaced by build.py) ===
 _compass/
 _sass/
-_site/
+_data/
 .sass-cache/
 .jekyll-metadata
 Gemfile
 Gemfile.lock
 Rakefile
+_config.yml
+_layouts/
+_includes/
 WebContent/
+
+# === Build output ===
+_site/
+
+# === Python ===
+__pycache__/
+*.pyc
 
 # === OS / editor ===
 .DS_Store
