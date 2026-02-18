@@ -1037,14 +1037,6 @@ article.contact #contact_loader {
 .blog-sidebar .tag-list li { margin-bottom: 4px; }
 
 /* ==========================================================================
-   FOUC (Flash of Unstyled Content)
-   ========================================================================== */
-html.fouc body, html.wf-loading body { visibility: hidden; }
-html.fouc, html.wf-loading {
-  background: url('../img/tetragon_loading.gif') no-repeat center 33%;
-}
-
-/* ==========================================================================
    Print Styles
    ========================================================================== */
 @media print {
