@@ -82,7 +82,7 @@
         } else {
           form.style.display = 'none';
           if (result) {
-            result.style.display = '';
+            result.style.display = 'block';
             result.innerHTML = '<p><span class="dropcap">T</span>hanks for your enquiry. We\'ll do our best to get back to you within a day.</p>';
           }
         }
