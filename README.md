@@ -63,6 +63,8 @@ GitHub Actions will build the site and deploy it to GitHub Pages. Check the **Ac
 
 The site is live at `https://tetragonpublishing.com` within a couple of minutes.
 
+NB I seem to get an almost immediate error message from github, then it magically fixes itself. Check github repo online and test after 3 mins.
+
 ### 5. Roll back in an emergency
 
 If the deploy breaks the site, restore the last known good state:
