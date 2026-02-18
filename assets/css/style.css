@@ -889,7 +889,7 @@ article.contact #contact_loader {
   text-decoration: none;
 }
 .blog-layout article.blog h2.blog-item-title a { font-size: 20px; }
-.blog-layout h2.blog-item-meta {
+.blog-layout p.blog-item-meta {
   color: var(--color-olive);
   font-size: 16px;
   line-height: 24px;
@@ -900,12 +900,12 @@ article.contact #contact_loader {
   margin-top: -5px;
   overflow: hidden;
 }
-.blog-layout h2.blog-item-meta span {
+.blog-layout p.blog-item-meta span {
   font-style: normal;
   float: left;
   margin-right: 12px;
 }
-.blog-layout h2.blog-item-meta span:not(:last-child)::after {
+.blog-layout p.blog-item-meta span:not(:last-child)::after {
   content: '\00b7';
   margin-left: 6px;
 }
