@@ -674,9 +674,10 @@ div.clients .clients-list {
   border: 0;
   background: none;
   border-right: 2px dotted var(--color-dark);
+  padding: 0;
   padding-right: 25px;
 }
-div.clients .clients-list dd {
+div.clients .clients-list li {
   font-size: 20px;
   border: 0;
   padding: 5px 0;
@@ -688,7 +689,7 @@ div.clients .clients-list dd {
   color: var(--color-gray);
   line-height: 1.05;
 }
-div.clients .clients-list dd.sel { color: var(--color-red); }
+div.clients .clients-list li.sel { color: var(--color-red); }
 div.clients section { clear: both; }
 div.clients section .client-logo {
   width: 156px;
@@ -741,8 +742,8 @@ div.clients section figure figcaption a {
 div.clients section figure figcaption a:hover { color: var(--color-red); }
 
 /* Client navigation dots (pure CSS, replacing sprite) */
-div.clients dl.client-nav { margin-left: 0; }
-div.clients dl.client-nav dd {
+div.clients ul.client-nav { margin-left: 0; padding: 0; }
+div.clients ul.client-nav li {
   width: 22px;
   height: 22px;
   margin-bottom: 5px;
@@ -752,15 +753,15 @@ div.clients dl.client-nav dd {
   background: transparent;
   position: relative;
 }
-div.clients dl.client-nav dd:hover {
+div.clients ul.client-nav li:hover {
   background: rgba(255, 151, 124, 0.3);
 }
 /* Selected state - the JS swaps class names like nav-page-1 <-> nav-page-1_sel */
-div.clients dl.client-nav dd[class$="_sel"] {
+div.clients ul.client-nav li[class$="_sel"] {
   background: rgb(255, 151, 124);
 }
 /* Number labels for dots - use data-page attribute */
-div.clients dl.client-nav dd::after {
+div.clients ul.client-nav li::after {
   content: attr(data-page);
   position: absolute;
   top: 50%;
@@ -773,8 +774,8 @@ div.clients dl.client-nav dd::after {
   color: var(--color-dark);
   line-height: 1;
 }
-div.clients dl.client-nav dd:hover::after { color: var(--color-red); }
-div.clients dl.client-nav dd[class$="_sel"]::after { color: var(--color-dark); }
+div.clients ul.client-nav li:hover::after { color: var(--color-red); }
+div.clients ul.client-nav li[class$="_sel"]::after { color: var(--color-dark); }
 
 /* ==========================================================================
    Contact Page
@@ -1121,7 +1122,7 @@ html.fouc, html.wf-loading {
     float: none;
     margin: 0 auto 15px auto;
   }
-  div.clients dl.client-nav {
+  div.clients ul.client-nav {
     margin-left: -10px;
   }
 }
@@ -1215,13 +1216,13 @@ html.fouc, html.wf-loading {
     margin-bottom: 15px;
     text-align: center;
   }
-  div.clients .clients-list dd {
+  div.clients .clients-list li {
     display: inline;
     font-size: 18px;
     color: var(--color-dark);
     cursor: pointer;
   }
-  div.clients .clients-list dd + dd::before {
+  div.clients .clients-list li + li::before {
     content: '\b7';
     margin: 0 6px;
     color: var(--color-gray);
@@ -1231,11 +1232,11 @@ html.fouc, html.wf-loading {
     float: none;
     margin: 0 auto 15px auto;
   }
-  div.clients dl.client-nav {
+  div.clients ul.client-nav {
     margin-left: 0;
     text-align: center;
   }
-  div.clients dl.client-nav dd {
+  div.clients ul.client-nav li {
     display: inline-block;
     float: none;
   }

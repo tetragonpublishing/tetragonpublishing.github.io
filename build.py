@@ -271,6 +271,8 @@ def build():
 
 def serve(port=8000):
     build()
+    # Disable reverse DNS lookups (makes requests much faster)
+    SimpleHTTPRequestHandler.address_string = lambda self: self.client_address[0]
     handler = functools.partial(SimpleHTTPRequestHandler, directory=str(OUTPUT))
     print(f'\nServing at http://localhost:{port}/')
     HTTPServer(('', port), handler).serve_forever()

@@ -250,13 +250,13 @@
      CLIENTS PAGE
      ===================================================================== */
   (function() {
-    var clientsList = document.querySelector('dl.clients-list');
+    var clientsList = document.querySelector('ul.clients-list');
     if (!clientsList) return;
 
     var working = false;
 
     // Hide all client sections and nav on load (so non-JS browsers still see content)
-    clientsList.querySelectorAll('dd').forEach(function(dd) {
+    clientsList.querySelectorAll('li').forEach(function(dd) {
       var id = dd.dataset.client;
       var section = document.getElementById(id);
       var nav = document.getElementById('nav-' + id);
@@ -274,7 +274,7 @@
       var fade = (options && options.fade !== undefined) ? options.fade : true;
 
       var nav = dd.parentElement;
-      var selDd = nav.querySelector('dd[class*="_sel"]');
+      var selDd = nav.querySelector('li[class*="_sel"]');
       var outPage = selDd ? selDd.dataset.page : null;
 
       // Remove _sel from current
@@ -323,7 +323,7 @@
       });
 
       // Update selection in client list
-      clientsList.querySelectorAll('dd.sel').forEach(function(el) {
+      clientsList.querySelectorAll('li.sel').forEach(function(el) {
         if (el !== dd) el.classList.remove('sel');
       });
       dd.classList.add('sel');
@@ -337,7 +337,7 @@
       working = true;
 
       // Deselect previous
-      var prevSel = clientsList.querySelector('dd.sel');
+      var prevSel = clientsList.querySelector('li.sel');
       if (prevSel) {
         prevSel.style.color = '';
         prevSel.classList.remove('sel');
@@ -350,7 +350,7 @@
         fadeOut(activeNav, duration, function() {
           activeNav.classList.remove('active-nav');
           // Reset all tab pages back to page 1
-          document.querySelectorAll('dl.client-nav dd:first-child').forEach(function(firstDd) {
+          document.querySelectorAll('ul.client-nav li:first-child').forEach(function(firstDd) {
             swapToTabPage(firstDd, { duration: 0, affectWorking: false, fade: false });
           });
         });
@@ -369,7 +369,7 @@
     }
 
     // Set up fading links on client names
-    var clientDds = clientsList.querySelectorAll('dd');
+    var clientDds = clientsList.querySelectorAll('li');
     fadingLinks(clientDds, '#A01714', 300, 'sel');
     clientDds.forEach(function(dd) {
       dd.style.cursor = 'pointer';
@@ -379,7 +379,7 @@
     });
 
     // Numbered tab handlers
-    document.querySelectorAll('dl.client-nav dd').forEach(function(dd) {
+    document.querySelectorAll('ul.client-nav li').forEach(function(dd) {
       dd.addEventListener('click', function() {
         if (!working && !dd.className.match(/nav-page-\d+_sel/)) {
           working = true;
@@ -389,7 +389,7 @@
     });
 
     // Activate first client on load
-    var firstClient = clientsList.querySelector('dd');
+    var firstClient = clientsList.querySelector('li');
     if (firstClient) activatePage(firstClient);
   })();
 
