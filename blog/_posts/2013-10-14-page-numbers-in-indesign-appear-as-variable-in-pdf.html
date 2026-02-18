@@ -3,39 +3,12 @@ layout: post
 title:  "Page Numbers in InDesign Appear as 'Variable' in PDF"
 date:   2013-10-14 15:30:11 -0100
 categories: ['CS5.5', 'Grep Styles', 'Typesetting']
-disqus-identifier: '37' 
+disqus-identifier: '37'
 # https://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf
 ---
 	<p>
-	I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as "variable", rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem<!--more--> was with InDesign's implemenation of a GREP style for page numbers (see below). The quick solution: don't use them. If you need to style the folio differently from the rest of the text in the same paragraph, just apply a character style to the master frame, or if the master frame items have all been overridden (as was the case for this file), just do a find / replace for the page number character, represented in the GREP search by "~N".</p>	
+	I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as "variable", rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem<!--more--> was with InDesign's implemenation of a GREP style for page numbers (see below). The quick solution: don't use them. If you need to style the folio differently from the rest of the text in the same paragraph, just apply a character style to the master frame, or if the master frame items have all been overridden (as was the case for this file), just do a find / replace for the page number character, represented in the GREP search by "~N".</p>
 
-
-
-
-	 	  	</div>
-		</div>
-
-	
-						  	 			  			  	
-	 
-				<div class="a-slot a-normal normal aSlideshow clearfix" data-pageid="52" data-name="blog-body" data-permid="1" id="a-slot-52-blog-body-1">
- 		
-				    				
-				
-	    	  	<div class="a-slot-content clearfix" id="a-slot-content-52-blog-body-1">
-	      	      	   
-
-
-
-
-
-
-	
-      
-	<ul id="a-slideshow-52-blog-body-1" class="a-slideshow clearfix single-image transition-normal">
-		  						
-	  	  <li class="a-slideshow-item" id="a-slideshow-item-52-blog-body-1-0">
-			<ul>
-    <li class="a-slideshow-image" style="display:block"><img alt="GREP problem for text variables" src="/assets/img/blog/grep-problem-for-text-variables.png" /></li>
-      </ul>		</li>
-  		</ul>
+<figure>
+	<img alt="GREP problem for text variables" src="/assets/img/blog/grep-problem-for-text-variables.png" />
+</figure>

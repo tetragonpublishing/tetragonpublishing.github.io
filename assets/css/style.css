@@ -841,7 +841,7 @@ article.contact form.nice textarea {
   font-family: var(--font-heading);
   border: solid 1px #bbb;
   border-radius: 2px;
-  background: url('../img/misc/input-bg.png') #fff;
+  background: #fff;
   outline: none;
 }
 article.contact form.nice input:focus,
@@ -929,12 +929,9 @@ article.contact #contact_loader {
 }
 .blog-layout .blog-item-content figure img {
   width: 100%;
-  border: 1px solid var(--color-gray);
-  opacity: 0.9;
 }
 .blog-layout .blog-item-content figure figcaption {
-  font-size: 0.85em;
-  color: var(--color-gray);
+  color: #959089;
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: 0.1em;
