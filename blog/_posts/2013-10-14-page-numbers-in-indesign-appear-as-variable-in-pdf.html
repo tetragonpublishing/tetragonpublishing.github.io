@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Page Numbers in InDesign Appear as 'Variable' in PDF"
+date:   2013-10-14 15:30:11 -0100
+categories: ['CS5.5', 'Grep Styles', 'Typesetting']
+# https://tetragonpublishing.com/blog/2013/10/14/page-numbers-in-indesign-appear-as-variable-in-pdf
+---
+	<p>
+	I've just come across a problem I haven't seen in InDesign before. When opening a file from another typesetter, the page numbers appear as "variable", rather than the actual number, on export. This doesn't happen for every page, and the page numbers show up fine in InDesign. Turns out the problem<!--more--> was with InDesign's implemenation of a GREP style for page numbers (see below). The quick solution: don't use them. If you need to style the folio differently from the rest of the text in the same paragraph, just apply a character style to the master frame, or if the master frame items have all been overridden (as was the case for this file), just do a find / replace for the page number character, represented in the GREP search by "~N".</p>
+
+<figure>
+	<img alt="GREP problem for text variables" src="/assets/img/blog/grep-problem-for-text-variables.png" />
+</figure>

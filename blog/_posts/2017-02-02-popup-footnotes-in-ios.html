@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Popup Footnotes in iOS"
+date:   2017-02-02 09:00:11 -0100
+categories: ['eBooks', 'ePub', 'Popup Footnotes']
+# https://tetragonpublishing.com/blog/2017/02/02/popup-footnotes-in-ios
+---
+	<p>
+	If you're hoping to create eBooks in the ePub 3 format with popup notes, you might have been plagued by some issues getting iOS to work happily. There are instructions in a few places detailing how to do this, but there isn't much help with the various glitches you find using<!--more--> iOS as opposed to iBooks. The main problem I've found is that iOS can freeze when you click on a link to a footnote that's stored in a separate file (e.g. "notes.xhtml"). This doesn't happen with iBooks on a Mac. There are two possible solutions that I've found, at least at the moment:&nbsp;</p>
+<ul><li>
+		You can have your entire eBook in one single XHTML file. iOS iBooks works fine with this for some reason, since the references are in the same file. However, this can mean slow loading and poor formatting on Adobe Digital Editions (ADE), which doesn't honour "page-break-before: always" CSS, so everything is likely to stream together in one ungainly mess on some e-readers.</li>
+	<li>
+		Through a tedious process of trial and error on one book, I've found that if there are more than 300 note references in a separate notes file, iOS simply freezes when you click on a note cue. Therefore, you'll need to split your notes into separate XHTML files, with each file containing fewer than 300 references. For books that have separate sections (e.g. "Notes to Chapter 1", "Notes to Chapter 2"), this should be fairly straightforward if there are less than 300 notes in all chapters, which is (at least in the books I work on) fairly standard.</li>
+</ul><p>
+	I hope that's useful for some of you who are struggling with the boring stuff!</p>
+
+

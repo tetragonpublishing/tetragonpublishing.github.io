@@ -1,0 +1,12 @@
+<header>
+	<a href="/" class="logo" aria-label="Tetragon home"></a>
+</header>
+<nav id="main-nav">
+	<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+	<a href="/" class="about{{ ' sel' if nav_active == 'about' else '' }}">About</a>
+	<a href="/clients" class="clients{{ ' sel' if nav_active == 'clients' else '' }}">Clients</a>
+	<a href="/publishing-services" class="services{{ ' sel' if nav_active == 'services' else '' }}">Services</a>
+	<a href="/blog" class="blog{{ ' sel' if nav_active == 'blog' else '' }}">Blog</a>
+	<a href="/contact" class="contact{{ ' sel' if nav_active == 'contact' else '' }}">Contact</a>
+	<span></span>
+</nav>

@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "Open Atrium"
+date:   2012-05-02 12:16:01 -0100
+categories: ['Drupal', 'Open Atrium', 'Project Management']
+# https://tetragonpublishing.com/blog/2012/05/02/open-atrium
+# title
+# Open Atrium
+# Tags
+# Drupal
+# Open Atrium
+# Project Management
+# fname
+# 2012-05-02-open-atrium
+---
+
+      <p>
+	We&rsquo;ve been tossing up between two options for open-source project management: <a href="https://www.todoyu.com/">ToDoYu</a> and <a href="https://openatrium.com">Open Atrium</a>. We wanted everyone to be notified of changes to a project as they happen, rather than insisting they check the project website constantly, and this didn&rsquo;t seem to be easily possible with ToDoYu after some<!--more--> messing around. ToDoYu is also a bit more intimidating to look at, and still feels a bit rough around the edges (I have no idea what some of the features do as there&rsquo;s barely any documentation).</p>
+<p>
+	We decided eventually that Open Atrium better suited our needs as it&rsquo;s fairly simple, integrates nicely with email and is fairly extensible. It has a few weaknesses out of the box that are pretty easy to correct. The biggest as far as we were concerned was the lack of integration between project due dates and the built-in calendar, which by default only shows certain events manually entered into the calendar.</p>
+<p>
+	Here&rsquo;s how to set up Open Atrium&#39;s calendar including project due dates, using the latest build from scratch:</p>
+<div class="column-span-all">
+<ul class="bullet">
+	<li>
+		Go to /admin/build/modules</li>
+	<li>
+		Scroll right to the bottom and activate &ldquo;Views UI&rdquo; (and &ldquo;Views exporter&rdquo; optionally), then save.</li>
+	<li>
+		Now you can edit views: go to /admin/build/views</li>
+	<li>
+		Scroll to &ldquo;calendar_listing (atrium) and click &ldquo;Edit&rdquo;</li>
+	<li>
+		Tweak the settings to include the data from cases with a due date:<br />
+		a) Under &ldquo;Filters&rdquo;, select &ldquo;Node: Type&rdquo;, scroll down and also select &ldquo;Case&rdquo;. Update.<br />
+		b) Under &ldquo;Arguments&rdquo;, select &ldquo;Date: Date (node)&rdquo;, scroll down to &ldquo;DATE FIELDS&rdquo; and also tick &ldquo;Content: Due Date (field_due_date)&rdquo;. Update<br />
+		c) Under &ldquo;Fields&rdquo;, click the + icon, scroll down and tick &ldquo;Content: Due Date (field_due_date)&rdquo;. Add. Update.</li>
+	<li>
+		You&rsquo;ve probably just edited &ldquo;Default&rdquo; (on the left hand menu bar). Select &ldquo;Calendar&rdquo;, which doesn&rsquo;t carry across the override for the filters, and re-apply step 5a.</li>
+	<li>
+		Click &ldquo;Save&rdquo;.</li>
+</ul>
+<p>
+	To customise the &ldquo;upcoming events&rdquo; lists to include due dates as well as events (I find this useful), do the following:</p>
+<ul class="bullet">
+	<li>
+		Go to /admin/build/views</li>
+	<li>
+		Scroll to &ldquo;calendar_upcoming (atrium) and click &ldquo;Edit&rdquo;&nbsp;</li>
+	<li>
+		Tweak the settings:
+		<br />
+			a) Under &ldquo;Filters&rdquo;, select the gear icon next to &ldquo;Date&rdquo;, scroll down and also tick &ldquo;Content: Due Date (field_due_date)&rdquo;. Update.
+		<br />
+			b) Under &ldquo;Filters&rdquo;, select &ldquo;Node: Type&rdquo;, scroll down and also select &ldquo;Case&rdquo;. Update.
+		<br />
+			c) Under &ldquo;Fields&rdquo;, click the + icon, scroll down and tick &ldquo;Content: Due Date (field_due_date)&rdquo;. Add. Under &ldquo;FORMAT&rdquo;, select &ldquo;Day&rdquo;.&nbsp; Update.
+		<br />
+			d) Under &ldquo;Sort criteria&rdquo;, click the + icon, scroll down and tick &ldquo;Content: Due Date (field_due_date)&rdquo;. Add.
+	</li>
+	<li>
+			Repeat the steps above as needed for the &ldquo;Page: Upcoming events&rdquo; and &ldquo;Block: Upcoming events&rdquo; from the left-hand menu, as some defaults you&rsquo;ve set aren&rsquo;t carried through.
+	</li>
+	<li>
+			As above, disable the original view in /admin/build/views.
+	</li>
+</ul>
+<p>
+	When you&#39;ve done all that, go to /admin/build/views/tools and click &ldquo;Clear Views&rsquo; cache&rdquo;. Voil&agrave;! </p>
+<p>A few other features we customise are:</p>
+<ul class="bullet">
+ <li><strong>Enable automatic subscription to notifications.</strong> Go to admin/build/modules, enable "Notifications Autosubscribe". Then go to /admin/messaging/notifications/content and tick "Set all users to "Autosubscribe" by default.</li>
+ <li>Remove software-specific case statuses for new projects at admin/settings/casetracker/states</li>
+</ul>
+</div>
+<p>Overall, we've found that Open Atrium is a pretty amazing open-source tool for project management and we're hoping to use it for some of our project management work for several publishers in the near future.</p>
+
+<div class="blog-comments">
+<h3>Comments</h3>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author">Jeremy Monroe</span> · May 20, 2012</p>
+<p>Thanks for the tips. Great job and I have just implemented them on my site.</p>
+</div>
+
+</div>
