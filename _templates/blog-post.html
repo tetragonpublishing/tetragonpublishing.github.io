@@ -6,10 +6,10 @@
 		<div class="blog-item post">
 			<hgroup>
 				<h1 class="blog-item-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
-				<h2 class="blog-item-meta">
+				<p class="blog-item-meta">
 					<span class="post-date">{{ post.date_display }}</span>
 					<span class="post-author">Posted By: A B</span>
-				</h2>
+				</p>
 			</hgroup>
 
 			<div class="blog-item-content bodytext">
@@ -29,4 +29,21 @@
 
 {% include 'blog-sidebar.html' %}
 </main>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ post.title }}",
+  "datePublished": "{{ post.date.strftime('%Y-%m-%d') }}",
+  "url": "https://tetragonpublishing.com{{ post.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tetragon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tetragonpublishing.com/assets/img/t-square-notext.png"
+    }
+  }
+}
+</script>
 {% endblock %}

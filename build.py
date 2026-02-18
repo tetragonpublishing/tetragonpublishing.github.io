@@ -27,14 +27,16 @@ TEMPLATES = ROOT / '_templates'
 POSTS_DIR = ROOT / 'blog' / '_posts'
 OUTPUT = ROOT / '_site'
 
-# Pages: source file, output path, nav highlight, body class, extra JS
+# Pages: source file, output path, canonical URL, nav highlight, body class, extra JS
 PAGES = [
-    {'src': 'index.html',               'out': 'index.html',               'nav': 'about',    'body_class': 'a-home'},
-    {'src': 'clients.html',             'out': 'clients.html',             'nav': 'clients',  'body_class': 'a-home'},
-    {'src': 'publishing-services.html', 'out': 'publishing-services.html', 'nav': 'services', 'body_class': 'a-home'},
-    {'src': 'contact.html',             'out': 'contact.html',             'nav': 'contact',  'body_class': 'a-home', 'extra_js': ['/assets/js/contact.js']},
-    {'src': '404.html',                 'out': '404.html',                 'nav': None,        'body_class': ''},
+    {'src': 'index.html',               'out': 'index.html',               'url': '/',                    'nav': 'about',    'body_class': 'a-home'},
+    {'src': 'clients.html',             'out': 'clients.html',             'url': '/clients',             'nav': 'clients',  'body_class': 'a-home'},
+    {'src': 'publishing-services.html', 'out': 'publishing-services.html', 'url': '/publishing-services', 'nav': 'services', 'body_class': 'a-home'},
+    {'src': 'contact.html',             'out': 'contact.html',             'url': '/contact',             'nav': 'contact',  'body_class': 'a-home', 'extra_js': ['/assets/js/contact.js']},
+    {'src': '404.html',                 'out': '404.html',                 'url': '/404',                 'nav': None,        'body_class': ''},
 ]
+
+SITE_URL = 'https://tetragonpublishing.com'
 
 # Static files/dirs to copy to _site
 COPY_FILES = ['favicon.ico', 'favicon.png', 'apple-touch-icon.png']
@@ -159,6 +161,7 @@ def build():
             content=content,
             title=meta.get('title', 'Tetragon Publishing'),
             description=meta.get('description', ''),
+            page_url=page.get('url', '/'),
             nav_active=page.get('nav', ''),
             body_class=page.get('body_class', ''),
             extra_js=page.get('extra_js', []),
@@ -172,6 +175,7 @@ def build():
     html = env.get_template('blog-index.html').render(
         title='Tetragon | Blog',
         description='News, Comments and Help for Publishers and Typesetters',
+        page_url='/blog',
         nav_active='blog', posts=posts, popular_tags=popular_tags,
     )
     (OUTPUT / 'blog').mkdir(parents=True, exist_ok=True)
@@ -181,9 +185,21 @@ def build():
     # --- Blog posts ---
     tpl = env.get_template('blog-post.html')
     for post in posts:
+        # Truncate description to ~160 chars on a sentence or word boundary
+        desc = post['excerpt']
+        if len(desc) > 160:
+            # Try to end on a sentence within 160 chars
+            truncated = desc[:160]
+            last_period = truncated.rfind('.')
+            if last_period > 80:
+                desc = truncated[:last_period + 1]
+            else:
+                desc = truncated.rsplit(' ', 1)[0] + '...'
         html = tpl.render(
             title=f'Tetragon | {post["title"]}',
-            description=post['excerpt'][:160],
+            description=desc,
+            page_url=post['url'],
+            og_type='article',
             nav_active='blog', post=post, popular_tags=popular_tags,
         )
         d = OUTPUT / post['url'].lstrip('/')
@@ -196,8 +212,9 @@ def build():
     for tag_name, tag_posts in all_tags.items():
         s = slugify(tag_name)
         html = tpl.render(
-            title='Tetragon | Blog',
+            title=f'Tetragon | Blog | {tag_name}',
             description=f'Posts tagged \'{tag_name}\'',
+            page_url=f'/blog/tag/{s}',
             nav_active='blog', tag_name=tag_name,
             posts=tag_posts, popular_tags=popular_tags,
         )
@@ -218,6 +235,32 @@ def build():
 
     # .nojekyll tells GitHub Pages not to run Jekyll
     (OUTPUT / '.nojekyll').touch()
+
+    # --- Generate sitemap.xml ---
+    sitemap_urls = []
+    for page in PAGES:
+        if page['out'] == '404.html':
+            continue
+        sitemap_urls.append(page['url'])
+    sitemap_urls.append('/blog')
+    for post in posts:
+        sitemap_urls.append(post['url'])
+    for tag_name in all_tags:
+        sitemap_urls.append(f'/blog/tag/{slugify(tag_name)}')
+
+    sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url in sitemap_urls:
+        sitemap_lines.append(f'  <url><loc>{SITE_URL}{url}</loc></url>')
+    sitemap_lines.append('</urlset>')
+    sitemap_lines.append('')
+    (OUTPUT / 'sitemap.xml').write_text('\n'.join(sitemap_lines), encoding='utf-8')
+    print('  sitemap.xml')
+
+    # --- Generate robots.txt ---
+    robots = f'User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n'
+    (OUTPUT / 'robots.txt').write_text(robots, encoding='utf-8')
+    print('  robots.txt')
 
     print(f'\nDone. Output in {OUTPUT}/')
 

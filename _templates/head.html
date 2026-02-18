@@ -3,10 +3,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="title" content="{{ title }}" />
 	<meta name="description" content="{{ description }}" />
-	<meta property="og:title" content="Tetragon Publishing" />
-	<meta property="og:url" content="https://tetragonpublishing.com" />
+	<link rel="canonical" href="https://tetragonpublishing.com{{ page_url }}" />
+	<meta property="og:title" content="{{ title }}" />
+	<meta property="og:url" content="https://tetragonpublishing.com{{ page_url }}" />
 	<meta property="og:image" content="https://tetragonpublishing.com/assets/img/t-square-notext.png" />
-	<meta property="og:description" content="Tetragon: Typesetting, Copy-editing, eBooks and pre-press production for publishers" />
+	<meta property="og:description" content="{{ description }}" />
+	<meta property="og:type" content="{{ og_type|default('website') }}" />
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	<title>{{ title }}</title>
