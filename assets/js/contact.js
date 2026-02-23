@@ -14,12 +14,15 @@
       disableDefaultUI: true,
       scaleControl: true,
       zoomControl: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapId: 'DEMO_MAP_ID'
     });
-    new google.maps.Marker({
+    var markerImg = document.createElement('img');
+    markerImg.src = '/assets/img/marker.png';
+    new google.maps.marker.AdvancedMarkerElement({
       position: latlng,
       map: map,
-      icon: '/assets/img/marker.png',
+      content: markerImg,
       title: 'Tetragon'
     });
   }
@@ -30,7 +33,7 @@
   // Load Google Maps script
   function loadMapScript() {
     var script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmNn6HldGUbESi0i0ubVWWJ3bbrGuT2Wc&callback=_initMap';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmNn6HldGUbESi0i0ubVWWJ3bbrGuT2Wc&callback=_initMap&libraries=marker&loading=async';
     document.body.appendChild(script);
   }
 
