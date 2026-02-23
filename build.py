@@ -181,6 +181,7 @@ def build():
             body_class=page.get('body_class', ''),
             extra_js=page.get('extra_js', []),
             is_404=(page['out'] == '404.html'),
+            noindex=(page['out'] == '404.html'),
         )
         out = OUTPUT / page['out']
         out.parent.mkdir(parents=True, exist_ok=True)
@@ -218,9 +219,9 @@ def build():
             og_type='article',
             nav_active='blog', post=post, popular_tags=popular_tags,
         )
-        d = OUTPUT / post['url'].lstrip('/')
-        d.mkdir(parents=True, exist_ok=True)
-        (d / 'index.html').write_text(html, encoding='utf-8')
+        out = OUTPUT / (post['url'].lstrip('/') + '.html')
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html, encoding='utf-8')
         print(f'  {post["url"]}')
 
     # --- Tag pages ---
