@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<main class="blog-layout">
+	<div class="blog-main">
+		<hgroup>
+			<h1>Blog</h1>
+			<h2>Posts tagged '{{ tag_name }}'</h2>
+		</hgroup>
+
+		<article class="blog">
+{% for post in posts %}
+
+			<div class="excerpt">
+				<h2 class="blog-item-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+				<p class="blog-item-meta">
+					<time class="post-date" datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
+				</p>
+				<div class="blog-item-content columnar">
+					<p>{{ post.excerpt }}&hellip;</p>
+				</div>
+				<div class="excerpt-extras">
+					<div class="blog-read-more"><a href="{{ post.url }}">Read More</a></div>
+					<div class="blog-item-tags tags">
+						<span class="blog-item-tags-label">Tags:</span>
+{%- for cat in post.categories %}
+						<a href="/blog/tag/{{ cat|slugify }}">{{ cat }}</a>
+{%- if not loop.last %},{% endif %}
+{%- endfor %}
+					</div>
+				</div>
+			</div>
+{% endfor %}
+
+		</article>
+	</div>
+
+{% include 'blog-sidebar.html' %}
+</main>
+{% endblock %}

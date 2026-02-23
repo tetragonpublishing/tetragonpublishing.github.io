@@ -1,0 +1,37 @@
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light only">
+	<meta name="title" content="{{ title }}" />
+	<meta name="description" content="{{ description }}" />
+{%- if not is_404|default(false) %}
+	<link rel="canonical" href="https://tetragonpublishing.com{{ page_url }}" />
+{%- endif %}
+{%- if noindex|default(false) %}
+	<meta name="robots" content="noindex, follow" />
+{%- endif %}
+	<meta property="og:title" content="{{ title }}" />
+	<meta property="og:url" content="https://tetragonpublishing.com{{ page_url }}" />
+	<meta property="og:image" content="https://tetragonpublishing.com/assets/img/t-square-notext.png" />
+	<meta property="og:description" content="{{ description }}" />
+	<meta property="og:type" content="{{ og_type|default('website') }}" />
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<title>{{ title }}</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lato:wght@400&display=swap">
+
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-QST4TK37YN"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-QST4TK37YN');
+	</script>
+
+</head>

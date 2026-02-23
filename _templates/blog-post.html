@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<main class="blog-layout">
+	<div class="blog-main">
+		<div class="blog-item post">
+			<hgroup>
+				<h1 class="blog-item-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+				<p class="blog-item-meta">
+					<time class="post-date" datetime="{{ post.date_iso }}">{{ post.date_display }}</time>
+				</p>
+			</hgroup>
+
+			<div class="blog-item-content bodytext">
+{{ post.content }}
+			</div>
+
+			<div class="aut">&mdash; Tetragon</div>
+			<div class="blog-item-tags tags">
+				<span class="blog-item-tags-label">Tags:</span>
+{%- for cat in post.categories %}
+				<a href="/blog/tag/{{ cat|slugify }}">{{ cat }}</a>
+{%- if not loop.last %},{% endif %}
+{%- endfor %}
+			</div>
+		</div>
+	</div>
+
+{% include 'blog-sidebar.html' %}
+</main>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ post.title }}",
+  "datePublished": "{{ post.date.strftime('%Y-%m-%d') }}",
+  "url": "https://tetragonpublishing.com{{ post.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tetragon",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tetragonpublishing.com/assets/img/t-square-notext.png"
+    }
+  }
+}
+</script>
+{% endblock %}
