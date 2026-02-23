@@ -17,6 +17,19 @@ Custom Python build script (`build.py`, ~300 lines). Dependencies: `jinja2`, `py
 4. Copies `assets/` and root files (favicons) to `_site/`
 5. Creates `.nojekyll` to prevent GitHub from running Jekyll
 
+## URL structure and SEO
+
+### Blog post URLs
+Blog posts are output as flat `.html` files: `_site/blog/YYYY/MM/DD/slug.html`. GitHub Pages serves these at `/blog/YYYY/MM/DD/slug` (no trailing slash, no redirect). Do not change this to `directory/index.html` — that would cause a 301 redirect on every blog post URL.
+
+### Noindex policy
+- **Tag archive pages** (`/blog/tag/:slug/`) — `noindex=True`, excluded from sitemap. Low-value aggregation pages.
+- **404 page** — `noindex=True`. No canonical tag either (suppressed via `is_404`).
+- All other pages (static pages, blog index, blog posts) are fully indexed.
+
+### Sitemap and robots.txt
+`sitemap.xml` includes: static pages (not 404), blog index, all blog posts. Tag pages are excluded. `robots.txt` allows all crawlers and advertises the sitemap URL.
+
 ### Deployment
 GitHub Actions workflow (`.github/workflows/deploy.yml`): push to `main` → Python builds site → deploys to GitHub Pages. See `README.md` for full deployment instructions (remotes, tagging, rollback).
 
