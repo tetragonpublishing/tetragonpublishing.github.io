@@ -1,0 +1,87 @@
+---
+layout: post
+title:  "Images and Captions in InDesign CS5.5"
+date:   2012-05-16 10:05:21 -0100
+categories: ['CS5.5', 'Captions', 'Images', 'InDesign', 'Layout', 'Typesetting']
+# https://tetragonpublishing.com/blog/2012/05/16/images-and-captions-in-indesign-cs5-5
+---
+	<p>
+	One problem we've come across repeatedly is how to get an inline image to sit between two paragraphs with an even space above and below it.&nbsp;You can always try doing this by eye, but we feel that it's best to use a technique that allows you to get it exactly right<!--more--> every time.</p>
+<p>
+	The main issue you have to contend with when trying to do this is a combination of the leading and the pinning of the anchored object.</p>
+
+<figure>
+	<img alt="Text and Image default" src="/assets/img/blog/text-and-image-default.png" />
+</figure>
+
+<p>
+	Taking a look at the default setting for the image with the text jump, you can see that it's not centred between the lines of text. We use the following method to deal with this:</p>
+<ul><li>
+		Anchor the&nbsp;image on a line of its own.</li>
+	<li>
+		Create an object style for the image, and under the &lsquo;Anchored Object Options&rsquo; in the &lsquo;Basic Attributes&rsquo; section, select &lsquo;Custom&rsquo; positioning, with a top/centre reference point for the anchored object. For the anchored position, select centred, with the x-coordinate relative to the text frame and no offset;&nbsp;set the y-coordinate relative to the baseline.</li>
+	<li>
+		The distance from the top of the image to the text above will be whatever the leading is&nbsp;of the line containing the anchored object. You can increase/decrease the leading by however much you want by altering the leading of the whole line. (For example, if you set the leading close to 0pt, the object will sit right against the baseline of the text above.)</li>
+</ul>
+
+<figure>
+	<img alt="InDesign anchored object options" src="/assets/img/blog/indesign-anchored-object-options.png" />
+</figure>
+
+<ul><li>
+		In the &lsquo;text wrap and other&rsquo; section, set the type of text wrap to &lsquo;jump&rsquo;.</li>
+	<li>
+		Now we need to be a little inventive. If we look at the original image again, the gap between the bottom of the image and the start of the text seems too small. This is because the space below is measured&nbsp;from the bottom of the image to the <em>baseline</em> of the text below, rather than the top of the line. This means that if we add the height of one capital X (which you may need to measure manually or guess - it's not the same as the leading), the gap below will match that above.&nbsp;</li>
+</ul>
+
+<figure>
+	<img alt="InDesign image spacing fixed step 1" src="/assets/img/blog/indesign-image-fixed-1.png" />
+</figure>
+
+<p>
+	So when we do this&hellip;</p>
+
+<figure>
+	<img alt="InDesign image spacing fixed step 2" src="/assets/img/blog/indesign-image-fixed-2.png" />
+</figure>
+
+<figure>
+	<img alt="Text and Image final result" src="/assets/img/blog/indesign-image-final.png" />
+</figure>
+
+<p>
+	We now have an image that is spaced evenly between the two lines of text.</p>
+<p>
+	If you want this method to work with the baseline grid, you&rsquo;ll need to make sure that the space above is a whole number of lines, plus half a line. The space below should be the same, plus the X-height.</p>
+<p>
+	If you&rsquo;re working with images with captions, the easiest way is to use the object style you&rsquo;ve created for a box, inside which your grouped images and captions can sit. (All you need to do is paste the image and caption into the box and then shrink the surrounding box to fit its contents.)</p>
+
+<figure>
+	<img alt="Image and Caption step 1" src="/assets/img/blog/indesign-caption-1.png" />
+	<figcaption>1. Group the image along with the caption</figcaption>
+</figure>
+
+<figure>
+	<img alt="Image and Caption step 2" src="/assets/img/blog/indesign-caption-2.png" />
+	<figcaption>2. Paste it into an anchored box</figcaption>
+</figure>
+
+<figure>
+	<img alt="Image and Caption step 3" src="/assets/img/blog/indesign-caption-3.png" />
+	<figcaption>3. Fit the frame of the box to its content (i.e. the image and caption)</figcaption>
+</figure>
+
+<figure>
+	<img alt="Image and Caption step 4" src="/assets/img/blog/indesign-caption-4.png" />
+	<figcaption>4. Apply the object style</figcaption>
+</figure>
+
+<div class="blog-comments">
+<h3>Comments</h3>
+
+<div class="blog-comment">
+<p class="blog-comment-meta"><span class="comment-author"><a href="https://disqus.com/by/augustocarmo/">Augusto Carmo</a></span> · Mar 18, 2013</p>
+<p>I don't know how to paste the image with the caption inside the anchored object, how can I do that?</p>
+</div>
+
+</div>

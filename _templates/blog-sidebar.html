@@ -1,0 +1,8 @@
+	<aside class="blog-sidebar">
+		<h4 class="sidebar-title">Popular Tags</h4>
+		<ul class="tag-list">
+{% for name, tag_posts in popular_tags %}
+			<li><a href="/blog/tag/{{ name|slugify }}"><span class="tag-count">{{ tag_posts|length }}</span>{{ name }}</a></li>
+{% endfor %}
+		</ul>
+	</aside>

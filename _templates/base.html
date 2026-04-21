@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body{% if body_class %} class="{{ body_class }}"{% endif %}>
+<div class="wrapper">
+	<div class="container">
+
+{% include 'header.html' %}
+
+{% block main %}
+		<main>
+{{ content }}
+		</main>
+{% endblock %}
+
+	</div>
+</div>
+
+{% include 'footer.html' %}
+
+<script src="/assets/js/common.js"></script>
+{% for js in extra_js|default([]) %}
+<script src="{{ js }}"></script>
+{% endfor %}
+
+</body>
+
+</html>
